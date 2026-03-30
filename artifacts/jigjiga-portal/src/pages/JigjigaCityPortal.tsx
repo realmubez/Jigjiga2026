@@ -20,7 +20,6 @@ import {
   Building2,
   Music,
   Moon,
-  ChevronDown,
   Quote
 } from "lucide-react";
 
@@ -29,48 +28,18 @@ export default function JigjigaCityPortal() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const fadeUpVariant = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-  };
+  const navLinks = ["Explore City", "News", "Culture", "Tech Hub"];
 
   const newsItems = [
-    {
-      id: 1,
-      title: "New Tech Center Opens in Jigjiga",
-      date: "Oct 24, 2024",
-      category: "Technology",
-      image: "https://picsum.photos/seed/techcenter/800/600",
-      featured: true
-    },
-    {
-      id: 2,
-      title: "Somali Cultural Festival Next Week",
-      date: "Oct 28, 2024",
-      category: "Culture",
-      image: "https://picsum.photos/seed/culturefest/400/300"
-    },
-    {
-      id: 3,
-      title: "Infrastructure Upgrades Announced",
-      date: "Nov 02, 2024",
-      category: "City",
-      image: "https://picsum.photos/seed/infrastructure/400/300"
-    },
-    {
-      id: 4,
-      title: "Local Entrepreneurs Win Regional Award",
-      date: "Nov 05, 2024",
-      category: "Business",
-      image: "https://picsum.photos/seed/awardwin/400/300"
-    }
+    { id: 1, title: "New Tech Center Opens in Jigjiga", date: "Oct 24, 2024", category: "Technology", image: "https://picsum.photos/seed/techcenter/800/600", featured: true },
+    { id: 2, title: "Somali Cultural Festival Next Week", date: "Oct 28, 2024", category: "Culture", image: "https://picsum.photos/seed/culturefest/400/300" },
+    { id: 3, title: "Infrastructure Upgrades Announced", date: "Nov 02, 2024", category: "City", image: "https://picsum.photos/seed/infrastructure/400/300" },
+    { id: 4, title: "Local Entrepreneurs Win Regional Award", date: "Nov 05, 2024", category: "Business", image: "https://picsum.photos/seed/awardwin/400/300" }
   ];
 
   const categories = [
@@ -85,13 +54,13 @@ export default function JigjigaCityPortal() {
   const popularDestinations = [
     { id: 1, title: "Karamara Monument", rating: 4.8, reviews: 124, image: "https://picsum.photos/seed/karamara/600/400" },
     { id: 2, title: "Central Market", rating: 4.5, reviews: 342, image: "https://picsum.photos/seed/centralmarket/600/400" },
-    { id: 3, title: "Jigjiga University Campus", rating: 4.9, reviews: 89, image: "https://picsum.photos/seed/university/600/400" }
+    { id: 3, title: "Jigjiga University", rating: 4.9, reviews: 89, image: "https://picsum.photos/seed/university/600/400" }
   ];
 
   const testimonials = [
     { id: 1, name: "Ahmed Ali", role: "Tourist", text: "The cultural depth of Jigjiga is simply unmatched. A beautiful city with incredibly welcoming people.", avatar: "https://picsum.photos/seed/user1/100/100", rating: 5 },
     { id: 2, name: "Sarah M.", role: "Business Traveler", text: "I was surprised by the fast-growing tech hub here. The infrastructure is developing rapidly.", avatar: "https://picsum.photos/seed/user2/100/100", rating: 4 },
-    { id: 3, name: "Dr. Hassan", role: "Local Resident", text: "Jigjiga is the heart of the Somali region. It's safe, vibrant, and full of historical landmarks.", avatar: "https://picsum.photos/seed/user3/100/100", rating: 5 }
+    { id: 3, name: "Dr. Hassan", role: "Local Resident", text: "Jigjiga is the heart of the Somali region. Safe, vibrant, and full of historical landmarks.", avatar: "https://picsum.photos/seed/user3/100/100", rating: 5 }
   ];
 
   const recentArticles = [
@@ -103,85 +72,65 @@ export default function JigjigaCityPortal() {
 
   return (
     <div className="min-h-screen bg-background font-sans text-foreground overflow-x-hidden">
-      {/* 1. HEADER */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-lg border-b border-gray-100 py-4 shadow-sm"
-            : "bg-white/80 backdrop-blur-md py-5"
-        }`}
-      >
+
+      {/* ── HEADER ── */}
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white/95 backdrop-blur-lg border-b border-gray-100 py-3 shadow-sm" : "bg-white/80 backdrop-blur-md py-4"
+      }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-8">
+          <div className="flex items-center justify-between gap-4">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 group outline-none shrink-0">
-              <div className="p-2 rounded-xl bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
+            <Link href="/" className="flex items-center gap-2 group outline-none shrink-0">
+              <div className="p-1.5 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
                 <Globe className="w-5 h-5" />
               </div>
-              <span className="text-lg font-black tracking-tight text-foreground">
+              <span className="text-base sm:text-lg font-black tracking-tight text-foreground">
                 JIGJIGA<span className="text-primary">.NET</span>
               </span>
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-7">
-              {["Explore City", "News", "Culture", "Tech Hub"].map((item) => (
-                <Link
-                  key={item}
-                  href={`#${item.toLowerCase().replace(" ", "-")}`}
-                  className="text-sm font-semibold text-gray-600 hover:text-primary transition-colors"
-                >
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+              {navLinks.map((item) => (
+                <Link key={item} href={`#${item.toLowerCase().replace(/ /g, "-")}`}
+                  className="text-sm font-semibold text-gray-600 hover:text-primary transition-colors whitespace-nowrap">
                   {item}
                 </Link>
               ))}
             </nav>
 
-            {/* Right CTA */}
-            <div className="hidden lg:flex items-center gap-4 shrink-0">
-              <a
-                href="https://business.jigjiga.net"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-md shadow-primary/25 hover:shadow-lg hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-200"
-              >
+            {/* Business Services Button */}
+            <div className="hidden lg:flex shrink-0">
+              <a href="https://business.jigjiga.net" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-md shadow-primary/25 hover:shadow-lg hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-200">
                 Business Services <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
 
-            {/* Mobile Menu Toggle */}
-            <button
-              className="lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
+            {/* Mobile Hamburger */}
+            <button className="lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
+        {/* Mobile Dropdown */}
         <AnimatePresence>
           {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="absolute top-full left-0 right-0 bg-white shadow-xl border-b border-gray-100 py-6 px-6 flex flex-col gap-4 lg:hidden"
-            >
-              {["Destinations", "Activities", "Tech Hub", "News", "About"].map((item) => (
-                <Link
-                  key={item}
-                  href={`#${item.toLowerCase().replace(" ", "-")}`}
-                  className="text-gray-800 font-semibold text-lg px-4 py-2 hover:bg-gray-50 rounded-xl"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
+            <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+              className="absolute top-full left-0 right-0 bg-white shadow-xl border-b border-gray-100 py-4 px-4 flex flex-col gap-1 lg:hidden">
+              {navLinks.map((item) => (
+                <Link key={item} href={`#${item.toLowerCase().replace(/ /g, "-")}`}
+                  className="text-gray-800 font-semibold text-base px-4 py-3 hover:bg-gray-50 rounded-xl transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}>
                   {item}
                 </Link>
               ))}
-              <div className="px-4 pt-4 mt-2 border-t border-gray-100 flex flex-col gap-3">
-                <a
-                  href="https://business.jigjiga.net"
-                  className="flex items-center justify-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold w-full"
-                >
-                  Business Services
+              <div className="pt-3 mt-1 border-t border-gray-100">
+                <a href="https://business.jigjiga.net" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold w-full">
+                  Business Services <ArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
             </motion.div>
@@ -189,176 +138,165 @@ export default function JigjigaCityPortal() {
         </AnimatePresence>
       </header>
 
-      {/* 2. HERO SECTION */}
-      <section className="relative pt-24 pb-16 lg:pt-36 lg:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-        {/* Left Content */}
-        <div className="flex-1 w-full z-10 text-center lg:text-left pt-10 lg:pt-0">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUpVariant}
-          >
-            <span className="font-script text-primary text-2xl lg:text-3xl mb-4 block">Welcome to Jigjiga</span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-foreground leading-[1.1] mb-6">
-              Discover Jigjiga, <br className="hidden lg:block"/> A City Of <span className="text-secondary-accent text-[#f97316]">Beauty</span> <br className="hidden lg:block"/> & Culture
-            </h1>
-            <p className="text-gray-500 text-lg mb-10 max-w-2xl mx-auto lg:mx-0">
-              Experience the vibrant heart of the Somali Region. From ancient traditions to modern tech hubs, explore the best of our growing city.
-            </p>
+      {/* ── HERO ── */}
+      <section className="pt-20 sm:pt-24 pb-8 sm:pb-16 lg:pt-32 lg:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
 
-            {/* Search Bar Widget */}
-            <div className="bg-white p-3 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 flex flex-col sm:flex-row items-center gap-3 w-full max-w-3xl mx-auto lg:mx-0">
-              <div className="flex-1 flex items-center px-4 py-2 w-full border-b sm:border-b-0 sm:border-r border-gray-100">
-                <MapPin className="text-primary w-5 h-5 mr-3" />
-                <div className="flex flex-col text-left w-full">
-                  <span className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Location</span>
-                  <select className="bg-transparent text-sm font-bold text-gray-800 outline-none w-full appearance-none cursor-pointer">
-                    <option>All Locations</option>
-                    <option>City Center</option>
-                    <option>University Area</option>
-                  </select>
+          {/* Left: Text + Search */}
+          <div className="flex-1 w-full text-center lg:text-left">
+            <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+              <span className="font-script text-primary text-xl sm:text-2xl lg:text-3xl mb-3 block">Welcome to Jigjiga</span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-foreground leading-[1.1] mb-5">
+                Discover Jigjiga,<br className="hidden sm:block" /> A City Of{" "}
+                <span className="text-[#f97316]">Beauty</span>
+                <br className="hidden lg:block" /> &amp; Culture
+              </h1>
+              <p className="text-gray-500 text-base sm:text-lg mb-8 max-w-xl mx-auto lg:mx-0">
+                Experience the vibrant heart of the Somali Region. From ancient traditions to modern tech hubs, explore the best of our growing city.
+              </p>
+
+              {/* Search Bar */}
+              <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-gray-100 p-3 w-full max-w-2xl mx-auto lg:mx-0">
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <div className="flex items-center px-3 py-2 gap-2 flex-1 border-b sm:border-b-0 sm:border-r border-gray-100">
+                    <MapPin className="text-primary w-4 h-4 shrink-0" />
+                    <div className="text-left min-w-0">
+                      <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wide block">Location</span>
+                      <select className="bg-transparent text-sm font-bold text-gray-800 outline-none w-full appearance-none cursor-pointer">
+                        <option>All Locations</option>
+                        <option>City Center</option>
+                        <option>University Area</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="flex items-center px-3 py-2 gap-2 flex-1 border-b sm:border-b-0 sm:border-r border-gray-100">
+                    <Globe className="text-primary w-4 h-4 shrink-0" />
+                    <div className="text-left min-w-0">
+                      <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wide block">Category</span>
+                      <select className="bg-transparent text-sm font-bold text-gray-800 outline-none w-full appearance-none cursor-pointer">
+                        <option>All Types</option>
+                        <option>Culture</option>
+                        <option>Food</option>
+                        <option>Tech</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button className="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md shadow-primary/20 transition-colors flex items-center justify-center gap-2 sm:w-auto w-full">
+                    <Search className="w-4 h-4" /> Search
+                  </button>
                 </div>
               </div>
-              <div className="flex-1 flex items-center px-4 py-2 w-full border-b sm:border-b-0 sm:border-r border-gray-100">
-                <Calendar className="text-primary w-5 h-5 mr-3" />
-                <div className="flex flex-col text-left w-full">
-                  <span className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Date</span>
-                  <input type="date" className="bg-transparent text-sm font-bold text-gray-800 outline-none w-full" defaultValue="2024-11-20" />
+            </motion.div>
+          </div>
+
+          {/* Right: Photo Card */}
+          <div className="flex-1 w-full max-w-sm sm:max-w-md lg:max-w-none mx-auto relative">
+            <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }}>
+              {/* Blob */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-primary/10 rounded-full blur-3xl -z-10" />
+
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-indigo-900/10 border-4 sm:border-8 border-white">
+                <img src="https://picsum.photos/seed/jigjigahero/800/1000" alt="Jigjiga City"
+                  className="w-full object-cover aspect-[4/5]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              </div>
+
+              {/* Stat: Reviews — bottom left, always inside bounds */}
+              <div className="absolute bottom-4 left-4 sm:-bottom-4 sm:-left-6 bg-white p-3 sm:p-4 rounded-2xl shadow-xl border border-gray-50 flex items-center gap-3"
+                style={{ animation: "bounce 4s infinite" }}>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-full flex items-center justify-center text-[#f97316] shrink-0">
+                  <Star className="w-5 h-5 sm:w-6 sm:h-6 fill-current" />
+                </div>
+                <div>
+                  <p className="text-[10px] sm:text-xs text-gray-500 font-semibold">Total Reviews</p>
+                  <p className="text-lg sm:text-xl font-black text-gray-900">30k+</p>
                 </div>
               </div>
-              <div className="flex-1 flex items-center px-4 py-2 w-full">
-                <Globe className="text-primary w-5 h-5 mr-3" />
-                <div className="flex flex-col text-left w-full">
-                  <span className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Category</span>
-                  <select className="bg-transparent text-sm font-bold text-gray-800 outline-none w-full appearance-none cursor-pointer">
-                    <option>All Types</option>
-                    <option>Tour</option>
-                    <option>Food</option>
-                  </select>
+
+              {/* Stat: Visitors — top right, always inside bounds */}
+              <div className="absolute top-4 right-4 sm:-top-2 sm:-right-6 bg-white p-3 sm:p-4 rounded-2xl shadow-xl border border-gray-50 flex items-center gap-3"
+                style={{ animation: "bounce 5s infinite", animationDelay: "1s" }}>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-full flex items-center justify-center text-primary shrink-0">
+                  <Users className="w-5 h-5 sm:w-6 sm:h-6" />
+                </div>
+                <div>
+                  <p className="text-[10px] sm:text-xs text-gray-500 font-semibold">Happy Visitors</p>
+                  <p className="text-lg sm:text-xl font-black text-gray-900">540k+</p>
                 </div>
               </div>
-              <button className="bg-primary hover:bg-blue-700 text-white p-4 rounded-xl shadow-lg shadow-primary/20 transition-colors w-full sm:w-auto flex justify-center items-center">
-                <Search className="w-6 h-6" />
-              </button>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Right Photo */}
-        <div className="flex-1 w-full relative">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            {/* Background decorative blob */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/10 rounded-full blur-3xl -z-10"></div>
-            
-            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-indigo-900/10 border-8 border-white">
-              <img
-                src="https://picsum.photos/seed/jigjigahero/800/1000"
-                alt="Jigjiga City"
-                className="w-full h-auto aspect-[4/5] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-            </div>
-
-            {/* Floating Stat Cards */}
-            <div className="absolute -bottom-6 -left-6 sm:bottom-10 sm:-left-10 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 flex items-center gap-4 animate-bounce" style={{ animationDuration: '4s' }}>
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-[#f97316]">
-                <Star className="w-6 h-6 fill-current" />
-              </div>
-              <div>
-                <p className="text-xs text-gray-500 font-semibold">Total Reviews</p>
-                <p className="text-xl font-black text-gray-900">30k+</p>
-              </div>
-            </div>
-
-            <div className="absolute top-10 -right-6 sm:top-20 sm:-right-10 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 flex items-center gap-4 animate-bounce" style={{ animationDuration: '5s', animationDelay: '1s' }}>
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-primary">
-                <Users className="w-6 h-6" />
-              </div>
-              <div>
-                <p className="text-xs text-gray-500 font-semibold">Happy Visitors</p>
-                <p className="text-xl font-black text-gray-900">540k+</p>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* 3. STATS ROW */}
-      <section className="py-12 bg-white border-y border-gray-100">
+      {/* ── STATS ROW ── */}
+      <section className="py-10 sm:py-12 bg-white border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-100">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {[
               { num: "30k+", label: "Happy Visitors" },
               { num: "540k+", label: "Total Reviews" },
               { num: "6,562+", label: "Listed Businesses" },
               { num: "25+", label: "Years of Heritage" }
             ].map((stat, i) => (
-              <div key={i} className="text-center px-4">
-                <h3 className="text-4xl md:text-5xl font-black text-primary mb-2">{stat.num}</h3>
-                <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">{stat.label}</p>
+              <div key={i} className="text-center px-2 py-4 rounded-2xl hover:bg-gray-50 transition-colors">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary mb-1">{stat.num}</h3>
+                <p className="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4. LOCAL GUIDES / CATEGORIES */}
-      <section className="py-24 bg-background">
+      {/* ── CITY CATEGORIES ── */}
+      <section id="explore-city" className="py-16 sm:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="font-script text-primary text-2xl lg:text-3xl mb-2 block">Explore Around</span>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground">City Categories</h2>
+          <div className="text-center mb-10 sm:mb-16">
+            <span className="font-script text-primary text-xl sm:text-2xl lg:text-3xl mb-2 block">Explore Around</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground">City Categories</h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6">
             {categories.map((cat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group cursor-pointer flex flex-col items-center gap-4"
-              >
-                <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-[2rem] overflow-hidden relative shadow-lg shadow-indigo-900/5 group-hover:shadow-xl group-hover:-translate-y-2 transition-all duration-300">
+              <motion.div key={i}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="group cursor-pointer flex flex-col items-center gap-2 sm:gap-3">
+                <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl sm:rounded-[2rem] overflow-hidden relative shadow-md group-hover:shadow-xl group-hover:-translate-y-1 sm:group-hover:-translate-y-2 transition-all duration-300">
                   <img src={cat.image} alt={cat.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-10 h-10 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/40">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/40">
                       {cat.icon}
                     </div>
                   </div>
                 </div>
-                <h4 className="font-bold text-gray-800 text-center text-sm sm:text-base group-hover:text-primary transition-colors">{cat.name}</h4>
+                <h4 className="font-bold text-gray-800 text-center text-xs sm:text-sm group-hover:text-primary transition-colors leading-tight">{cat.name}</h4>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-20">
-            <div className="flex justify-between items-end mb-8">
-              <h3 className="text-2xl font-bold text-gray-900">Popular Destinations</h3>
-              <button className="text-primary font-semibold hover:text-blue-700 flex items-center gap-1">
+          {/* Popular Destinations */}
+          <div className="mt-14 sm:mt-20">
+            <div className="flex items-center justify-between mb-6 sm:mb-8">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Popular Destinations</h3>
+              <button className="text-primary font-semibold hover:text-blue-700 flex items-center gap-1 text-sm">
                 See All <ChevronRight className="w-4 h-4" />
               </button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-8">
               {popularDestinations.map((dest) => (
-                <div key={dest.id} className="bg-white rounded-3xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-50 hover:shadow-xl transition-shadow cursor-pointer group">
-                  <div className="rounded-2xl overflow-hidden mb-4 relative aspect-[4/3]">
+                <div key={dest.id} className="bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-sm border border-gray-100 hover:shadow-xl transition-shadow cursor-pointer group">
+                  <div className="rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 relative aspect-[4/3]">
                     <img src={dest.image} alt={dest.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-sm">
+                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-sm">
                       <Star className="w-3 h-3 text-[#f97316] fill-current" /> {dest.rating}
                     </div>
                   </div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">{dest.title}</h4>
-                  <div className="flex items-center text-sm text-gray-500 gap-4">
-                    <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> Jigjiga</span>
-                    <span className="flex items-center gap-1"><Users className="w-4 h-4" /> {dest.reviews} Reviews</span>
+                  <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">{dest.title}</h4>
+                  <div className="flex items-center flex-wrap text-xs sm:text-sm text-gray-500 gap-3">
+                    <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5" /> Jigjiga</span>
+                    <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" /> {dest.reviews} Reviews</span>
                   </div>
                 </div>
               ))}
@@ -367,40 +305,42 @@ export default function JigjigaCityPortal() {
         </div>
       </section>
 
-      {/* 5. NEWS / ARTICLES (BENTO GRID) */}
-      <section className="py-24 bg-white">
+      {/* ── NEWS (BENTO) ── */}
+      <section id="news" className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="font-script text-[#f97316] text-2xl lg:text-3xl mb-2 block">What's Happening</span>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground">Latest City News</h2>
+          <div className="text-center mb-10 sm:mb-16">
+            <span className="font-script text-[#f97316] text-xl sm:text-2xl lg:text-3xl mb-2 block">What's Happening</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground">Latest City News</h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Featured Left */}
-            <div className="relative rounded-[2rem] overflow-hidden group cursor-pointer shadow-lg">
-              <img src={newsItems[0].image} alt={newsItems[0].title} className="w-full h-full object-cover min-h-[400px] lg:min-h-[500px] group-hover:scale-105 transition-transform duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <span className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-4 shadow-sm">{newsItems[0].category}</span>
-                <h3 className="text-3xl font-bold text-white mb-2 leading-tight">{newsItems[0].title}</h3>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+            {/* Featured */}
+            <div className="relative rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden group cursor-pointer shadow-lg">
+              <img src={newsItems[0].image} alt={newsItems[0].title}
+                className="w-full object-cover min-h-[280px] sm:min-h-[380px] lg:min-h-[480px] group-hover:scale-105 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
+                <span className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-3">{newsItems[0].category}</span>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 leading-tight">{newsItems[0].title}</h3>
                 <div className="flex items-center gap-2 text-white/80 text-sm font-medium">
                   <Calendar className="w-4 h-4" /> {newsItems[0].date}
                 </div>
               </div>
             </div>
 
-            {/* Stacked Right */}
-            <div className="flex flex-col gap-6">
+            {/* Stacked small cards */}
+            <div className="flex flex-col gap-4 sm:gap-5">
               {newsItems.slice(1).map((news) => (
-                <div key={news.id} className="bg-white rounded-[2rem] p-4 flex gap-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 hover:shadow-lg transition-all group cursor-pointer items-center">
-                  <div className="w-32 h-32 rounded-2xl overflow-hidden shrink-0">
+                <div key={news.id}
+                  className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 flex gap-3 sm:gap-5 border border-gray-100 shadow-sm hover:shadow-lg transition-all group cursor-pointer items-center">
+                  <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-xl sm:rounded-2xl overflow-hidden shrink-0">
                     <img src={news.image} alt={news.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
-                  <div>
-                    <span className="text-[#f97316] text-xs font-bold mb-2 block">{news.category}</span>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2 leading-snug group-hover:text-primary transition-colors">{news.title}</h3>
-                    <div className="flex items-center gap-2 text-gray-500 text-sm font-medium">
-                      <Calendar className="w-4 h-4" /> {news.date}
+                  <div className="min-w-0">
+                    <span className="text-[#f97316] text-xs font-bold mb-1 block">{news.category}</span>
+                    <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-1.5 leading-snug group-hover:text-primary transition-colors line-clamp-2">{news.title}</h3>
+                    <div className="flex items-center gap-1.5 text-gray-500 text-xs font-medium">
+                      <Calendar className="w-3.5 h-3.5" /> {news.date}
                     </div>
                   </div>
                 </div>
@@ -410,44 +350,45 @@ export default function JigjigaCityPortal() {
         </div>
       </section>
 
-      {/* 6. TECH HUB SECTION */}
-      <section className="py-24 bg-background">
+      {/* ── TECH HUB ── */}
+      <section id="tech-hub" className="py-16 sm:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-[#1e1b4b] to-[#2563eb] rounded-[3rem] p-10 lg:p-16 relative overflow-hidden shadow-2xl text-white">
-            {/* Decorative Elements */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#f97316]/20 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
-            
-            <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12">
+          <div className="bg-gradient-to-br from-[#1e1b4b] to-[#2563eb] rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 lg:p-16 relative overflow-hidden shadow-2xl text-white">
+            <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-[#f97316]/20 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none" />
+
+            <div className="relative z-10 flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
               <div className="flex-1 text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                  <Rocket className="w-4 h-4 text-[#f97316]" /> Innovation Center
+                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 px-3 py-1.5 rounded-full text-xs font-semibold mb-5">
+                  <Rocket className="w-3.5 h-3.5 text-[#f97316]" /> Innovation Center
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black mb-6">Empowering the <br className="hidden lg:block"/> Next Generation</h2>
-                <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto lg:mx-0">
-                  Join the fastest-growing tech community in the Somali region. We provide resources, mentorship, and workspace for developers and entrepreneurs.
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 sm:mb-6 leading-tight">
+                  Empowering the<br className="hidden sm:block" /> Next Generation
+                </h2>
+                <p className="text-white/80 text-base sm:text-lg mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0">
+                  Join the fastest-growing tech community in the Somali region. Resources, mentorship, and workspace for developers and entrepreneurs.
                 </p>
-                <button className="bg-white text-[#1e1b4b] px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors shadow-xl">
+                <button className="bg-white text-[#1e1b4b] px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors shadow-xl text-sm sm:text-base">
                   Join the Tech Hub
                 </button>
               </div>
 
-              <div className="flex-1 w-full flex flex-col gap-4">
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl flex items-start gap-4 hover:bg-white/15 transition-colors">
-                  <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center shrink-0">
-                    <Code2 className="w-7 h-7 text-white" />
+              <div className="flex-1 w-full flex flex-col gap-3 sm:gap-4">
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 hover:bg-white/15 transition-colors">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
+                    <Code2 className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold mb-2">Developer Hub</h4>
-                    <p className="text-white/70 text-sm leading-relaxed">Access to high-speed internet, coding bootcamps, and monthly hackathons.</p>
+                    <h4 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Developer Hub</h4>
+                    <p className="text-white/70 text-sm leading-relaxed">High-speed internet, coding bootcamps, and monthly hackathons.</p>
                   </div>
                 </div>
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl flex items-start gap-4 hover:bg-white/15 transition-colors">
-                  <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center shrink-0">
-                    <Building2 className="w-7 h-7 text-white" />
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 hover:bg-white/15 transition-colors">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
+                    <Building2 className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold mb-2">Startup Incubator</h4>
+                    <h4 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Startup Incubator</h4>
                     <p className="text-white/70 text-sm leading-relaxed">Workspace, funding opportunities, and expert mentorship for local founders.</p>
                   </div>
                 </div>
@@ -457,29 +398,29 @@ export default function JigjigaCityPortal() {
         </div>
       </section>
 
-      {/* 7. TESTIMONIALS */}
-      <section className="py-24 bg-white overflow-hidden">
+      {/* ── TESTIMONIALS ── */}
+      <section className="py-16 sm:py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="font-script text-[#f97316] text-2xl lg:text-3xl mb-2 block">What People Say</span>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground">Community Reviews</h2>
+          <div className="text-center mb-10 sm:mb-16">
+            <span className="font-script text-[#f97316] text-xl sm:text-2xl lg:text-3xl mb-2 block">What People Say</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground">Community Reviews</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-8">
             {testimonials.map((review) => (
-              <div key={review.id} className="bg-background rounded-[2rem] p-8 relative shadow-sm border border-gray-100 hover:shadow-xl transition-shadow">
-                <Quote className="absolute top-6 right-8 w-12 h-12 text-primary/10" />
-                <div className="flex gap-1 mb-6">
+              <div key={review.id} className="bg-background rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-8 relative shadow-sm border border-gray-100 hover:shadow-xl transition-shadow">
+                <Quote className="absolute top-5 right-6 w-10 h-10 text-primary/10" />
+                <div className="flex gap-1 mb-4 sm:mb-6">
                   {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-[#f97316] fill-current" />
+                    <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-[#f97316] fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-700 italic mb-8 relative z-10 text-lg leading-relaxed">"{review.text}"</p>
-                <div className="flex items-center gap-4">
-                  <img src={review.avatar} alt={review.name} className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-md" />
+                <p className="text-gray-700 italic mb-6 sm:mb-8 relative z-10 text-base sm:text-lg leading-relaxed">"{review.text}"</p>
+                <div className="flex items-center gap-3">
+                  <img src={review.avatar} alt={review.name} className="w-11 h-11 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-white shadow-md" />
                   <div>
-                    <h5 className="font-bold text-gray-900">{review.name}</h5>
-                    <p className="text-sm text-gray-500 font-medium">{review.role}</p>
+                    <h5 className="font-bold text-gray-900 text-sm sm:text-base">{review.name}</h5>
+                    <p className="text-xs sm:text-sm text-gray-500 font-medium">{review.role}</p>
                   </div>
                 </div>
               </div>
@@ -488,28 +429,28 @@ export default function JigjigaCityPortal() {
         </div>
       </section>
 
-      {/* 8. RECENT ARTICLES (2x2 Grid) */}
-      <section className="py-24 bg-background border-t border-gray-100">
+      {/* ── ARTICLES ── */}
+      <section id="culture" className="py-16 sm:py-24 bg-background border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="font-script text-primary text-2xl lg:text-3xl mb-2 block">Our Best Offer</span>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground">Recent Articles & Posts</h2>
+          <div className="text-center mb-10 sm:mb-16">
+            <span className="font-script text-primary text-xl sm:text-2xl lg:text-3xl mb-2 block">Our Best Offer</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground">Recent Articles &amp; Posts</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {recentArticles.map((article) => (
-              <div key={article.id} className="bg-white rounded-[2rem] p-3 shadow-md border border-gray-50 group cursor-pointer hover:shadow-xl transition-all">
-                <div className="rounded-2xl overflow-hidden aspect-[4/3] mb-4 relative">
+              <div key={article.id} className="bg-white rounded-2xl sm:rounded-[2rem] p-2.5 sm:p-3 shadow-md border border-gray-50 group cursor-pointer hover:shadow-xl transition-all">
+                <div className="rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/3] mb-3 relative">
                   <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-800 shadow-sm">
+                  <div className="absolute top-2.5 left-2.5 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-800 shadow-sm">
                     {article.tag}
                   </div>
                 </div>
-                <div className="px-3 pb-3">
-                  <h4 className="text-lg font-bold text-gray-900 mb-2 leading-snug group-hover:text-primary transition-colors">{article.title}</h4>
-                  <div className="flex items-center justify-between text-sm">
+                <div className="px-2 pb-2 sm:px-3 sm:pb-3">
+                  <h4 className="text-sm sm:text-base font-bold text-gray-900 mb-2 leading-snug group-hover:text-primary transition-colors">{article.title}</h4>
+                  <div className="flex items-center justify-between text-xs sm:text-sm">
                     <span className="text-gray-500 font-medium">{article.date}</span>
-                    <span className="text-primary font-bold">Read More →</span>
+                    <span className="text-primary font-bold">Read →</span>
                   </div>
                 </div>
               </div>
@@ -518,33 +459,42 @@ export default function JigjigaCityPortal() {
         </div>
       </section>
 
-      {/* 9. BUSINESS CALLOUT (SPLIT LAYOUT) */}
-      <section className="py-24 bg-white">
+      {/* ── BUSINESS CALLOUT ── */}
+      <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#1e1b4b] rounded-[3rem] overflow-hidden flex flex-col lg:flex-row items-center shadow-2xl relative">
-            <div className="p-12 lg:p-20 flex-1 relative z-10 text-center lg:text-left">
-              <div className="inline-block bg-[#f97316] text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
-                Jigjiga Business
+          <div className="bg-[#1e1b4b] rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl">
+            <div className="flex flex-col lg:flex-row">
+              {/* Text side */}
+              <div className="flex-1 p-8 sm:p-12 lg:p-16 text-center lg:text-left">
+                <div className="inline-block bg-[#f97316] text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-5">
+                  Jigjiga Business
+                </div>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-5 leading-tight">
+                  Looking for <span className="text-[#f97316]">Management</span> Systems?
+                </h2>
+                <p className="text-white/80 text-base sm:text-lg mb-8 max-w-md mx-auto lg:mx-0">
+                  Transform your business with our tailored Pharmacy, School, and Hotel software built specifically for local needs.
+                </p>
+                <a href="https://business.jigjiga.net" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-white text-[#1e1b4b] px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-sm sm:text-base hover:bg-gray-100 transition-colors shadow-xl">
+                  Go to Business Portal <ArrowUpRight className="w-5 h-5" />
+                </a>
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
-                Looking for <span className="text-[#f97316]">Management</span> Systems?
-              </h2>
-              <p className="text-white/80 text-lg mb-10 max-w-md mx-auto lg:mx-0">
-                Transform your business with our tailored Pharmacy, School, and Hotel software built specifically for local needs.
-              </p>
-              <a
-                href="https://business.jigjiga.net"
-                className="inline-flex items-center gap-2 bg-white text-[#1e1b4b] px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors shadow-xl"
-              >
-                Go to Business Portal <ArrowUpRight className="w-5 h-5" />
-              </a>
-            </div>
-            <div className="flex-1 w-full bg-primary/20 relative min-h-[300px] lg:min-h-[500px]">
-              {/* Decorative phone/app mockup placeholder */}
-              <div className="absolute inset-0 flex items-center justify-center p-8">
-                <div className="w-full max-w-sm aspect-[9/16] bg-white rounded-[2.5rem] shadow-2xl border-8 border-gray-800 relative overflow-hidden transform rotate-6 lg:translate-x-12 translate-y-12">
-                  <div className="absolute top-0 inset-x-0 h-6 bg-gray-800 rounded-b-2xl w-1/3 mx-auto"></div>
-                  <img src="https://picsum.photos/seed/appmockup/400/800" className="w-full h-full object-cover" alt="App Preview" />
+
+              {/* Visual side */}
+              <div className="flex-1 relative min-h-[220px] sm:min-h-[280px] lg:min-h-[420px] bg-primary/20 flex items-center justify-center p-6">
+                <div className="grid grid-cols-2 gap-4 w-full max-w-xs sm:max-w-sm">
+                  {[
+                    { icon: "💊", label: "Pharmacy System" },
+                    { icon: "🏫", label: "School System" },
+                    { icon: "🏨", label: "Hotel System" },
+                    { icon: "📊", label: "Analytics" }
+                  ].map((item, i) => (
+                    <div key={i} className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-4 text-center text-white hover:bg-white/20 transition-colors">
+                      <div className="text-2xl sm:text-3xl mb-2">{item.icon}</div>
+                      <p className="text-xs sm:text-sm font-semibold">{item.label}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -552,65 +502,69 @@ export default function JigjigaCityPortal() {
         </div>
       </section>
 
-      {/* 10. PREMIUM FOOTER */}
-      <footer className="bg-background pt-20 pb-10 border-t border-gray-200">
+      {/* ── FOOTER ── */}
+      <footer className="bg-background pt-12 sm:pt-20 pb-8 sm:pb-10 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-            <div className="lg:col-span-2">
-              <Link href="/" className="flex items-center gap-2 mb-6">
-                <Globe className="w-8 h-8 text-primary" />
-                <span className="text-2xl font-black tracking-tight text-foreground">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12 mb-10 sm:mb-16">
+            {/* Brand */}
+            <div className="col-span-2 lg:col-span-2">
+              <Link href="/" className="flex items-center gap-2 mb-5 outline-none">
+                <Globe className="w-7 h-7 text-primary" />
+                <span className="text-xl font-black tracking-tight text-foreground">
                   JIGJIGA<span className="text-primary">.NET</span>
                 </span>
               </Link>
-              <p className="text-gray-500 text-lg leading-relaxed mb-8 max-w-sm">
-                Your premier destination for everything Jigjiga. Discover the culture, stay updated with news, and connect with local businesses.
+              <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-6 max-w-xs">
+                Your premier destination for everything Jigjiga. Culture, news, and local business.
               </p>
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors cursor-pointer"><Globe className="w-5 h-5" /></div>
-                <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors cursor-pointer"><Users className="w-5 h-5" /></div>
-                <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors cursor-pointer"><Camera className="w-5 h-5" /></div>
+              <div className="flex gap-3">
+                {[Globe, Users, Camera].map((Icon, i) => (
+                  <div key={i} className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </div>
+                ))}
               </div>
             </div>
 
+            {/* Links: Discover */}
             <div>
-              <h4 className="font-bold text-gray-900 mb-6 text-lg">Discover</h4>
-              <ul className="flex flex-col gap-4 text-gray-500 font-medium">
-                <li><Link href="#" className="hover:text-primary transition-colors">City Guide</Link></li>
-                <li><Link href="#" className="hover:text-primary transition-colors">Popular Destinations</Link></li>
-                <li><Link href="#" className="hover:text-primary transition-colors">Local Events</Link></li>
-                <li><Link href="#" className="hover:text-primary transition-colors">Food & Drink</Link></li>
+              <h4 className="font-bold text-gray-900 mb-4 text-sm sm:text-base">Discover</h4>
+              <ul className="flex flex-col gap-3 text-gray-500 font-medium text-sm">
+                {["City Guide", "Popular Spots", "Local Events", "Food & Drink"].map((l) => (
+                  <li key={l}><Link href="#" className="hover:text-primary transition-colors">{l}</Link></li>
+                ))}
               </ul>
             </div>
 
+            {/* Links: Services */}
             <div>
-              <h4 className="font-bold text-gray-900 mb-6 text-lg">Services</h4>
-              <ul className="flex flex-col gap-4 text-gray-500 font-medium">
-                <li><a href="https://business.jigjiga.net" className="hover:text-primary transition-colors">Business Portal</a></li>
-                <li><Link href="#" className="hover:text-primary transition-colors">Tech Hub</Link></li>
-                <li><Link href="#" className="hover:text-primary transition-colors">Submit a Listing</Link></li>
-                <li><Link href="#" className="hover:text-primary transition-colors">Advertising</Link></li>
+              <h4 className="font-bold text-gray-900 mb-4 text-sm sm:text-base">Services</h4>
+              <ul className="flex flex-col gap-3 text-gray-500 font-medium text-sm">
+                {[["Business Portal", "https://business.jigjiga.net"], ["Tech Hub", "#tech-hub"], ["Add Listing", "#"], ["Advertise", "#"]].map(([l, h]) => (
+                  <li key={l}><a href={h} className="hover:text-primary transition-colors">{l}</a></li>
+                ))}
               </ul>
             </div>
 
-            <div>
-              <h4 className="font-bold text-gray-900 mb-6 text-lg">Contact Us</h4>
-              <ul className="flex flex-col gap-4 text-gray-500 font-medium">
-                <li className="flex items-center gap-2"><MapPin className="w-4 h-4" /> Jigjiga, Somali Region</li>
-                <li className="flex items-center gap-2"><Globe className="w-4 h-4" /> info@jigjiga.net</li>
+            {/* Contact + Language */}
+            <div className="col-span-2 sm:col-span-1">
+              <h4 className="font-bold text-gray-900 mb-4 text-sm sm:text-base">Contact</h4>
+              <ul className="flex flex-col gap-3 text-gray-500 font-medium text-sm mb-6">
+                <li className="flex items-start gap-2"><MapPin className="w-4 h-4 mt-0.5 shrink-0" /> Jigjiga, Somali Region, Ethiopia</li>
+                <li className="flex items-center gap-2"><Globe className="w-4 h-4 shrink-0" /> info@jigjiga.net</li>
               </ul>
-              <div className="mt-6 flex bg-gray-100 p-1 rounded-xl w-max border border-gray-200">
-                <button className="px-4 py-2 rounded-lg text-sm font-bold bg-white text-gray-900 shadow-sm">English</button>
-                <button className="px-4 py-2 rounded-lg text-sm font-bold text-gray-500 hover:text-gray-900">Soomaali</button>
+              <div className="flex bg-gray-100 p-1 rounded-xl border border-gray-200 w-max">
+                <button className="px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-gray-900 shadow-sm">English</button>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-bold text-gray-500 hover:text-gray-900 transition-colors">Soomaali</button>
               </div>
             </div>
           </div>
 
-          <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4 text-gray-500 text-sm font-medium">
-            <p>© 2024 Jigjiga.net. Developed with pride in Jigjiga, Ethiopia.</p>
-            <div className="flex gap-6">
-              <Link href="#" className="hover:text-gray-900">Privacy Policy</Link>
-              <Link href="#" className="hover:text-gray-900">Terms of Service</Link>
+          <div className="pt-6 sm:pt-8 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500 text-xs sm:text-sm font-medium">
+            <p>© 2024 Jigjiga.net — Developed with pride in Jigjiga, Ethiopia.</p>
+            <div className="flex gap-4 sm:gap-6">
+              <Link href="#" className="hover:text-gray-900 transition-colors">Privacy Policy</Link>
+              <Link href="#" className="hover:text-gray-900 transition-colors">Terms of Service</Link>
             </div>
           </div>
         </div>

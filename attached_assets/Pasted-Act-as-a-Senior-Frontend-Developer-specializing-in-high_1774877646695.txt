@@ -1,0 +1,51 @@
+Act as a Senior Frontend Developer specializing in high-performance, SEO-optimized community portals. Build the complete frontend for the main website "jigjiga.net."
+
+### Project Core Concept:
+This is the "Digital Gateway" and community hub for Jigjiga, Ethiopia. It is *not* a software sales page; it is a warm, inviting, photo-rich portal showcasing the city, news, and culture, and serving as a bridge to the local tech community.
+
+### Design Specifications:
+- Aesthetic: Warm, Authentic, Community-focused. (Think Airbnb/National Geographic meets local city guide).
+- Typography: Clean, highly readable (Inter or Roboto).
+- Colors: White background, Charcoal text, Earthy Blue (#2563eb) accents, and a Warm Orange (#f97316) CTA color.
+- Imagery: Heavy reliance on large, high-quality, authentic photos of Jigjiga, Somali culture, and local landmarks.
+- Mobile First: 100% responsive design.
+
+### Page Structure Requirements:
+
+#### 1. Sticky Header:
+- Left: Logo placeholder (Stylized J/Globe/Minaret) and text "JIGJIGA.NET".
+- Center: Nav links (Explore City, News, Culture, Tech Hub).
+- Right: A distinct button with a warm orange theme: "BUSINESS SERVICES ↗" (Subtext: business.jigjiga.net). This must look like an external link to the subdomain.
+
+#### 2. "First Impression" Hero Section:
+- Visual: Full-screen or large high-resolution, welcoming photograph of the Jigjiga skyline or main street.
+- Text (Overlaid cleanly): "JIGJIGA: YOUR CITY, YOUR COMMUNITY."
+- Subtext: "Explore local news, rich Somali culture, essential guides, and connect with the rising tech hub in the region."
+- Two Primary Buttons: [EXPLORE CITY GUIDE] and [JOIN THE TECH HUB].
+
+#### 3. "Latest City News" (Bento Box / Card Grid):
+- A visually engaging grid of cards with news headlines, dates, and thumbnails (e.g., "New Tech Center Opens," "Cultural Festival Next Week," "Infrastructure Updates").
+
+#### 4. "Local Guides" (Photo Cards):
+- Interactive cards featuring large background photos and titles:
+   - History & Culture
+   - Eat & Drink (Local Cuisine)
+   - Must-See Landmarks
+   - Local Business Directory (Free Listings)
+
+#### 5. "Tech & Innovation" (Community, not Sales):
+- Two focus areas:
+   - **Developer Community Hub** (Icon: Code brackets): "Connect with local Somali developers, access resources, and join meetups."
+   - **Startup Incubator** (Icon: Rocket): "Support for local entrepreneurs and new ideas in Jigjiga."
+
+#### 6. "Grow Your Business" Sidebar/Callout:
+- A high-contrast callout card (maybe blue background): "LOOKING FOR MANAGEMENT SYSTEMS? / Transform your business with our tailored Pharmacy, School, and Hotel software."
+- CTA: [GO TO JIGJIGA BUSINESS ↗].
+
+#### 7. Bilingual Footer:
+- Left: Copyright/Developed in Jigjiga.
+- Center: Quick Links.
+- Right: Language Toggle (English | Somali).
+
+### Technical Task:
+Write the complete code for a single-file 'JigjigaCityPortal.tsx'. Use Lucide-React icons. Focus on semantic HTML and excellent accessibility. Use a photo-placeholder service for all large image assets.

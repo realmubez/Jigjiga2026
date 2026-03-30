@@ -1,0 +1,7 @@
+packages:
+  "framer-motion": "For premium scroll animations and page transitions"
+  "lucide-react": "For UI icons across the portal"
+
+notes:
+  - No specific backend API routes are provided, so the UI relies on high-quality mock data arrays built directly into the component to demonstrate the fully styled layout.
+  - Image placeholders are utilizing picsum.photos with consistent seeds to match the required visual aesthetic without requiring separate image generation.

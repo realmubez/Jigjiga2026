@@ -107,54 +107,53 @@ export default function JigjigaCityPortal() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/90 backdrop-blur-lg border-b border-gray-100 py-4 shadow-sm"
-            : "bg-transparent py-6"
+            ? "bg-white/95 backdrop-blur-lg border-b border-gray-100 py-4 shadow-sm"
+            : "bg-white/80 backdrop-blur-md py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 group outline-none">
-              <div className={`p-2 rounded-xl transition-colors duration-300 ${isScrolled ? "bg-primary/10 text-primary" : "bg-white/20 backdrop-blur-md text-white"}`}>
-                <Globe className="w-6 h-6" />
+          <div className="flex items-center justify-between gap-8">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2.5 group outline-none shrink-0">
+              <div className="p-2 rounded-xl bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
+                <Globe className="w-5 h-5" />
               </div>
-              <span className={`text-xl font-black tracking-tight ${isScrolled ? "text-foreground" : "text-white"}`}>
+              <span className="text-lg font-black tracking-tight text-foreground">
                 JIGJIGA<span className="text-primary">.NET</span>
               </span>
             </Link>
 
-            <nav className="hidden lg:flex items-center gap-8">
-              {["Destinations", "Activities", "Tech Hub", "News", "About"].map((item) => (
+            {/* Desktop Nav */}
+            <nav className="hidden lg:flex items-center gap-7">
+              {["Explore City", "News", "Culture", "Tech Hub"].map((item) => (
                 <Link
                   key={item}
                   href={`#${item.toLowerCase().replace(" ", "-")}`}
-                  className={`text-sm font-semibold transition-colors hover:text-primary ${
-                    isScrolled ? "text-gray-600" : "text-white/90 hover:text-white"
-                  }`}
+                  className="text-sm font-semibold text-gray-600 hover:text-primary transition-colors"
                 >
                   {item}
                 </Link>
               ))}
             </nav>
 
-            <div className="hidden lg:flex items-center gap-4">
-              <button className={`text-sm font-semibold ${isScrolled ? "text-gray-900" : "text-white"}`}>Log In</button>
+            {/* Right CTA */}
+            <div className="hidden lg:flex items-center gap-4 shrink-0">
               <a
                 href="https://business.jigjiga.net"
-                className="bg-primary text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:-translate-y-0.5 transition-all flex items-center gap-2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-md shadow-primary/25 hover:shadow-lg hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-200"
               >
-                Business Services
+                Business Services <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
 
+            {/* Mobile Menu Toggle */}
             <button
-              className="lg:hidden p-2 text-gray-400 hover:text-gray-900"
+              className="lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? (
-                <X className={`w-6 h-6 ${isScrolled ? "text-gray-900" : "text-white"}`} />
-              ) : (
-                <Menu className={`w-6 h-6 ${isScrolled ? "text-gray-900" : "text-white"}`} />
-              )}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>

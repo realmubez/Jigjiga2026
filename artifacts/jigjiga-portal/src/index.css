@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @plugin "@tailwindcss/typography";
@@ -44,6 +44,7 @@
 
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Inter', sans-serif;
+  --font-script: 'Dancing Script', cursive;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -52,46 +53,93 @@
 }
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  --background: 248 100% 99%;
+  --foreground: 238 84% 16%;
   
-  --primary: 221.2 83.2% 53.3%;
+  --primary: 221 83% 53%;
   --primary-foreground: 210 40% 98%;
   
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 248 60% 96%;
+  --secondary-foreground: 238 84% 16%;
   
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 248 40% 95%;
+  --muted-foreground: 220 9% 46%;
   
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
+  --accent: 248 60% 96%;
+  --accent-foreground: 238 84% 16%;
   
-  --destructive: 0 84.2% 60.2%;
+  --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
   
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 221.2 83.2% 53.3%;
+  --border: 248 40% 91%;
+  --input: 248 40% 91%;
+  --ring: 221 83% 53%;
   
   --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
-  --card-border: 214.3 31.8% 91.4%;
+  --card-foreground: 238 84% 16%;
+  --card-border: 248 40% 91%;
   
   --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
-  --popover-border: 214.3 31.8% 91.4%;
+  --popover-foreground: 238 84% 16%;
+  --popover-border: 248 40% 91%;
   
   --sidebar: 0 0% 100%;
-  --sidebar-foreground: 222.2 84% 4.9%;
-  --sidebar-border: 214.3 31.8% 91.4%;
-  --sidebar-primary: 221.2 83.2% 53.3%;
+  --sidebar-foreground: 238 84% 16%;
+  --sidebar-border: 248 40% 91%;
+  --sidebar-primary: 221 83% 53%;
   --sidebar-primary-foreground: 210 40% 98%;
-  --sidebar-accent: 210 40% 96.1%;
-  --sidebar-accent-foreground: 222.2 47.4% 11.2%;
-  --sidebar-ring: 221.2 83.2% 53.3%;
+  --sidebar-accent: 248 60% 96%;
+  --sidebar-accent-foreground: 238 84% 16%;
+  --sidebar-ring: 221 83% 53%;
+
+  --chart-1: 221 83% 53%;
+  --chart-2: 24 95% 53%;
+  --chart-3: 142 76% 36%;
+  --chart-4: 262 83% 58%;
+  --chart-5: 346 77% 50%;
 
   --radius: 0.75rem;
+}
+
+.dark {
+  --background: 238 84% 10%;
+  --foreground: 248 100% 99%;
+  
+  --primary: 221 83% 63%;
+  --primary-foreground: 238 84% 16%;
+  
+  --secondary: 238 84% 16%;
+  --secondary-foreground: 248 100% 99%;
+  
+  --muted: 238 84% 16%;
+  --muted-foreground: 248 40% 75%;
+  
+  --accent: 238 84% 16%;
+  --accent-foreground: 248 100% 99%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --border: 238 84% 20%;
+  --input: 238 84% 20%;
+  --ring: 221 83% 63%;
+  
+  --card: 238 84% 12%;
+  --card-foreground: 248 100% 99%;
+  --card-border: 238 84% 20%;
+  
+  --popover: 238 84% 12%;
+  --popover-foreground: 248 100% 99%;
+  --popover-border: 238 84% 20%;
+  
+  --sidebar: 238 84% 12%;
+  --sidebar-foreground: 248 100% 99%;
+  --sidebar-border: 238 84% 20%;
+  --sidebar-primary: 221 83% 63%;
+  --sidebar-primary-foreground: 238 84% 16%;
+  --sidebar-accent: 238 84% 16%;
+  --sidebar-accent-foreground: 248 100% 99%;
+  --sidebar-ring: 221 83% 63%;
 }
 
 @layer base {

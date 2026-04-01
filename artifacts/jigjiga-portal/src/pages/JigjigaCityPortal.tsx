@@ -88,10 +88,10 @@ export default function JigjigaCityPortal() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 group outline-none shrink-0">
+            <Link href="/" className="flex items-center gap-0 group outline-none shrink-0">
               <LogoImg />
-              <span className="text-base sm:text-lg font-black tracking-tight text-foreground">
-                JIGJIGA<span className="text-[#f97316]">.NET</span>
+              <span className="text-base sm:text-lg font-black tracking-tight text-foreground -ml-4">
+                IGJIGA
               </span>
             </Link>
 
@@ -514,10 +514,10 @@ export default function JigjigaCityPortal() {
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12 mb-10 sm:mb-16">
             {/* Brand */}
             <div className="col-span-2 lg:col-span-2">
-              <Link href="/" className="flex items-center gap-2.5 mb-5 outline-none">
+              <Link href="/" className="flex items-center gap-0 mb-5 outline-none">
                 <img src="/logo.png" alt="Jigjiga.net logo" className="w-14 h-14 object-contain" />
-                <span className="text-xl font-black tracking-tight text-foreground">
-                  JIGJIGA<span className="text-[#f97316]">.NET</span>
+                <span className="text-xl font-black tracking-tight text-foreground -ml-4">
+                  IGJIGA
                 </span>
               </Link>
               <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-6 max-w-xs">

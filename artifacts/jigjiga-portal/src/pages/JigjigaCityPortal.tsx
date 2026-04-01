@@ -25,9 +25,9 @@ import {
 
 const LogoImg = () => (
   <img
-    src="/logo-full.jpeg"
+    src="/logo.png"
     alt="Jigjiga.net logo"
-    className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl object-contain shadow-sm border border-gray-100"
+    className="w-9 h-9 sm:w-10 sm:h-10 object-contain"
   />
 );
 
@@ -515,7 +515,7 @@ export default function JigjigaCityPortal() {
             {/* Brand */}
             <div className="col-span-2 lg:col-span-2">
               <Link href="/" className="flex items-center gap-2.5 mb-5 outline-none">
-                <img src="/logo-full.jpeg" alt="Jigjiga.net logo" className="w-10 h-10 rounded-xl object-contain" />
+                <img src="/logo.png" alt="Jigjiga.net logo" className="w-10 h-10 object-contain" />
                 <span className="text-xl font-black tracking-tight text-foreground">
                   JIGJIGA<span className="text-[#f97316]">.NET</span>
                 </span>

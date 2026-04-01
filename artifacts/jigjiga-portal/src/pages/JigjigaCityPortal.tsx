@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Globe,
   ArrowUpRight,
   Menu,
   X,
@@ -20,8 +19,17 @@ import {
   Building2,
   Music,
   Moon,
-  Quote
+  Quote,
+  Globe
 } from "lucide-react";
+
+const LogoImg = () => (
+  <img
+    src="/logo-full.jpeg"
+    alt="Jigjiga.net logo"
+    className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl object-contain shadow-sm border border-gray-100"
+  />
+);
 
 export default function JigjigaCityPortal() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -80,12 +88,10 @@ export default function JigjigaCityPortal() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group outline-none shrink-0">
-              <div className="p-1.5 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
-                <Globe className="w-5 h-5" />
-              </div>
+            <Link href="/" className="flex items-center gap-2.5 group outline-none shrink-0">
+              <LogoImg />
               <span className="text-base sm:text-lg font-black tracking-tight text-foreground">
-                JIGJIGA<span className="text-primary">.NET</span>
+                JIGJIGA<span className="text-[#f97316]">.NET</span>
               </span>
             </Link>
 
@@ -508,10 +514,10 @@ export default function JigjigaCityPortal() {
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12 mb-10 sm:mb-16">
             {/* Brand */}
             <div className="col-span-2 lg:col-span-2">
-              <Link href="/" className="flex items-center gap-2 mb-5 outline-none">
-                <Globe className="w-7 h-7 text-primary" />
+              <Link href="/" className="flex items-center gap-2.5 mb-5 outline-none">
+                <img src="/logo-full.jpeg" alt="Jigjiga.net logo" className="w-10 h-10 rounded-xl object-contain" />
                 <span className="text-xl font-black tracking-tight text-foreground">
-                  JIGJIGA<span className="text-primary">.NET</span>
+                  JIGJIGA<span className="text-[#f97316]">.NET</span>
                 </span>
               </Link>
               <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-6 max-w-xs">

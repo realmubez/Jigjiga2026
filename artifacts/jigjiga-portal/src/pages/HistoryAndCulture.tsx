@@ -82,6 +82,7 @@ export default function HistoryAndCulture() {
     },
     {
       name: "Nomadic Craftsmanship",
+      href: "/history-culture/somali-aqal",
       subtitle: "The Somali Aqal",
       description:
         'The "Aqal" is a masterpiece of nomadic engineering — a portable, beautiful home designed for the Somali landscape. Alongside hand-woven mats and the "Haan" (milk vessels), these crafts showcase the artistic skill of our ancestors.',

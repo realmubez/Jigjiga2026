@@ -52,7 +52,7 @@ const nomadicStaples = [
       "Preserved beef jerky cooked in clarified butter and spices, prepared for long desert journeys. Incredibly high in energy and lasting months without refrigeration — today still a beloved treat served with fresh Anjero.",
     image: "https://picsum.photos/seed/muqmad-jerky/600/400",
     icon: "🥩",
-    href: "#",
+    href: "/eat-drink/muqmad",
   },
 ];
 
@@ -64,6 +64,7 @@ const beverages = [
       "\"Rinjiga\" means color — and this tea earns its name with a deep reddish hue brewed from ginger, cinnamon, cardamom, and cloves. Every afternoon, Jigjiga gathers in cafes for a cup and a spirited Sheeko (conversation).",
     image: "https://picsum.photos/seed/shaah-rinjiga-tea/600/400",
     icon: "🫖",
+    href: "/eat-drink/shaah-rinjiga",
   },
   {
     name: "Jebena Bun",
@@ -72,6 +73,7 @@ const beverages = [
       "Green beans roasted over hot coals, ground by hand, and brewed in a traditional clay Jebena pot. The aroma of fresh coffee blending with burning Uunsi (frankincense) creates an atmosphere of peace and community.",
     image: "https://picsum.photos/seed/jebena-coffee/600/400",
     icon: "☕",
+    href: "/eat-drink/jebena-bun",
   },
 ];
 
@@ -292,7 +294,12 @@ export default function EatAndDrink() {
                   <div className="w-10 h-1 bg-[#f97316] rounded-full mb-5" />
                   <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-2">{bev.name}</h2>
                   <p className="text-[#f97316] font-semibold text-sm mb-4">{bev.subtitle}</p>
-                  <p className="text-gray-600 leading-relaxed text-base sm:text-lg">{bev.description}</p>
+                  <p className="text-gray-600 leading-relaxed text-base sm:text-lg mb-6">{bev.description}</p>
+                  {bev.href && (
+                    <Link href={bev.href} className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white text-sm font-black rounded-full hover:bg-primary/90 transition-colors">
+                      Read Full Story <ArrowUpRight className="w-4 h-4" />
+                    </Link>
+                  )}
                 </motion.div>
                 <motion.div variants={fadeUp}
                   className={`overflow-hidden rounded-2xl shadow-lg ${i % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}>

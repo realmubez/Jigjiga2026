@@ -15,6 +15,9 @@ import EatAndDrink from "./pages/EatAndDrink";
 import BaarisMindi from "./pages/BaarisMindi";
 import AnjeroInjera from "./pages/AnjeroInjera";
 import CamelMeatMilk from "./pages/CamelMeatMilk";
+import Muqmad from "./pages/Muqmad";
+import ShaahRinjiga from "./pages/ShaahRinjiga";
+import JebenaBun from "./pages/JebenaBun";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -44,6 +47,9 @@ function Router() {
         <Route path="/eat-drink/bariis-mindi" component={BaarisMindi} />
         <Route path="/eat-drink/anjero-injera" component={AnjeroInjera} />
         <Route path="/eat-drink/camel-meat-milk" component={CamelMeatMilk} />
+        <Route path="/eat-drink/muqmad" component={Muqmad} />
+        <Route path="/eat-drink/shaah-rinjiga" component={ShaahRinjiga} />
+        <Route path="/eat-drink/jebena-bun" component={JebenaBun} />
         <Route component={NotFound} />
       </Switch>
     </>

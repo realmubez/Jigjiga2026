@@ -1,0 +1,28 @@
+{
+  "name": "Jigjiga City Portal",
+  "short_name": "Jigjiga",
+  "description": "Your premier destination for everything Jigjiga — culture, news, and local business.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f8fc",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["travel", "news", "lifestyle"],
+  "screenshots": []
+}

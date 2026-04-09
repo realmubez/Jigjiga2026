@@ -57,7 +57,7 @@ export default function JigjigaCityPortal() {
 
   const categories = [
     { name: "History & Culture", icon: <Globe className="w-5 h-5" />, image: "https://picsum.photos/seed/history/300/300", href: "/history-culture" },
-    { name: "Eat & Drink", icon: <Coffee className="w-5 h-5" />, image: "https://picsum.photos/seed/eatdrink/300/300", href: "#" },
+    { name: "Eat & Drink", icon: <Coffee className="w-5 h-5" />, image: "https://picsum.photos/seed/eatdrink/300/300", href: "/eat-drink" },
     { name: "Must-See Landmarks", icon: <Camera className="w-5 h-5" />, image: "https://picsum.photos/seed/landmarks/300/300", href: "#" },
     { name: "Business Directory", icon: <Store className="w-5 h-5" />, image: "https://picsum.photos/seed/business/300/300", href: "#" },
     { name: "Festivals", icon: <Music className="w-5 h-5" />, image: "https://picsum.photos/seed/festivals/300/300", href: "#" },

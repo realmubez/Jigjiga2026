@@ -11,6 +11,7 @@ import XeerSystem from "./pages/XeerSystem";
 import TraditionalLeadership from "./pages/TraditionalLeadership";
 import Dhaanto from "./pages/Dhaanto";
 import SomaliAqal from "./pages/SomaliAqal";
+import EatAndDrink from "./pages/EatAndDrink";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ function Router() {
         <Route path="/history-culture/traditional-leadership" component={TraditionalLeadership} />
         <Route path="/history-culture/dhaanto" component={Dhaanto} />
         <Route path="/history-culture/somali-aqal" component={SomaliAqal} />
+        <Route path="/eat-drink" component={EatAndDrink} />
         <Route component={NotFound} />
       </Switch>
     </>

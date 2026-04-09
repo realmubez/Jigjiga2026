@@ -24,6 +24,7 @@ import Landmarks from "./pages/Landmarks";
 import CentralMosque from "./pages/CentralMosque";
 import CamelMarket from "./pages/CamelMarket";
 import KararaMountains from "./pages/KararaMountains";
+import JigjigaUniversity from "./pages/JigjigaUniversity";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -62,6 +63,7 @@ function Router() {
         <Route path="/landmarks/central-mosque" component={CentralMosque} />
         <Route path="/landmarks/camel-market" component={CamelMarket} />
         <Route path="/landmarks/karamara-mountains" component={KararaMountains} />
+        <Route path="/landmarks/jigjiga-university" component={JigjigaUniversity} />
         <Route component={NotFound} />
       </Switch>
     </>

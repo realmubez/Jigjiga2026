@@ -94,7 +94,7 @@ const categories = [
         description: "One of the fastest-growing educational institutions in the country — a landmark of modern architecture representing the city's rising Tech Hub generation.",
         image: "https://picsum.photos/seed/jigjiga-university/700/450",
         tag: "Education",
-        href: "#",
+        href: "/landmarks/jigjiga-university",
       },
       {
         name: "Garad Wiil-Waal Airport",

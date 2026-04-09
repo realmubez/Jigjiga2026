@@ -1,4 +1,5 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { useEffect } from "react";
+import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,19 +15,30 @@ import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
 
+function ScrollToTop() {
+  const [location] = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [location]);
+  return null;
+}
+
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={JigjigaCityPortal} />
-      <Route path="/history-culture" component={HistoryAndCulture} />
-      <Route path="/history-culture/sayid-hassan" component={SayidHassan} />
-      <Route path="/history-culture/garad-wiil-waal" component={GaradWiilWaal} />
-      <Route path="/history-culture/xeer-system" component={XeerSystem} />
-      <Route path="/history-culture/traditional-leadership" component={TraditionalLeadership} />
-      <Route path="/history-culture/dhaanto" component={Dhaanto} />
-      <Route path="/history-culture/somali-aqal" component={SomaliAqal} />
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      <ScrollToTop />
+      <Switch>
+        <Route path="/" component={JigjigaCityPortal} />
+        <Route path="/history-culture" component={HistoryAndCulture} />
+        <Route path="/history-culture/sayid-hassan" component={SayidHassan} />
+        <Route path="/history-culture/garad-wiil-waal" component={GaradWiilWaal} />
+        <Route path="/history-culture/xeer-system" component={XeerSystem} />
+        <Route path="/history-culture/traditional-leadership" component={TraditionalLeadership} />
+        <Route path="/history-culture/dhaanto" component={Dhaanto} />
+        <Route path="/history-culture/somali-aqal" component={SomaliAqal} />
+        <Route component={NotFound} />
+      </Switch>
+    </>
   );
 }
 

@@ -45,7 +45,7 @@ export default function HistoryAndCulture() {
         "A legendary 16th-century ruler of the Jigjiga plains. Garad Wiil-Waal was famous for his intelligence and his use of riddles to test the wisdom of his people. He represents the ideal of a leader who rules through wit, justice, and bravery.",
       image: "https://picsum.photos/seed/garad-waal/800/500",
       tag: "16th Century",
-      href: null,
+      href: "/history-culture/garad-wiil-waal",
     },
   ];
 

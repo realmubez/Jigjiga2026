@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import JigjigaCityPortal from "./pages/JigjigaCityPortal";
 import HistoryAndCulture from "./pages/HistoryAndCulture";
 import SayidHassan from "./pages/SayidHassan";
+import GaradWiilWaal from "./pages/GaradWiilWaal";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -15,6 +16,7 @@ function Router() {
       <Route path="/" component={JigjigaCityPortal} />
       <Route path="/history-culture" component={HistoryAndCulture} />
       <Route path="/history-culture/sayid-hassan" component={SayidHassan} />
+      <Route path="/history-culture/garad-wiil-waal" component={GaradWiilWaal} />
       <Route component={NotFound} />
     </Switch>
   );

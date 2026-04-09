@@ -18,6 +18,7 @@ import CamelMeatMilk from "./pages/CamelMeatMilk";
 import Muqmad from "./pages/Muqmad";
 import ShaahRinjiga from "./pages/ShaahRinjiga";
 import JebenaBun from "./pages/JebenaBun";
+import GardenCafes from "./pages/GardenCafes";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -50,6 +51,7 @@ function Router() {
         <Route path="/eat-drink/muqmad" component={Muqmad} />
         <Route path="/eat-drink/shaah-rinjiga" component={ShaahRinjiga} />
         <Route path="/eat-drink/jebena-bun" component={JebenaBun} />
+        <Route path="/eat-drink/garden-cafes" component={GardenCafes} />
         <Route component={NotFound} />
       </Switch>
     </>

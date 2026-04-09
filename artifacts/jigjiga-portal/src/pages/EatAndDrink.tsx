@@ -84,6 +84,7 @@ const diningSpots = [
       "Jigjiga is booming with modern dining. Spots like Heebaan Garden offer a lush outdoor escape for traditional meals. The city's growing cafe culture provides sleek urban vibes for the younger, tech-savvy generation.",
     image: "https://picsum.photos/seed/garden-cafe-jigjiga/700/450",
     tag: "Ambience",
+    href: "/eat-drink/garden-cafes",
   },
   {
     name: "Local Street Food & Markets",
@@ -341,7 +342,12 @@ export default function EatAndDrink() {
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h3 className="text-lg font-black text-white mb-2">{spot.name}</h3>
-                  <p className="text-white/75 text-sm leading-relaxed">{spot.description}</p>
+                  <p className="text-white/75 text-sm leading-relaxed mb-4">{spot.description}</p>
+                  {spot.href && (
+                    <Link href={spot.href} className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-foreground text-xs font-black rounded-full hover:bg-[#f97316] hover:text-white transition-colors">
+                      Read Full Story <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             ))}

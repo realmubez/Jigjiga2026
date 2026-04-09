@@ -66,7 +66,7 @@ export default function HistoryAndCulture() {
         'The social fabric of Jigjiga is held together by traditional leaders. Through the sacred "Caleemo-Saar" ceremony, these leaders are appointed to protect the culture, manage resources, and serve as the ultimate guardians of the community.',
       image: "https://picsum.photos/seed/ugaas-leader/600/400",
       icon: "👑",
-      href: null,
+      href: "/history-culture/traditional-leadership",
     },
   ];
 

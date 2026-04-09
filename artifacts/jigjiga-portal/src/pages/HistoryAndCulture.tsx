@@ -57,6 +57,7 @@ export default function HistoryAndCulture() {
         "Long before modern legal systems, the Somali people governed themselves through Xeer. This is a traditional constitution where elders gather under the shade of a tree to settle disputes and ensure peace through consensus and shared values.",
       image: "https://picsum.photos/seed/xeer-elders/600/400",
       icon: "⚖️",
+      href: "/history-culture/xeer-system",
     },
     {
       name: "Traditional Leadership",
@@ -65,6 +66,7 @@ export default function HistoryAndCulture() {
         'The social fabric of Jigjiga is held together by traditional leaders. Through the sacred "Caleemo-Saar" ceremony, these leaders are appointed to protect the culture, manage resources, and serve as the ultimate guardians of the community.',
       image: "https://picsum.photos/seed/ugaas-leader/600/400",
       icon: "👑",
+      href: null,
     },
   ];
 
@@ -316,18 +318,33 @@ export default function HistoryAndCulture() {
                 variants={fadeUp}
                 className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100 hover:shadow-md transition-shadow"
               >
-                <div className="overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-52 object-cover hover:scale-105 transition-transform duration-500"
-                  />
+                <div className="overflow-hidden relative group">
+                  {item.href ? (
+                    <Link href={item.href} className="block">
+                      <img src={item.image} alt={item.name}
+                        className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white text-foreground text-sm font-bold px-4 py-2 rounded-full shadow-lg">
+                          Read More →
+                        </span>
+                      </div>
+                    </Link>
+                  ) : (
+                    <img src={item.image} alt={item.name}
+                      className="w-full h-52 object-cover hover:scale-105 transition-transform duration-500" />
+                  )}
                 </div>
                 <div className="p-6 sm:p-8">
                   <span className="text-3xl mb-4 block">{item.icon}</span>
                   <h3 className="text-xl font-black text-foreground mb-1">{item.name}</h3>
                   <p className="text-primary text-sm font-semibold mb-3">{item.subtitle}</p>
-                  <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                  <p className="text-gray-600 leading-relaxed mb-5">{item.description}</p>
+                  {item.href && (
+                    <Link href={item.href}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-white text-sm font-bold rounded-full hover:bg-primary transition-colors group">
+                      Read Full Story <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             ))}

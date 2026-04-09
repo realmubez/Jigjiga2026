@@ -12,6 +12,9 @@ import TraditionalLeadership from "./pages/TraditionalLeadership";
 import Dhaanto from "./pages/Dhaanto";
 import SomaliAqal from "./pages/SomaliAqal";
 import EatAndDrink from "./pages/EatAndDrink";
+import BaarisMindi from "./pages/BaarisMindi";
+import AnjeroInjera from "./pages/AnjeroInjera";
+import CamelMeatMilk from "./pages/CamelMeatMilk";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -38,6 +41,9 @@ function Router() {
         <Route path="/history-culture/dhaanto" component={Dhaanto} />
         <Route path="/history-culture/somali-aqal" component={SomaliAqal} />
         <Route path="/eat-drink" component={EatAndDrink} />
+        <Route path="/eat-drink/bariis-mindi" component={BaarisMindi} />
+        <Route path="/eat-drink/anjero-injera" component={AnjeroInjera} />
+        <Route path="/eat-drink/camel-meat-milk" component={CamelMeatMilk} />
         <Route component={NotFound} />
       </Switch>
     </>

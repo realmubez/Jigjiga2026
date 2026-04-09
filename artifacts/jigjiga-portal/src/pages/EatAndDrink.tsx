@@ -22,7 +22,7 @@ const signatureDishes = [
       "Fragrant basmati rice cooked with cloves, cardamom, and cinnamon, served with tender goat or camel meat and garnished with raisins and fried onions — a perfect balance of savory and sweet.",
     image: "https://picsum.photos/seed/bariis-mindi/600/400",
     icon: "🍚",
-    href: "#",
+    href: "/eat-drink/bariis-mindi",
   },
   {
     name: "Anjero & Injera",
@@ -31,7 +31,7 @@ const signatureDishes = [
       "Somali Anjero — light and slightly sweet — meets Ethiopian Injera, large and spongy, used as both plate and utensil for scooping up spicy Wot stews. The best of both worlds on one table.",
     image: "https://picsum.photos/seed/anjero-injera/600/400",
     icon: "🫓",
-    href: "#",
+    href: "/eat-drink/anjero-injera",
   },
 ];
 
@@ -43,7 +43,7 @@ const nomadicStaples = [
       "Camel meat is a lean, rich delicacy of the Somali Region. Pair it with a cold glass of fresh camel milk (Caano Geel) — famously nutritious, with a distinct salty-sweet taste found nowhere else on earth.",
     image: "https://picsum.photos/seed/camel-meat-milk/600/400",
     icon: "🐪",
-    href: "#",
+    href: "/eat-drink/camel-meat-milk",
   },
   {
     name: "Muqmad",
@@ -219,7 +219,12 @@ export default function EatAndDrink() {
                   <span className="text-3xl block mb-3">{dish.icon}</span>
                   <h3 className="text-xl sm:text-2xl font-black text-white mb-1">{dish.name}</h3>
                   <p className="text-[#f97316] text-sm font-semibold mb-2">{dish.subtitle}</p>
-                  <p className="text-white/80 text-sm leading-relaxed">{dish.description}</p>
+                  <p className="text-white/80 text-sm leading-relaxed mb-4">{dish.description}</p>
+                  {dish.href && (
+                    <Link href={dish.href} className="inline-flex items-center gap-2 px-4 py-2 bg-white text-foreground text-xs font-black rounded-full hover:bg-[#f97316] hover:text-white transition-colors">
+                      Read Full Story <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -251,7 +256,12 @@ export default function EatAndDrink() {
                   <span className="text-4xl block mb-3">{item.icon}</span>
                   <h3 className="text-xl font-black text-foreground mb-1">{item.name}</h3>
                   <p className="text-[#f97316] text-sm font-semibold mb-3">{item.subtitle}</p>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{item.description}</p>
+                  {item.href && (
+                    <Link href={item.href} className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white text-xs font-black rounded-full hover:bg-primary/90 transition-colors">
+                      Read Full Story <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             ))}

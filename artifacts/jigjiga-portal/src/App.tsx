@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import JigjigaCityPortal from "./pages/JigjigaCityPortal";
 import HistoryAndCulture from "./pages/HistoryAndCulture";
+import SayidHassan from "./pages/SayidHassan";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -13,6 +14,7 @@ function Router() {
     <Switch>
       <Route path="/" component={JigjigaCityPortal} />
       <Route path="/history-culture" component={HistoryAndCulture} />
+      <Route path="/history-culture/sayid-hassan" component={SayidHassan} />
       <Route component={NotFound} />
     </Switch>
   );

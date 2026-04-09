@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowLeft, Menu, X, Globe } from "lucide-react";
+import { ArrowLeft, Menu, X, Globe, ArrowUpRight } from "lucide-react";
 
 const LogoImg = () => (
   <img src="/logo.png" alt="Jigjiga.net logo" className="w-12 h-12 sm:w-14 sm:h-14 object-contain" />
@@ -35,7 +35,8 @@ export default function HistoryAndCulture() {
       description:
         'Known as the "Father of Somali Nationalism," the Sayid led the Dervish resistance for over 20 years. He was a master of both the sword and the pen, using his famous poetry to unite the people against colonial rule. His legacy remains a symbol of defiance and pride in Jigjiga.',
       image: "https://picsum.photos/seed/sayid-hassan/800/500",
-      tag: "16th Century",
+      tag: "Dervish Era",
+      href: "/history-culture/sayid-hassan",
     },
     {
       name: "Garad Wiil-Waal",
@@ -43,7 +44,8 @@ export default function HistoryAndCulture() {
       description:
         "A legendary 16th-century ruler of the Jigjiga plains. Garad Wiil-Waal was famous for his intelligence and his use of riddles to test the wisdom of his people. He represents the ideal of a leader who rules through wit, justice, and bravery.",
       image: "https://picsum.photos/seed/garad-waal/800/500",
-      tag: "Dervish Era",
+      tag: "16th Century",
+      href: null,
     },
   ];
 
@@ -256,14 +258,29 @@ export default function HistoryAndCulture() {
                   </span>
                   <h3 className="text-2xl sm:text-3xl font-black text-foreground mb-1">{figure.name}</h3>
                   <p className="text-primary font-semibold mb-4">{figure.title}</p>
-                  <p className="text-gray-600 leading-relaxed text-base sm:text-lg">{figure.description}</p>
+                  <p className="text-gray-600 leading-relaxed text-base sm:text-lg mb-6">{figure.description}</p>
+                  {figure.href && (
+                    <Link href={figure.href}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-white text-sm font-bold rounded-full hover:bg-primary transition-colors group">
+                      Read Full Story <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </Link>
+                  )}
                 </motion.div>
                 <motion.div variants={fadeUp} className={`overflow-hidden rounded-2xl shadow-lg ${i % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}>
-                  <img
-                    src={figure.image}
-                    alt={figure.name}
-                    className="w-full h-72 sm:h-80 object-cover hover:scale-105 transition-transform duration-500"
-                  />
+                  {figure.href ? (
+                    <Link href={figure.href} className="block group relative">
+                      <img src={figure.image} alt={figure.name}
+                        className="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors rounded-2xl flex items-center justify-center">
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white text-foreground text-sm font-bold px-4 py-2 rounded-full shadow-lg">
+                          Read Full Story →
+                        </span>
+                      </div>
+                    </Link>
+                  ) : (
+                    <img src={figure.image} alt={figure.name}
+                      className="w-full h-72 sm:h-80 object-cover hover:scale-105 transition-transform duration-500" />
+                  )}
                 </motion.div>
               </motion.div>
             ))}

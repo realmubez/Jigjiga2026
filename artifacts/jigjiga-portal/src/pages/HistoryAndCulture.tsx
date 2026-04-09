@@ -78,6 +78,7 @@ export default function HistoryAndCulture() {
         "Dhaanto is the iconic folk dance of the Somali Region. With its rhythmic clapping and synchronized footwork, it tells the story of nomadic life and celebration. It is the heartbeat of every festival in Jigjiga.",
       image: "https://picsum.photos/seed/dhaanto-dance/600/400",
       icon: "🎶",
+      href: "/history-culture/dhaanto",
     },
     {
       name: "Nomadic Craftsmanship",
@@ -390,7 +391,13 @@ export default function HistoryAndCulture() {
                   <span className="text-3xl mb-3 block">{item.icon}</span>
                   <h3 className="text-xl sm:text-2xl font-black text-white mb-1">{item.name}</h3>
                   <p className="text-[#f97316] text-sm font-semibold mb-2">{item.subtitle}</p>
-                  <p className="text-white/80 text-sm leading-relaxed">{item.description}</p>
+                  <p className="text-white/80 text-sm leading-relaxed mb-4">{item.description}</p>
+                  {item.href && (
+                    <Link href={item.href}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-white text-foreground text-xs font-black rounded-full hover:bg-[#f97316] hover:text-white transition-colors">
+                      Read Full Story <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             ))}

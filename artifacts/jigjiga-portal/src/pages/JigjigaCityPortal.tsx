@@ -41,7 +41,12 @@ export default function JigjigaCityPortal() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = ["Explore City", "News", "Culture", "Tech Hub"];
+  const navLinks = [
+    { label: "Explore City", href: "#explore-city" },
+    { label: "News", href: "#news" },
+    { label: "Culture", href: "/history-culture" },
+    { label: "Tech Hub", href: "#tech-hub" },
+  ];
 
   const newsItems = [
     { id: 1, title: "New Tech Center Opens in Jigjiga", date: "Oct 24, 2024", category: "Technology", image: "https://picsum.photos/seed/techcenter/800/600", featured: true },
@@ -51,12 +56,12 @@ export default function JigjigaCityPortal() {
   ];
 
   const categories = [
-    { name: "History & Culture", icon: <Globe className="w-5 h-5" />, image: "https://picsum.photos/seed/history/300/300" },
-    { name: "Eat & Drink", icon: <Coffee className="w-5 h-5" />, image: "https://picsum.photos/seed/eatdrink/300/300" },
-    { name: "Must-See Landmarks", icon: <Camera className="w-5 h-5" />, image: "https://picsum.photos/seed/landmarks/300/300" },
-    { name: "Business Directory", icon: <Store className="w-5 h-5" />, image: "https://picsum.photos/seed/business/300/300" },
-    { name: "Festivals", icon: <Music className="w-5 h-5" />, image: "https://picsum.photos/seed/festivals/300/300" },
-    { name: "Nightlife", icon: <Moon className="w-5 h-5" />, image: "https://picsum.photos/seed/nightlife/300/300" }
+    { name: "History & Culture", icon: <Globe className="w-5 h-5" />, image: "https://picsum.photos/seed/history/300/300", href: "/history-culture" },
+    { name: "Eat & Drink", icon: <Coffee className="w-5 h-5" />, image: "https://picsum.photos/seed/eatdrink/300/300", href: "#" },
+    { name: "Must-See Landmarks", icon: <Camera className="w-5 h-5" />, image: "https://picsum.photos/seed/landmarks/300/300", href: "#" },
+    { name: "Business Directory", icon: <Store className="w-5 h-5" />, image: "https://picsum.photos/seed/business/300/300", href: "#" },
+    { name: "Festivals", icon: <Music className="w-5 h-5" />, image: "https://picsum.photos/seed/festivals/300/300", href: "#" },
+    { name: "Nightlife", icon: <Moon className="w-5 h-5" />, image: "https://picsum.photos/seed/nightlife/300/300", href: "#" }
   ];
 
   const popularDestinations = [
@@ -98,9 +103,9 @@ export default function JigjigaCityPortal() {
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
               {navLinks.map((item) => (
-                <Link key={item} href={`#${item.toLowerCase().replace(/ /g, "-")}`}
-                  className="text-sm font-semibold text-gray-600 hover:text-primary transition-colors whitespace-nowrap">
-                  {item}
+                <Link key={item.label} href={item.href}
+                  className={`text-sm font-semibold transition-colors whitespace-nowrap ${item.label === "Culture" ? "text-primary" : "text-gray-600 hover:text-primary"}`}>
+                  {item.label}
                 </Link>
               ))}
             </nav>
@@ -127,10 +132,10 @@ export default function JigjigaCityPortal() {
             <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
               className="absolute top-full left-0 right-0 bg-white shadow-xl border-b border-gray-100 py-4 px-4 flex flex-col gap-1 lg:hidden">
               {navLinks.map((item) => (
-                <Link key={item} href={`#${item.toLowerCase().replace(/ /g, "-")}`}
-                  className="text-gray-800 font-semibold text-base px-4 py-3 hover:bg-gray-50 rounded-xl transition-colors"
+                <Link key={item.label} href={item.href}
+                  className={`font-semibold text-base px-4 py-3 hover:bg-gray-50 rounded-xl transition-colors ${item.label === "Culture" ? "text-primary" : "text-gray-800"}`}
                   onClick={() => setMobileMenuOpen(false)}>
-                  {item}
+                  {item.label}
                 </Link>
               ))}
               <div className="pt-3 mt-1 border-t border-gray-100">
@@ -264,21 +269,23 @@ export default function JigjigaCityPortal() {
 
           <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6">
             {categories.map((cat, i) => (
-              <motion.div key={i}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="group cursor-pointer flex flex-col items-center gap-2 sm:gap-3">
-                <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl sm:rounded-[2rem] overflow-hidden relative shadow-md group-hover:shadow-xl group-hover:-translate-y-1 sm:group-hover:-translate-y-2 transition-all duration-300">
-                  <img src={cat.image} alt={cat.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/40">
-                      {cat.icon}
+              <Link key={i} href={cat.href}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                  className="group cursor-pointer flex flex-col items-center gap-2 sm:gap-3">
+                  <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl sm:rounded-[2rem] overflow-hidden relative shadow-md group-hover:shadow-xl group-hover:-translate-y-1 sm:group-hover:-translate-y-2 transition-all duration-300">
+                    <img src={cat.image} alt={cat.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/40">
+                        {cat.icon}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <h4 className="font-bold text-gray-800 text-center text-xs sm:text-sm group-hover:text-primary transition-colors leading-tight">{cat.name}</h4>
-              </motion.div>
+                  <h4 className="font-bold text-gray-800 text-center text-xs sm:text-sm group-hover:text-primary transition-colors leading-tight">{cat.name}</h4>
+                </motion.div>
+              </Link>
             ))}
           </div>
 

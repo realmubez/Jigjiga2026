@@ -1,0 +1,35 @@
+This section is the "visual anchor" of your website. These landmarks are the icons that define the skyline and the spirit of Jigjiga.
+Here is the full text for the **Must-See Landmarks** main page.
+# **Must-See Landmarks: The Icons of Jigjiga**
+### **Where History Meets the Horizon**
+Jigjiga is a city of striking contrasts. From the ancient, rugged peaks of the Karamara Mountains to the shimmering domes of modern mosques, the city’s landmarks tell the story of a capital that is proud of its past and ambitious about its future. Whether you are a photographer, a history buff, or a traveler, these sites are the essential stops on your journey.
+## **1. Cultural & Religious Icons**
+### **Jijiga Central Mosque (Masaajidka Jaamacadda)**
+**The Heart of the City:** Located at the center of Jigjiga, this architectural masterpiece is the city’s spiritual anchor. With its soaring minarets and elegant Islamic design, it serves as a beacon for thousands of worshippers. At night, the mosque is beautifully illuminated, reflecting the peace and devotion of the local community.
+ * **Highlight:** The intricate geometric patterns and the peaceful courtyard.
+### **The Statue of Sayid Mohamed Abdullah Hassan**
+**The Symbol of Pride:** This massive bronze statue honors the "Father of Somali Nationalism." It stands in a prominent square, representing the courage and resilience of the Somali people. It is the most popular spot for visitors to take a commemorative photo and learn about the Dervish resistance.
+ * **Highlight:** The detailed craftsmanship depicting the Sayid on his horse.
+## **2. Natural Wonders**
+### **The Karamara Mountains (Silsiladda Karamara)**
+**The Sentinel of Jigjiga:** Rising sharply against the horizon, the Karamara Mountains are more than just a landscape; they are a natural fortress. This mountain pass has seen pivotal moments in history and offers the best panoramic views of the city below.
+ * **Highlight:** Hiking to the viewpoints for a sunset view of the capital.
+### **The Valley of Marvels (Babile)**
+**Nature’s Sculpture Gallery:** A short drive from the city brings you to Babile, famous for its extraordinary balancing rock formations. These giant boulders, stacked precariously by nature, look like a work of modern art. Nearby, you can also explore the **Babile Elephant Sanctuary**.
+ * **Highlight:** The "Dakate" (balancing rocks) and the wild elephants.
+## **3. Markets & Local Life**
+### **The Jigjiga Camel Market (Suuqa Geela)**
+**The Pulse of Trade:** To see the real Jigjiga, you must visit the camel market. It is one of the largest livestock trading hubs in the Horn of Africa. The sight of hundreds of camels and the energetic negotiations of the traders provide a raw and authentic look at the nomadic economy.
+ * **Highlight:** Seeing the unique branding marks on the camels and tasting fresh camel milk.
+### **Taywan Market**
+**The Shopper’s Paradise:** A bustling maze of stalls where you can find everything from traditional Somali clothing (Dirac and Koofiyad) to the latest electronics. It is the perfect place to experience the city's hustle and bustle and pick up local souvenirs.
+ * **Highlight:** Buying hand-woven Somali baskets and traditional perfumes.
+## **4. Modern Landmarks**
+### **Jijiga University**
+**The Gateway to the Future:** One of the fastest-growing educational institutions in the country, the university campus is a landmark of modern architecture and green spaces. It represents the city's commitment to knowledge and the rising "Tech Hub" generation.
+### **Garad Wiil-Waal International Airport**
+**Your Welcome to the Region:** Named after the legendary wise Sultan, the airport is the modern gateway to the Somali Region. Its sleek design and efficient service welcome thousands of visitors and members of the diaspora home every year.
+### **Design Tip for Replit:**
+ * **Map Integration:** On this page, a "Landmark Map" would be perfect. You can use icons for each site so users can see how close they are to each other.
+ * **Gallery:** Create a "Photo Tour" section where users can swipe through high-quality images of these locations.
+**Which landmark would you like to do a deep-dive on first? The Central Mosque, the Camel Market, or the Karamara Mountains?**

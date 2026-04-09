@@ -1,0 +1,24 @@
+The **Jijiga Central Mosque**, known locally as **Masaajidka Jaamacadda**, is the spiritual crown of the city. For your website, this page should focus on its role as a center for peace, learning, and its iconic architectural presence that dominates the central skyline.
+# **Jijiga Central Mosque: The Spiritual Anchor**
+### **The Heart of the Capital**
+Located at the bustling center of the city, the **Masaajidka Jaamacadda** is more than just a place of worship. It is a landmark of unity for the Somali Region. Whether you are arriving from the airport or walking through the main markets, the mosque’s tall minarets serve as a constant compass, guiding people toward the heart of Jigjiga.
+### **A Center of Islamic Learning**
+The history of this mosque is deeply tied to the city's growth. After the fall of Harar in the late 19th century, many Islamic scholars migrated to Jigjiga. This transformed the city—and specifically this mosque—into a leading center for Islamic education and jurisprudence in the Horn of Africa. Today, it continues that legacy, hosting daily lectures, Quranic studies, and community gatherings that preserve the region's religious heritage.
+### **Architecture and Design**
+The mosque is a beautiful blend of traditional Islamic architecture and modern Somali aesthetics.
+ * **The Minarets:** Its towering minarets are the tallest in the city, beautifully illuminated at night with green lights that can be seen from kilometers away.
+ * **The Dome:** The central dome is a masterpiece of geometric design, symbolizing the heavens and the unity of the Ummah (community).
+ * **The Interior:** Inside, the prayer hall is vast and airy, featuring intricate calligraphy and soft carpets. The high ceilings and large windows allow natural light to flood the space, creating a serene and reflective atmosphere for the thousands who gather for Friday prayers (*Jumu'ah*).
+### **The Courtyard: A Place of Peace**
+The mosque features a large, paved courtyard where people often gather before and after prayers. It is a place of quiet reflection amidst the hustle and bustle of the surrounding city. On Fridays, the entire area transforms as thousands of men and women in colorful traditional attire—men in their *Koofiyad* and *Macawiis*, and women in elegant *Dirac*—fill the space in a beautiful display of faith and culture.
+### **A Landmark for All**
+Even for non-Muslim visitors, the Central Mosque is a "must-see" for its architectural beauty and its role as a landmark of peace. It stands as a testament to the city’s resilience and its deep-rooted identity as a hub of faith and civilization in East Africa.
+### **Quick Facts for Your Visitor:**
+ * **Local Name:** Masaajidka Jaamacadda (or Masaajidka Markiska).
+ * **Location:** Central Business District, Jigjiga.
+ * **Best Time to Visit:** Late afternoon to see the sunset against the minarets, or Friday at noon to witness the vibrant community gathering.
+ * **Dress Code:** Visitors are asked to dress modestly. Women should cover their heads with a scarf, and both men and women should wear long clothing that covers the arms and legs.
+### **Design Tip for Replit:**
+ * **Background:** Use a "Hero Image" of the mosque at dusk when the green lights are glowing.
+ * **Audio Element:** If you can, add a small play button that lets users hear a 10-second clip of the *Adhan* (Call to Prayer) from the mosque to give them a real "feel" for the city.
+**Should we do the deep-dive on the "Jigjiga Camel Market" or the "Karamara Mountains" next?**

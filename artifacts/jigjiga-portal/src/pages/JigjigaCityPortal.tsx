@@ -65,9 +65,9 @@ export default function JigjigaCityPortal() {
   ];
 
   const popularDestinations = [
-    { id: 1, title: "Karamara Monument", rating: 4.8, reviews: 124, image: "https://picsum.photos/seed/karamara/600/400" },
-    { id: 2, title: "Central Market", rating: 4.5, reviews: 342, image: "https://picsum.photos/seed/centralmarket/600/400" },
-    { id: 3, title: "Jigjiga University", rating: 4.9, reviews: 89, image: "https://picsum.photos/seed/university/600/400" }
+    { id: 1, title: "Karamara Monument", rating: 4.8, reviews: 124, image: "https://picsum.photos/seed/karamara/600/400", href: "/landmarks/karamara-mountains" },
+    { id: 2, title: "Central Market", rating: 4.5, reviews: 342, image: "https://picsum.photos/seed/centralmarket/600/400", href: "/eat-drink/street-food" },
+    { id: 3, title: "Jigjiga University", rating: 4.9, reviews: 89, image: "https://picsum.photos/seed/university/600/400", href: "/landmarks/jigjiga-university" }
   ];
 
   const testimonials = [
@@ -293,13 +293,13 @@ export default function JigjigaCityPortal() {
           <div className="mt-14 sm:mt-20">
             <div className="flex items-center justify-between mb-6 sm:mb-8">
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Popular Destinations</h3>
-              <button className="text-primary font-semibold hover:text-blue-700 flex items-center gap-1 text-sm">
+              <Link href="/landmarks" className="text-primary font-semibold hover:text-blue-700 flex items-center gap-1 text-sm">
                 See All <ChevronRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-8">
               {popularDestinations.map((dest) => (
-                <div key={dest.id} className="bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-sm border border-gray-100 hover:shadow-xl transition-shadow cursor-pointer group">
+                <Link key={dest.id} href={dest.href} className="block bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-sm border border-gray-100 hover:shadow-xl transition-shadow group">
                   <div className="rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 relative aspect-[4/3]">
                     <img src={dest.image} alt={dest.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute top-3 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-sm">
@@ -307,11 +307,14 @@ export default function JigjigaCityPortal() {
                     </div>
                   </div>
                   <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">{dest.title}</h4>
-                  <div className="flex items-center flex-wrap text-xs sm:text-sm text-gray-500 gap-3">
+                  <div className="flex items-center flex-wrap text-xs sm:text-sm text-gray-500 gap-3 mb-3">
                     <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5" /> Jigjiga</span>
                     <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" /> {dest.reviews} Reviews</span>
                   </div>
-                </div>
+                  <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-primary/8 text-primary text-xs font-black rounded-full group-hover:bg-primary group-hover:text-white transition-colors">
+                    Full Story <ArrowUpRight className="w-3 h-3" />
+                  </span>
+                </Link>
               ))}
             </div>
           </div>

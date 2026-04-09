@@ -92,6 +92,7 @@ const diningSpots = [
       "For the most authentic experience, head to the bustling markets. Try freshly fried Sambuus (savory triangles filled with meat or lentils) or sit down for Suugo iyo Baasto — Somali-style pasta, a legacy of the region's history.",
     image: "https://picsum.photos/seed/jigjiga-street-food/700/450",
     tag: "Authentic",
+    href: "/eat-drink/street-food",
   },
 ];
 

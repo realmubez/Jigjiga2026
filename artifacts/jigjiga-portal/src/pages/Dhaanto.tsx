@@ -18,7 +18,7 @@ const fadeUp = {
 const stagger = { show: { transition: { staggerChildren: 0.12 } } };
 
 const quickFacts = [
-  { icon: <MapPin className="w-4 h-4" />, label: "Origin", value: "Somali Region (Ogaden), 19th Century" },
+  { icon: <MapPin className="w-4 h-4" />, label: "Origin", value: "Somali Galbeed (Jigjiga), 19th Century" },
   { icon: <Music className="w-4 h-4" />, label: "Style", value: "Rhythmic stomping, clapping, and call-and-response singing" },
   { icon: <Mic2 className="w-4 h-4" />, label: "Instruments", value: "Traditionally vocals & hands only; modernly strings & percussion" },
   { icon: <Calendar className="w-4 h-4" />, label: "Occasions", value: "Weddings, Eids, Independence days, and cultural festivals" },

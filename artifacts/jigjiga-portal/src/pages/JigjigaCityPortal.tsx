@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -20,8 +20,10 @@ import {
   Music,
   Moon,
   Quote,
-  Globe
+  Globe,
+  Play
 } from "lucide-react";
+import YouTube from "react-youtube";
 
 const LogoImg = () => (
   <img
@@ -34,12 +36,26 @@ const LogoImg = () => (
 export default function JigjigaCityPortal() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+  const [videoStarted, setVideoStarted] = useState(false);
+  const playerRef = useRef<any>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleVideoReady = (e: any) => {
+    playerRef.current = e.target;
+    setVideoReady(true);
+  };
+  const handleVideoStateChange = (e: any) => {
+    if (e.data === 1) setVideoStarted(true);
+  };
+  const playVideo = () => {
+    playerRef.current?.playVideo();
+  };
 
   const navLinks = [
     { label: "Explore City", href: "#explore-city" },
@@ -256,6 +272,97 @@ export default function JigjigaCityPortal() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── CITY VIDEO ── */}
+      <section className="py-16 sm:py-24 bg-slate-900 overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-10"
+          >
+            <span className="font-script text-[#f97316] text-xl sm:text-2xl lg:text-3xl mb-2 block">Experience the City</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
+              See Jigjiga in Action
+            </h2>
+            <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto">
+              A living, breathing city at the crossroads of culture, nature, and ambition — watch the story unfold.
+            </p>
+          </motion.div>
+
+          {/* Video wrapper — Technique 1: clip top/bottom YouTube bars */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10"
+          >
+            <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/9" }}>
+              {/* Technique 2: playerVars suppress YouTube UI */}
+              <YouTube
+                videoId="qkM3xp7N_zM"
+                onReady={handleVideoReady}
+                onStateChange={handleVideoStateChange}
+                style={{
+                  position: "absolute",
+                  top: "-80px",
+                  left: 0,
+                  width: "100%",
+                  height: "calc(100% + 160px)",
+                  zIndex: 1,
+                }}
+                iframeClassName="w-full h-full"
+                opts={{
+                  playerVars: {
+                    controls: 0,
+                    modestbranding: 1,
+                    rel: 0,
+                    iv_load_policy: 3,
+                    disablekb: 1,
+                    fs: 0,
+                    playsinline: 1,
+                    color: "white",
+                  },
+                }}
+              />
+
+              {/* Technique 3a: loading state */}
+              {!videoReady && (
+                <div style={{ position: "absolute", inset: 0, zIndex: 6 }} className="bg-slate-900 flex items-center justify-center">
+                  <div className="w-10 h-10 border-4 border-white/20 border-t-[#f97316] rounded-full animate-spin" />
+                </div>
+              )}
+
+              {/* Technique 3b: custom branded thumbnail before first play */}
+              {videoReady && !videoStarted && (
+                <div
+                  onClick={playVideo}
+                  style={{ position: "absolute", inset: 0, zIndex: 10, cursor: "pointer" }}
+                  className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 flex flex-col items-center justify-center group"
+                >
+                  {/* Subtle city silhouette */}
+                  <div className="absolute inset-0 opacity-20 bg-[url('https://picsum.photos/seed/jigjiga-skyline-wide/1200/675')] bg-cover bg-center" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-slate-900/40" />
+
+                  {/* Content */}
+                  <div className="relative z-10 flex flex-col items-center gap-5 text-center px-6">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#f97316] flex items-center justify-center shadow-2xl shadow-orange-500/40 group-hover:scale-110 transition-transform duration-300">
+                      <Play className="w-8 h-8 sm:w-10 sm:h-10 text-white fill-white ml-1" />
+                    </div>
+                    <div>
+                      <p className="text-white font-black text-xl sm:text-2xl md:text-3xl tracking-tight">Watch Jigjiga</p>
+                      <p className="text-white/60 text-sm sm:text-base mt-1 font-script">Capital of the Somali Region, Ethiopia</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </motion.div>
         </div>
       </section>
 

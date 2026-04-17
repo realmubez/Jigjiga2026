@@ -1,0 +1,62 @@
+PROMPT — Hide YouTube Logo, Title Bar & Share Button in a React YouTube Player
+When embedding a YouTube video in a React app using react-youtube, use these 3 stacked techniques to hide all YouTube branding (title bar, logo, "Watch on YouTube" bar, share button):
+Technique 1 — Clip top & bottom bars with overflow:hidden
+Wrap the YouTube component in a container with position: relative, overflow: hidden, and aspect-ratio: 16/9. Make the iframe taller than its container by 160px and shift it up by 80px so the YouTube title bar (top) and "Watch on YouTube / Share" footer (bottom) are physically clipped outside the visible area:
+// Container
+<div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/9" }}>
+
+// YouTube component
+<YouTube
+style={{
+position: "absolute",
+top: "-80px",
+left: 0,
+width: "100%",
+height: "calc(100% + 160px)",
+zIndex: 1,
+}}
+iframeClassName="w-full h-full"
+/>
+
+Technique 2 — Suppress YouTube UI via playerVars
+Pass these flags in opts.playerVars to remove as much native YouTube UI as the API allows:
+opts={{
+playerVars: {
+controls: 0, // hide native control bar
+modestbranding: 1, // remove YouTube logo
+rel: 0, // no related videos at end
+iv_load_policy: 3, // hide annotations
+disablekb: 1, // disable keyboard shortcuts
+fs: 0, // remove native fullscreen button
+playsinline: 1, // prevent iOS auto-fullscreen
+color: "white", // less branded progress bar
+}
+}}
+
+Technique 3 — Custom brand banner before first play (hasStarted flag)
+Use a hasStarted boolean (default false) to show a full-cover branded overlay above the iframe (z-index: 10) until the user clicks play for the first time. This hides the YouTube thumbnail entirely. Flip hasStarted to true inside onStateChange when YouTube fires state === 1 (playing):
+const [hasStarted, setHasStarted] = useState(false);
+const [playerReady, setPlayerReady] = useState(false);
+
+const onReady = (e) => { setPlayerReady(true); };
+const onStateChange = (e) => {
+if (e.data === 1) setHasStarted(true); // 1 = playing
+};
+
+// In JSX, above the YouTube component:
+{!playerReady && (
+<div style={{ position:"absolute", inset:0, background:"#1e3a8a", zIndex:6 }}>
+{/* Loading spinner */}
+</div>
+)}
+
+{playerReady && !hasStarted && (
+<div
+onClick={playVideo}
+style={{ position:"absolute", inset:0, background:"#1e3a8a", zIndex:10, cursor:"pointer" }}
+>
+{/* Your custom branded thumbnail + big play button */}
+</div>
+)}
+
+Result: The user sees your custom branded banner → clicks play → the banner disappears → the YouTube video plays with no visible YouTube title, logo, or share buttons anywhere.

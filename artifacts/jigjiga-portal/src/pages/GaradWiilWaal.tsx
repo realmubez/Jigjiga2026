@@ -28,32 +28,32 @@ const DEFAULT_SECTIONS = [
   {
     title: "The Ruler of the Adal Spirit",
     body: "Garad Wiil-Waal was a legendary 16th-century Sultan who ruled over the Jigjiga region and parts of the ancient Adal Sultanate. Unlike many leaders who were known only for their physical strength, Wiil-Waal became a legend because of his philosophy. He believed that a true leader must be a protector, a judge, and the most observant person in his kingdom.",
-    image: "https://picsum.photos/seed/adal-sultanate/800/500",
-    imageAlt: "The ancient Adal Sultanate landscape",
+    image: "/garad-wiil-waal-portrait.jpg",
+    imageAlt: "Portrait painting of Garad Wiil-Waal (1782–1845), the wise Sultan of Jigjiga",
   },
   {
     title: "The Legend of the Riddles",
     body: "One of the most famous stories told to every child in Jigjiga is how Wiil-Waal tested his advisors with riddles to ensure they were fit to lead. He once famously ordered the men of the city to \"bring me the part of the sheep that represents both the best and the worst of humanity.\" While others brought expensive cuts of meat, one wise person brought the tongue. Wiil-Waal agreed, noting that the tongue can start wars or create peace, depending on how it is used.",
-    image: "https://picsum.photos/seed/wiilwaal-riddle/800/500",
-    imageAlt: "A gathering of elders and advisors",
+    image: "/garad-wiil-waal-portrait.jpg",
+    imageAlt: "Portrait of Garad Wiil-Waal — ruler who governed through wisdom and riddles",
   },
   {
     title: "The Protector of Jigjiga's Plains",
     body: "Historically, he is credited with unifying the various clans in the Somali Region to defend the fertile lands of Jigjiga. He was a master of horse-mounted warfare, and under his rule, the city became a major center for trade between the highlands of Ethiopia and the coastal ports of the Horn of Africa. He turned the Jigjiga plains into a stronghold of Somali identity.",
-    image: "https://picsum.photos/seed/jigjiga-plains/800/500",
-    imageAlt: "The fertile plains of Jigjiga",
+    image: "/garad-wiil-waal-portrait.jpg",
+    imageAlt: "Garad Wiil-Waal — protector and unifier of the Jigjiga plains",
   },
   {
     title: "A Legacy in the Clouds: Garad Wiil-Waal Airport",
     body: "His name is so important to the identity of the city that the Jigjiga International Airport was named in his honor. It serves as a symbolic \"gateway,\" welcoming the world to the land he once ruled. Whenever a traveler lands in Jigjiga, the first name they see is a tribute to this legendary Sultan, bridging the gap between ancient history and modern travel.",
-    image: "https://picsum.photos/seed/jigjiga-airport/800/500",
-    imageAlt: "Garad Wiil-Waal International Airport",
+    image: "/jigjiga-gerad-wilwal-airport.jpg",
+    imageAlt: "Jigjiga Gerad Wilwal Airport — named in honor of the legendary Sultan",
   },
   {
     title: "The Symbol of Somali Masculinity",
     body: "In Somali culture, the name \"Wiil-Waal\" itself carries weight. It roughly translates to \"The Brave Youth\" or \"The Spirited One.\" He remains a symbol of the ideal leader: someone who is courageous in battle but uses his mind and his heart to solve the problems of his people. His stories are still used today to teach young people about justice, patience, and sharp thinking.",
-    image: "https://picsum.photos/seed/somali-youth-culture/800/500",
-    imageAlt: "Somali cultural heritage and youth",
+    image: "/garad-wiil-waal-portrait.jpg",
+    imageAlt: "Garad Wiil-Waal portrait — icon of wisdom and Somali cultural heritage",
   },
 ];
 

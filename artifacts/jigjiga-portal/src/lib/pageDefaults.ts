@@ -25,7 +25,7 @@ export const PAGE_REGISTRY: PageMeta[] = [
           label: "Legendary Figures",
           items: [
             { id: "l1", name: "Sayid Mohamed Abdullah Hassan", subtitle: "The Visionary Warrior", description: "Known as the \"Father of Somali Nationalism,\" the Sayid led the Dervish resistance for over 20 years. He was a master of both the sword and the pen, using his famous poetry to unite the people against colonial rule.", image: "/sayid-hassan-statue-2.jpg", tag: "Dervish Era", href: "/history-culture/sayid-hassan" },
-            { id: "l2", name: "Garad Wiil-Waal", subtitle: "The Wise Sultan", description: "A legendary 16th-century ruler of the Jigjiga plains, famous for his intelligence and his use of riddles to test the wisdom of his people. He represents the ideal of a leader who rules through wit, justice, and bravery.", image: "https://picsum.photos/seed/garad-waal/800/500", tag: "16th Century", href: "/history-culture/garad-wiil-waal" },
+            { id: "l2", name: "Garad Wiil-Waal", subtitle: "The Wise Sultan", description: "A legendary 16th-century ruler of the Jigjiga plains, famous for his intelligence and his use of riddles to test the wisdom of his people. He represents the ideal of a leader who rules through wit, justice, and bravery.", image: "/garad-wiil-waal-portrait.jpg", tag: "16th Century", href: "/history-culture/garad-wiil-waal" },
           ],
         },
         {
@@ -71,13 +71,13 @@ export const PAGE_REGISTRY: PageMeta[] = [
     group: "History & Culture",
     type: "article",
     defaults: {
-      heroImageUrl: "https://picsum.photos/seed/garad-hero/1600/900",
+      heroImageUrl: "/garad-wiil-waal-portrait.jpg",
       pullQuote: "A good leader does not shout the loudest — he listens the deepest.",
       sections: [
-        { id: "s1", title: "The Origins of a Legend", body: "Garad Wiil-Waal ruled the Jigjiga plains during the 16th century. The name \"Wiil-Waal\" roughly translates to \"The Brave Youth\" or \"The Spirited One.\" He remains a symbol of the ideal leader: someone who is courageous in battle but uses his mind and heart to solve the problems of his people.", imageUrl: "https://picsum.photos/seed/garad-origins/800/500" },
-        { id: "s2", title: "The Power of the Riddle", body: "Garad Wiil-Waal was famous for governing through wisdom and riddles. According to oral tradition, he would test potential advisors and challengers with complex puzzles. Those who could solve them earned his respect; those who could not were sent away to study. This philosophy of governance through wisdom rather than brute force set him apart.", imageUrl: "https://picsum.photos/seed/garad-riddle/800/500" },
-        { id: "s3", title: "Justice for the Common People", body: "His greatest legacy was his fierce commitment to justice for ordinary people. He is said to have intervened personally when nomadic herdsmen were unfairly treated, settling disputes impartially regardless of clan status. This commitment made him beloved across the region and his judgments were sought from communities far beyond his immediate territory.", imageUrl: "https://picsum.photos/seed/garad-justice/800/500" },
-        { id: "s4", title: "Living Legacy in Jigjiga", body: "Today, the stories of Garad Wiil-Waal are taught to children across the Somali Region as parables of leadership, justice, and intellectual courage. His name is invoked at community meetings and elder gatherings as a standard of wise governance. The \"Garad\" title itself — which he held — remains one of the most respected traditional leadership titles in the region.", imageUrl: "https://picsum.photos/seed/garad-legacy/800/500" },
+        { id: "s1", title: "The Origins of a Legend", body: "Garad Wiil-Waal ruled the Jigjiga plains during the 16th century. The name \"Wiil-Waal\" roughly translates to \"The Brave Youth\" or \"The Spirited One.\" He remains a symbol of the ideal leader: someone who is courageous in battle but uses his mind and heart to solve the problems of his people.", imageUrl: "/garad-wiil-waal-portrait.jpg" },
+        { id: "s2", title: "The Power of the Riddle", body: "Garad Wiil-Waal was famous for governing through wisdom and riddles. According to oral tradition, he would test potential advisors and challengers with complex puzzles. Those who could solve them earned his respect; those who could not were sent away to study. This philosophy of governance through wisdom rather than brute force set him apart.", imageUrl: "/garad-wiil-waal-portrait.jpg" },
+        { id: "s3", title: "Justice for the Common People", body: "His greatest legacy was his fierce commitment to justice for ordinary people. He is said to have intervened personally when nomadic herdsmen were unfairly treated, settling disputes impartially regardless of clan status. This commitment made him beloved across the region and his judgments were sought from communities far beyond his immediate territory.", imageUrl: "/garad-wiil-waal-portrait.jpg" },
+        { id: "s4", title: "Living Legacy in Jigjiga", body: "Today, the stories of Garad Wiil-Waal are taught to children across the Somali Region as parables of leadership, justice, and intellectual courage. His name lives on most visibly in the Jigjiga Gerad Wilwal Airport — welcoming every traveler who arrives in the city he once protected. The \"Garad\" title itself remains one of the most respected traditional leadership titles in the region.", imageUrl: "/jigjiga-gerad-wilwal-airport.jpg" },
       ],
     },
   },

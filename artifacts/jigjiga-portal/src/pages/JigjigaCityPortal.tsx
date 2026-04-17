@@ -305,7 +305,7 @@ export default function JigjigaCityPortal() {
             <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/9" }}>
               {/* Technique 2: playerVars suppress YouTube UI */}
               <YouTube
-                videoId="qkM3xp7N_zM"
+                videoId="WJHBneLahjA"
                 onReady={handleVideoReady}
                 onStateChange={handleVideoStateChange}
                 style={{

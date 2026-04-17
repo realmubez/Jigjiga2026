@@ -34,6 +34,9 @@ import SomaliPoetry from "./pages/SomaliPoetry";
 import Uunsi from "./pages/Uunsi";
 import JigjigaFestivals from "./pages/JigjigaFestivals";
 import QaaciNightlife from "./pages/QaaciNightlife";
+import FlagDay from "./pages/FlagDay";
+import JJUGraduation from "./pages/JJUGraduation";
+import MotherLanguageDay from "./pages/MotherLanguageDay";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
@@ -102,6 +105,9 @@ function Router() {
         <Route path="/history-culture/uunsi" component={Uunsi} />
         <Route path="/history-culture/festivals" component={JigjigaFestivals} />
         <Route path="/history-culture/qaaci-nightlife" component={QaaciNightlife} />
+        <Route path="/history-culture/flag-day" component={FlagDay} />
+        <Route path="/history-culture/jju-graduation" component={JJUGraduation} />
+        <Route path="/history-culture/mother-language-day" component={MotherLanguageDay} />
 
         {/* Admin — login (public) */}
         <Route path="/admin/login" component={AdminLogin} />

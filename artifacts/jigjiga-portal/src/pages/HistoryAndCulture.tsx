@@ -192,7 +192,7 @@ export default function HistoryAndCulture() {
                 variants={stagger}
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ${i % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
               >
-                <motion.div variants={fadeUp} className={i % 2 === 1 ? "lg:col-start-2" : ""}>
+                <motion.div variants={fadeUp} className={"order-2 lg:order-none text-center lg:text-left " + (i % 2 === 1 ? "lg:col-start-2" : "")}>
                   <span className="inline-block px-3 py-1 bg-[#f97316]/10 text-[#f97316] text-xs font-bold rounded-full mb-4 uppercase tracking-wider">
                     {figure.tag}
                   </span>
@@ -200,13 +200,15 @@ export default function HistoryAndCulture() {
                   <p className="text-primary font-semibold mb-4">{figure.subtitle}</p>
                   <p className="text-gray-600 leading-relaxed text-base sm:text-lg mb-6">{figure.description}</p>
                   {figure.href && (
-                    <Link href={figure.href}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-white text-sm font-bold rounded-full hover:bg-primary transition-colors group">
-                      Read Full Story <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </Link>
+                    <div className="flex justify-center lg:justify-start">
+                      <Link href={figure.href}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-white text-sm font-bold rounded-full hover:bg-primary transition-colors group">
+                        Read Full Story <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </Link>
+                    </div>
                   )}
                 </motion.div>
-                <motion.div variants={fadeUp} className={`overflow-hidden rounded-2xl shadow-lg ${i % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}>
+                <motion.div variants={fadeUp} className={`order-1 lg:order-none overflow-hidden rounded-2xl shadow-lg ${i % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}>
                   {figure.href ? (
                     <Link href={figure.href} className="block group relative">
                       <img src={figure.image} alt={figure.name}

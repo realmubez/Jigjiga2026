@@ -322,7 +322,7 @@ export const PAGE_REGISTRY: PageMeta[] = [
           id: "natural",
           label: "Natural Wonders",
           items: [
-            { id: "n1", name: "Karamara Mountains", subtitle: "Silsiladda Karamara", description: "Rising 2,000m above sea level — a natural fortress that has watched over the city for centuries and offers the best panoramic views of the capital.", image: "https://picsum.photos/seed/karamara-mountains-jigjiga/700/450", tag: "Natural Wonder", href: "/landmarks/karamara-mountains" },
+            { id: "n1", name: "Karamara Mountains", subtitle: "Silsiladda Karamara", description: "Rising 2,000m above sea level — a natural fortress that has watched over the city for centuries and offers the best panoramic views of the capital.", image: "/karamara-sunset-trail.jpg", tag: "Natural Wonder", href: "/landmarks/karamara-mountains" },
             { id: "n2", name: "Valley of Marvels — Babile", subtitle: "Nature's Sculpture Gallery", description: "A short drive from the city brings you to Babile — extraordinary balancing rock formations and the famous Babile Elephant Sanctuary.", image: "https://picsum.photos/seed/babile-valley-rocks/700/450", tag: "Day Trip", href: "#" },
           ],
         },

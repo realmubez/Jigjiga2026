@@ -101,12 +101,12 @@ export default function KararaMountains() {
       </header>
 
       {/* HERO — panoramic mountain road */}
-      <section className="relative pt-24 min-h-[85vh] flex items-end overflow-hidden">
+      <section className="relative pt-24 min-h-[85vh] flex items-start overflow-hidden">
         <div className="absolute inset-0">
           <img src={heroImageUrl} alt="The winding road climbing through the Karamara Mountains at sunrise" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-slate-900/10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/85 via-slate-900/40 to-transparent" />
         </div>
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 w-full">
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-12 w-full">
           <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="flex items-center gap-3 mb-6">
             <Link href="/landmarks" className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm font-medium transition-colors">
               <ArrowLeft className="w-4 h-4" /> Landmarks

@@ -163,7 +163,7 @@ export default function JigjigaCityPortal() {
                 <br className="hidden lg:block" /> &amp; Culture
               </h1>
               <p className="text-gray-500 text-base sm:text-lg mb-8 max-w-xl mx-auto lg:mx-0">
-                Experience the vibrant heart of the Somali Region. From ancient traditions to modern tech hubs, explore the best of our growing city.
+                The official city portal of Jigjiga — your guide to culture, landmarks, food, businesses, and everything our city has to offer.
               </p>
 
               {/* Search Bar */}
@@ -531,7 +531,7 @@ export default function JigjigaCityPortal() {
                 </span>
               </Link>
               <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-6 max-w-xs">
-                Your premier destination for everything Jigjiga. Culture, news, and local business.
+                The official digital gateway for Jigjiga city — serving visitors, residents, small businesses, and developers across the Somali Region.
               </p>
               <div className="flex gap-3">
                 {[Globe, Users, Camera].map((Icon, i) => (
@@ -546,9 +546,10 @@ export default function JigjigaCityPortal() {
             <div>
               <h4 className="font-bold text-gray-900 mb-4 text-sm sm:text-base">Discover</h4>
               <ul className="flex flex-col gap-3 text-gray-500 font-medium text-sm">
-                {["City Guide", "Popular Spots", "Local Events", "Food & Drink"].map((l) => (
-                  <li key={l}><Link href="#" className="hover:text-primary transition-colors">{l}</Link></li>
-                ))}
+                <li><Link href="/history-culture" className="hover:text-primary transition-colors">History & Culture</Link></li>
+                <li><Link href="/eat-drink" className="hover:text-primary transition-colors">Eat & Drink</Link></li>
+                <li><Link href="/landmarks" className="hover:text-primary transition-colors">Must-See Landmarks</Link></li>
+                <li><Link href="/about" className="hover:text-primary transition-colors">About Jigjiga.net</Link></li>
               </ul>
             </div>
 
@@ -577,10 +578,12 @@ export default function JigjigaCityPortal() {
           </div>
 
           <div className="pt-6 sm:pt-8 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500 text-xs sm:text-sm font-medium">
-            <p>© 2024 Jigjiga.net — Developed with pride in Jigjiga, Ethiopia.</p>
-            <div className="flex gap-4 sm:gap-6">
-              <Link href="#" className="hover:text-gray-900 transition-colors">Privacy Policy</Link>
-              <Link href="#" className="hover:text-gray-900 transition-colors">Terms of Service</Link>
+            <p>© 2024 Jigjiga.net — The Official City Portal of Jigjiga, Ethiopia.</p>
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+              <Link href="/about" className="hover:text-gray-900 transition-colors">About</Link>
+              <Link href="/contact" className="hover:text-gray-900 transition-colors">Contact Us</Link>
+              <Link href="/privacy" className="hover:text-gray-900 transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-gray-900 transition-colors">Terms of Service</Link>
             </div>
           </div>
         </div>

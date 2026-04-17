@@ -15,7 +15,9 @@ const navItems = [
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const { logout } = useAdminAuth();
+  const { logout, currentUser } = useAdminAuth();
+  const displayName = currentUser?.name ?? "Admin";
+  const displayRole = currentUser?.type === "superadmin" ? "Owner" : (currentUser?.role === "moderator" ? "Moderator" : "Supporter");
   const [location, navigate] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -72,8 +74,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <ShieldCheck className="w-4 h-4 text-white" />
           </div>
           <div>
-            <p className="text-white text-sm font-bold leading-tight">Admin</p>
-            <p className="text-blue-300 text-[10px]">Owner</p>
+            <p className="text-white text-sm font-bold leading-tight">{displayName}</p>
+            <p className="text-blue-300 text-[10px]">{displayRole}</p>
           </div>
         </div>
         <button onClick={handleLogout}
@@ -121,7 +123,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                 <ShieldCheck className="w-4 h-4 text-primary" />
               </div>
-              <span className="text-sm font-bold text-gray-900 hidden sm:block">Admin</span>
+              <span className="text-sm font-bold text-gray-900 hidden sm:block">{displayName}</span>
             </div>
           </div>
         </header>

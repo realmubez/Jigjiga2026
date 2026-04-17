@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getUsers, saveUser, deleteUser, AdminUser, generateId, UserRole } from "@/lib/adminStore";
-import { Plus, Trash2, Search, Users, ShieldCheck, Shield, User, X } from "lucide-react";
+import { Plus, Trash2, Search, Users, ShieldCheck, Shield, User, X, Eye, EyeOff } from "lucide-react";
 
 const ROLE_META: Record<UserRole, { label: string; color: string; icon: typeof Shield; desc: string }> = {
   moderator: {
@@ -21,7 +21,8 @@ export default function AdminUsers() {
   const [users, setUsers] = useState<AdminUser[]>([]);
   const [query, setQuery] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", role: "moderator" as UserRole });
+  const [form, setForm] = useState({ name: "", email: "", password: "", role: "moderator" as UserRole });
+  const [showPassword, setShowPassword] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
@@ -36,6 +37,10 @@ export default function AdminUsers() {
       setError("Name and email are required.");
       return;
     }
+    if (!form.password.trim() || form.password.length < 6) {
+      setError("Password must be at least 6 characters.");
+      return;
+    }
     if (users.some(u => u.email.toLowerCase() === form.email.toLowerCase())) {
       setError("A user with this email already exists.");
       return;
@@ -46,6 +51,7 @@ export default function AdminUsers() {
         id: generateId(),
         name: form.name.trim(),
         email: form.email.trim().toLowerCase(),
+        password: form.password,
         role: form.role,
         createdAt: new Date().toISOString(),
         status: "active",
@@ -53,7 +59,8 @@ export default function AdminUsers() {
       saveUser(user);
       setUsers(getUsers());
       setShowModal(false);
-      setForm({ name: "", email: "", role: "moderator" });
+      setForm({ name: "", email: "", password: "", role: "moderator" });
+      setShowPassword(false);
       setSaving(false);
     }, 500);
   }
@@ -194,10 +201,28 @@ export default function AdminUsers() {
               </div>
               <div>
                 <label className="block text-xs font-black text-gray-500 uppercase tracking-wider mb-2">Email Address</label>
-                <input type="email" placeholder="user@example.com" value={form.email}
+                <input type="email" placeholder="user@jigjiga.net" value={form.email}
                   onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                   required className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
                 />
+              </div>
+              <div>
+                <label className="block text-xs font-black text-gray-500 uppercase tracking-wider mb-2">Password</label>
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Min. 6 characters"
+                    value={form.password}
+                    onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
+                    required
+                    className="w-full px-4 py-3 pr-11 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  />
+                  <button type="button" onClick={() => setShowPassword(v => !v)}
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                </div>
+                <p className="text-xs text-gray-400 mt-1.5">They will use this password to log in.</p>
               </div>
               <div>
                 <label className="block text-xs font-black text-gray-500 uppercase tracking-wider mb-2">Role</label>

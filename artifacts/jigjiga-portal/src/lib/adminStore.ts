@@ -19,6 +19,7 @@ export interface AdminUser {
   id: string;
   name: string;
   email: string;
+  password: string;
   role: UserRole;
   createdAt: string;
   status: "active" | "suspended";

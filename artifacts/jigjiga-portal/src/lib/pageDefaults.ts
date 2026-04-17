@@ -338,7 +338,7 @@ export const PAGE_REGISTRY: PageMeta[] = [
           id: "modern",
           label: "Modern Jigjiga",
           items: [
-            { id: "mo1", name: "Jigjiga University", subtitle: "The Tech Hub Anchor", description: "Founded in 2007, JJU is the symbol of Jigjiga's transformation — producing engineers, doctors, and entrepreneurs who are building the city's future.", image: "https://picsum.photos/seed/jigjiga-university-gate/700/450", tag: "Education", href: "/landmarks/jigjiga-university" },
+            { id: "mo1", name: "Jigjiga University", subtitle: "The Tech Hub Anchor", description: "Founded in 2007, JJU is the symbol of Jigjiga's transformation — producing engineers, doctors, and entrepreneurs who are building the city's future.", image: "/jju-gate-night-wide.jpg", tag: "Education", href: "/landmarks/jigjiga-university" },
             { id: "mo2", name: "Garad Wiil-Waal International Airport", subtitle: "Gateway to Jigjiga", description: "The airport connecting Jigjiga to Addis Ababa, Dire Dawa, and regional destinations — the entry point for thousands of visitors every month.", image: "https://picsum.photos/seed/jigjiga-airport/700/450", tag: "Infrastructure", href: "#" },
             { id: "mo3", name: "Shabeeley Resort", subtitle: "Halka Taariikhda iyo Raaxadu Kulmaan", description: "Jigjiga's premier luxury destination — where 10th-century Somali architecture meets modern comfort on lush green grounds at the edge of the city.", image: "/shabeeley-aerial.jpg", tag: "New 2025 · Must Visit", href: "/landmarks/shabeeley-resort" },
           ],

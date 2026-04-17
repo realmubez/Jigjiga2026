@@ -1,20 +1,41 @@
 {
-  "name": "Jigjiga City Portal",
+  "name": "Jigjiga.net",
   "short_name": "Jigjiga",
-  "description": "Your premier destination for everything Jigjiga — culture, news, and local business.",
+  "description": "Your #1 portal for Somali culture, heritage, food, and business in Jigjiga — capital of the Somali Region, Ethiopia.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f8f8fc",
+  "background_color": "#ffffff",
   "theme_color": "#f97316",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en",
   "icons": [
     {
+      "src": "/favicon-16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
       "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/icon-512.png",
@@ -23,6 +44,6 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["travel", "news", "lifestyle"],
+  "categories": ["travel", "news", "lifestyle", "education"],
   "screenshots": []
 }

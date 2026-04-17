@@ -1,3 +1,21 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="180" height="180" rx="36" fill="#FF3C00"/>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark navy rounded-square — matches generated PNGs exactly -->
+  <rect width="512" height="512" rx="96" fill="#0f172a"/>
+  <!--
+    The camel-J logo in orange.
+    Simplified vector approximation for SVG favicon —
+    browsers that support SVG favicon get this crisp at any scale.
+  -->
+  <!-- Main J-neck body -->
+  <path d="M 290 90 C 310 90 335 108 342 138 C 348 162 338 188 318 202 L 318 355 C 318 394 292 422 254 428 C 216 434 184 412 172 378 C 165 358 168 336 180 318 L 210 318 C 200 334 198 354 204 370 C 214 398 240 410 264 404 C 290 396 306 374 306 350 L 306 206 C 284 198 266 178 260 152 C 252 120 262 96 280 90 Z" fill="#f97316"/>
+  <!-- Camel head / neck curve -->
+  <path d="M 276 92 C 262 78 254 58 260 42 C 266 26 282 20 298 24 C 318 30 332 52 330 74 C 328 90 316 100 302 102 C 290 104 280 98 276 92 Z" fill="#f97316"/>
+  <!-- Nose/muzzle -->
+  <ellipse cx="334" cy="56" rx="18" ry="12" fill="#f97316"/>
+  <!-- Nostril hint -->
+  <ellipse cx="344" cy="60" rx="5" ry="3.5" fill="#ea6000"/>
+  <!-- Eye -->
+  <ellipse cx="310" cy="46" rx="6" ry="6" fill="#ea6000"/>
+  <!-- J serif curl at bottom -->
+  <path d="M 178 340 C 160 348 148 366 150 386 C 152 406 168 420 188 420 C 168 416 154 400 154 382 C 152 364 162 348 178 340 Z" fill="#ea6000" opacity="0.6"/>
 </svg>

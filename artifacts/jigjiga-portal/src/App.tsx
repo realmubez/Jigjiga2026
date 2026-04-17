@@ -29,6 +29,7 @@ import CamelMarket from "./pages/CamelMarket";
 import KararaMountains from "./pages/KararaMountains";
 import JigjigaUniversity from "./pages/JigjigaUniversity";
 import ShabeeleyResort from "./pages/ShabeeleyResort";
+import SheikhHassanHospital from "./pages/SheikhHassanHospital";
 import TechHub from "./pages/TechHub";
 import AdalSultanate from "./pages/AdalSultanate";
 import SomaliPoetry from "./pages/SomaliPoetry";
@@ -100,6 +101,7 @@ function Router() {
         <Route path="/landmarks/karamara-mountains" component={KararaMountains} />
         <Route path="/landmarks/jigjiga-university" component={JigjigaUniversity} />
         <Route path="/landmarks/shabeeley-resort" component={ShabeeleyResort} />
+        <Route path="/landmarks/sheikh-hassan-hospital" component={SheikhHassanHospital} />
 
         <Route path="/tech-hub" component={TechHub} />
         <Route path="/history-culture/adal-sultanate" component={AdalSultanate} />

@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "landmarks/central-mosque")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -27,7 +30,7 @@ const architectureFeatures = [
   { emoji: "🌿", title: "The Courtyard", description: "A large paved courtyard for quiet reflection. On Fridays, filled with worshippers in colorful traditional Koofiyad and Dirac attire." },
 ];
 
-const sections = [
+const DEFAULT_SECTIONS = [
   {
     title: "A Center of Islamic Learning",
     body: "The history of this mosque is deeply tied to the city's growth. After the fall of Harar in the late 19th century, many Islamic scholars migrated to Jigjiga. This transformed the city — and specifically this mosque — into a leading center for Islamic education and jurisprudence in the Horn of Africa. Today, it continues that legacy, hosting daily lectures, Quranic studies, and community gatherings that preserve the region's religious heritage.",
@@ -51,6 +54,12 @@ export default function CentralMosque() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+  const sections = content.sections?.length ? content.sections.map(s => ({ ...s, image: s.imageUrl })) : DEFAULT_SECTIONS;
+
 
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
@@ -93,7 +102,7 @@ export default function CentralMosque() {
       {/* HERO — dusk with green glow */}
       <section className="relative pt-24 min-h-[80vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/jigjiga-mosque-dusk-green/1600/900" alt="Jijiga Central Mosque at dusk with illuminated green minarets" className="w-full h-full object-cover" />
+          <img src={heroImageUrl} alt="Jijiga Central Mosque at dusk with illuminated green minarets" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/10" />
           {/* green glow overlay */}
           <div className="absolute inset-0 bg-emerald-900/20" />
@@ -199,7 +208,7 @@ export default function CentralMosque() {
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-emerald-400 mx-auto mb-6" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-6">
-            "On Fridays, thousands of men and women in colorful traditional attire fill the courtyard in a beautiful display of faith and culture."
+            {pullQuote}
           </blockquote>
           <p className="text-emerald-400 font-bold text-lg">— Jumu'ah at Masaajidka Jaamacadda</p>
         </div>

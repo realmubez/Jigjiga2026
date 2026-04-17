@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "eat-drink/bariis-mindi")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -26,7 +29,7 @@ const trio = [
   { emoji: "🥗", title: "Salad", description: "A simple mix of finely chopped tomatoes, onions, and lettuce to refresh the palate between bites." },
 ];
 
-const sections = [
+const DEFAULT_SECTIONS = [
   {
     title: "More Than Just Rice",
     body: "Bariis Mindi is the ultimate symbol of hospitality and celebration in Jigjiga. While rice is a staple in many cultures, the Somali version is a culinary masterpiece defined by its aromatic scent, vibrant colors, and the \"Mindi\" — the method of serving it piled high with meat. It is the dish served at every wedding, graduation, and high-level welcoming ceremony in the city.",
@@ -69,6 +72,12 @@ export default function BaarisMindi() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+  const sections = content.sections?.length ? content.sections.map(s => ({ ...s, image: s.imageUrl })) : DEFAULT_SECTIONS;
+
+
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
     { label: "News", href: "/#news" },
@@ -110,7 +119,7 @@ export default function BaarisMindi() {
       {/* HERO */}
       <section className="relative pt-24 min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/bariis-hero-platter/1600/800" alt="A steaming platter of Bariis Mindi" className="w-full h-full object-cover" />
+          <img src={heroImageUrl} alt="A steaming platter of Bariis Mindi" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/20" />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
@@ -191,7 +200,7 @@ export default function BaarisMindi() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-[#f97316] mx-auto mb-6" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-4">
-            "Bariis bilaa xawaash ah waa sidii guri bilaa daaqad ah."
+            {pullQuote}
           </blockquote>
           <p className="text-white/60 text-lg mb-2 italic">Rice without spice is like a house without windows.</p>
           <p className="text-[#f97316] font-bold text-lg">— Somali Proverb</p>

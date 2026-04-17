@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "landmarks/camel-market")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -54,6 +57,11 @@ export default function CamelMarket() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+
+
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
     { label: "News", href: "/#news" },
@@ -95,7 +103,7 @@ export default function CamelMarket() {
       {/* HERO */}
       <section className="relative pt-24 min-h-[78vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/camel-market-dust-horizon/1600/900" alt="Hundreds of camels at the Jigjiga Camel Market at sunrise" className="w-full h-full object-cover" />
+          <img src={heroImageUrl} alt="Hundreds of camels at the Jigjiga Camel Market at sunrise" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/10" />
           <div className="absolute inset-0 bg-amber-900/20" />
         </div>
@@ -244,7 +252,7 @@ export default function CamelMarket() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-amber-400 mx-auto mb-6" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-4">
-            "At the camel market, every animal has a story, every trader has a lineage, and every deal carries the weight of centuries."
+            {pullQuote}
           </blockquote>
           <p className="text-amber-400 font-bold text-lg">— Suuqa Geela, Jigjiga</p>
         </div>

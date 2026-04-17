@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "landmarks/karamara-mountains")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -54,6 +57,11 @@ export default function KararaMountains() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+
+
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
     { label: "News", href: "/#news" },
@@ -95,7 +103,7 @@ export default function KararaMountains() {
       {/* HERO — panoramic mountain road */}
       <section className="relative pt-24 min-h-[85vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/karamara-mountain-road-panorama/1600/900" alt="The winding road climbing through the Karamara Mountains at sunrise" className="w-full h-full object-cover" />
+          <img src={heroImageUrl} alt="The winding road climbing through the Karamara Mountains at sunrise" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-slate-900/10" />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 w-full">
@@ -218,7 +226,7 @@ export default function KararaMountains() {
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-orange-300 mx-auto mb-6" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-4">
-            "Karamara — the mountain of clouds that brings rain to the thirsty plains, and hope to the city below."
+            {pullQuote}
           </blockquote>
           <p className="text-orange-300 font-bold text-lg">— Somali Folklore, Jigjiga</p>
         </div>

@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowLeft, Menu, X, Globe, ArrowUpRight } from "lucide-react";
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "history-culture")!;
 
 const LogoImg = () => (
   <img src="/logo.png" alt="Jigjiga.net logo" className="w-12 h-12 sm:w-14 sm:h-14 object-contain" />
@@ -28,82 +32,14 @@ export default function HistoryAndCulture() {
 
   const navLinks = ["Explore City", "News", "Culture", "Tech Hub"];
 
-  const legendaryFigures = [
-    {
-      name: "Sayid Mohamed Abdullah Hassan",
-      title: "The Visionary Warrior",
-      description:
-        'Known as the "Father of Somali Nationalism," the Sayid led the Dervish resistance for over 20 years. He was a master of both the sword and the pen, using his famous poetry to unite the people against colonial rule. His legacy remains a symbol of defiance and pride in Jigjiga.',
-      image: "https://picsum.photos/seed/sayid-hassan/800/500",
-      tag: "Dervish Era",
-      href: "/history-culture/sayid-hassan",
-    },
-    {
-      name: "Garad Wiil-Waal",
-      title: "The Wise Sultan",
-      description:
-        "A legendary 16th-century ruler of the Jigjiga plains. Garad Wiil-Waal was famous for his intelligence and his use of riddles to test the wisdom of his people. He represents the ideal of a leader who rules through wit, justice, and bravery.",
-      image: "https://picsum.photos/seed/garad-waal/800/500",
-      tag: "16th Century",
-      href: "/history-culture/garad-wiil-waal",
-    },
-  ];
-
-  const governance = [
-    {
-      name: "The Xeer System",
-      subtitle: "Customary Law",
-      description:
-        "Long before modern legal systems, the Somali people governed themselves through Xeer. This is a traditional constitution where elders gather under the shade of a tree to settle disputes and ensure peace through consensus and shared values.",
-      image: "https://picsum.photos/seed/xeer-elders/600/400",
-      icon: "⚖️",
-      href: "/history-culture/xeer-system",
-    },
-    {
-      name: "Traditional Leadership",
-      subtitle: "The Ugaas & Garad",
-      description:
-        'The social fabric of Jigjiga is held together by traditional leaders. Through the sacred "Caleemo-Saar" ceremony, these leaders are appointed to protect the culture, manage resources, and serve as the ultimate guardians of the community.',
-      image: "https://picsum.photos/seed/ugaas-leader/600/400",
-      icon: "👑",
-      href: "/history-culture/traditional-leadership",
-    },
-  ];
-
-  const arts = [
-    {
-      name: "Dhaanto",
-      subtitle: "The Pulse of the People",
-      description:
-        "Dhaanto is the iconic folk dance of the Somali Region. With its rhythmic clapping and synchronized footwork, it tells the story of nomadic life and celebration. It is the heartbeat of every festival in Jigjiga.",
-      image: "https://picsum.photos/seed/dhaanto-dance/600/400",
-      icon: "🎶",
-      href: "/history-culture/dhaanto",
-    },
-    {
-      name: "Nomadic Craftsmanship",
-      href: "/history-culture/somali-aqal",
-      subtitle: "The Somali Aqal",
-      description:
-        'The "Aqal" is a masterpiece of nomadic engineering — a portable, beautiful home designed for the Somali landscape. Alongside hand-woven mats and the "Haan" (milk vessels), these crafts showcase the artistic skill of our ancestors.',
-      image: "https://picsum.photos/seed/somali-aqal/600/400",
-      icon: "🏠",
-    },
-  ];
+  const content = usePageContent("history-culture", PAGE_META.defaults);
+  const legendaryFigures = content.groups?.find(g => g.id === "legendary")?.items || PAGE_META.defaults.groups![0].items;
+  const governance = content.groups?.find(g => g.id === "governance")?.items || PAGE_META.defaults.groups![1].items;
+  const arts = content.groups?.find(g => g.id === "arts")?.items || PAGE_META.defaults.groups![2].items;
 
   const landmarks = [
-    {
-      name: "The Karamara Pass",
-      description:
-        "More than just a mountain range, Karamara is a natural fortress. It has stood witness to the city's most important historical battles and remains a breathtaking landmark that defines the horizon of Jigjiga.",
-      image: "https://picsum.photos/seed/karamara-pass/900/500",
-    },
-    {
-      name: "The Ancient Wells",
-      description:
-        "Jigjiga's growth started at its water sources. These historic wells made the city a vital stop for trade caravans traveling between the coast and the highlands, turning a desert outpost into a thriving capital.",
-      image: "https://picsum.photos/seed/ancient-wells/900/500",
-    },
+    { name: "The Karamara Pass", description: "More than just a mountain range, Karamara is a natural fortress. It has stood witness to the city's most important historical battles and remains a breathtaking landmark that defines the horizon of Jigjiga.", image: "https://picsum.photos/seed/karamara-pass/900/500" },
+    { name: "The Ancient Wells", description: "Jigjiga's growth started at its water sources. These historic wells made the city a vital stop for trade caravans traveling between the coast and the highlands, turning a desert outpost into a thriving capital.", image: "https://picsum.photos/seed/ancient-wells/900/500" },
   ];
 
   return (
@@ -261,7 +197,7 @@ export default function HistoryAndCulture() {
                     {figure.tag}
                   </span>
                   <h3 className="text-2xl sm:text-3xl font-black text-foreground mb-1">{figure.name}</h3>
-                  <p className="text-primary font-semibold mb-4">{figure.title}</p>
+                  <p className="text-primary font-semibold mb-4">{figure.subtitle}</p>
                   <p className="text-gray-600 leading-relaxed text-base sm:text-lg mb-6">{figure.description}</p>
                   {figure.href && (
                     <Link href={figure.href}

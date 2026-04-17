@@ -3,12 +3,13 @@ import { Link, useLocation } from "wouter";
 import { useAdminAuth } from "@/contexts/AdminAuthContext";
 import {
   LayoutDashboard, FileText, Users, Settings, LogOut,
-  Menu, X, ChevronRight, Bell, ShieldCheck, Globe
+  Menu, X, ChevronRight, Bell, ShieldCheck, Globe, Pencil
 } from "lucide-react";
 
 const navItems = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { label: "Latest Updates", href: "/admin/posts", icon: FileText },
+  { label: "Content Manager", href: "/admin/content", icon: Pencil },
   { label: "User Management", href: "/admin/users", icon: Users },
   { label: "Site Settings", href: "/admin/settings", icon: Settings },
 ];

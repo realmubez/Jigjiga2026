@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "eat-drink/anjero-injera")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -20,7 +23,7 @@ const comparison = [
   { feature: "Best For", anjero: "Breakfast with spiced tea", injera: "Lunch/Dinner with stews" },
 ];
 
-const sections = [
+const DEFAULT_SECTIONS = [
   {
     title: "Somali Anjero — The Taste of Home",
     body: "Anjero (Canjeero) is the backbone of the Somali morning. Unlike its larger cousin, the Anjero is smaller, thinner, and has a mild, slightly sweet fermented taste. It is smooth on the bottom and covered in tiny \"eyes\" (holes) on the top — perfect for soaking up sauces and oils. Serve it drizzled with Subag (clarified butter) and sugar for the classic breakfast, or with Suugo (meat sauce) for a heartier start. Always paired with a steaming cup of Shaah Rinjiga.",
@@ -50,6 +53,12 @@ export default function AnjeroInjera() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+  const sections = content.sections?.length ? content.sections.map(s => ({ ...s, image: s.imageUrl })) : DEFAULT_SECTIONS;
+
 
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
@@ -92,7 +101,7 @@ export default function AnjeroInjera() {
       {/* HERO */}
       <section className="relative pt-24 min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/anjero-injera-hero/1600/800" alt="Anjero and Injera side by side" className="w-full h-full object-cover" />
+          <img src={heroImageUrl} alt="Anjero and Injera side by side" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/20" />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
@@ -184,7 +193,7 @@ export default function AnjeroInjera() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-[#f97316] mx-auto mb-6" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-4">
-            "Two breads, two traditions — one table, one Jigjiga."
+            {pullQuote}
           </blockquote>
           <p className="text-[#f97316] font-bold text-lg">— The Spirit of Jigjiga's Kitchen</p>
         </div>

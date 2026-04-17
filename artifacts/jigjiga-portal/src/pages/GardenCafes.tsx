@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "eat-drink/garden-cafes")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -72,6 +75,11 @@ export default function GardenCafes() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+
+
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
     { label: "News", href: "/#news" },
@@ -113,7 +121,7 @@ export default function GardenCafes() {
       {/* HERO */}
       <section className="relative pt-24 min-h-[75vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/jigjiga-cafe-rooftop-sunset/1600/900" alt="A rooftop cafe in Jigjiga with Karamara Mountains at sunset" className="w-full h-full object-cover" />
+          <img src={heroImageUrl} alt="A rooftop cafe in Jigjiga with Karamara Mountains at sunset" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-slate-900/10" />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
@@ -239,7 +247,7 @@ export default function GardenCafes() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-white mx-auto mb-6 opacity-60" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-4">
-            "Every great idea in Jigjiga starts over a cup of coffee in a garden."
+            {pullQuote}
           </blockquote>
           <p className="text-white/70 font-bold text-lg">— The New Urban Spirit of Jigjiga</p>
         </div>

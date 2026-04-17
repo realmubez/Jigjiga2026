@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Menu, X, Coffee, UtensilsCrossed, Flame, ShoppingBag } from "lucide-react";
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "eat-drink")!;
 
 const LogoImg = () => (
   <img src="/logo.png" alt="Jigjiga.net logo" className="w-12 h-12 sm:w-14 sm:h-14 object-contain" />
@@ -14,87 +18,6 @@ const fadeUp = {
 
 const stagger = { show: { transition: { staggerChildren: 0.13 } } };
 
-const signatureDishes = [
-  {
-    name: "Bariis Mindi",
-    subtitle: "The King of the Table",
-    description:
-      "Fragrant basmati rice cooked with cloves, cardamom, and cinnamon, served with tender goat or camel meat and garnished with raisins and fried onions — a perfect balance of savory and sweet.",
-    image: "https://picsum.photos/seed/bariis-mindi/600/400",
-    icon: "🍚",
-    href: "/eat-drink/bariis-mindi",
-  },
-  {
-    name: "Anjero & Injera",
-    subtitle: "The Two Breads",
-    description:
-      "Somali Anjero — light and slightly sweet — meets Ethiopian Injera, large and spongy, used as both plate and utensil for scooping up spicy Wot stews. The best of both worlds on one table.",
-    image: "https://picsum.photos/seed/anjero-injera/600/400",
-    icon: "🫓",
-    href: "/eat-drink/anjero-injera",
-  },
-];
-
-const nomadicStaples = [
-  {
-    name: "Camel Meat & Milk",
-    subtitle: "Hilib & Caano Geel",
-    description:
-      "Camel meat is a lean, rich delicacy of the Somali Region. Pair it with a cold glass of fresh camel milk (Caano Geel) — famously nutritious, with a distinct salty-sweet taste found nowhere else on earth.",
-    image: "https://picsum.photos/seed/camel-meat-milk/600/400",
-    icon: "🐪",
-    href: "/eat-drink/camel-meat-milk",
-  },
-  {
-    name: "Muqmad",
-    subtitle: "The Traveler's Food",
-    description:
-      "Preserved beef jerky cooked in clarified butter and spices, prepared for long desert journeys. Incredibly high in energy and lasting months without refrigeration — today still a beloved treat served with fresh Anjero.",
-    image: "https://picsum.photos/seed/muqmad-jerky/600/400",
-    icon: "🥩",
-    href: "/eat-drink/muqmad",
-  },
-];
-
-const beverages = [
-  {
-    name: "Shaah Rinjiga",
-    subtitle: "The Spiced Tea",
-    description:
-      "\"Rinjiga\" means color — and this tea earns its name with a deep reddish hue brewed from ginger, cinnamon, cardamom, and cloves. Every afternoon, Jigjiga gathers in cafes for a cup and a spirited Sheeko (conversation).",
-    image: "https://picsum.photos/seed/shaah-rinjiga-tea/600/400",
-    icon: "🫖",
-    href: "/eat-drink/shaah-rinjiga",
-  },
-  {
-    name: "Jebena Bun",
-    subtitle: "The Coffee Ceremony",
-    description:
-      "Green beans roasted over hot coals, ground by hand, and brewed in a traditional clay Jebena pot. The aroma of fresh coffee blending with burning Uunsi (frankincense) creates an atmosphere of peace and community.",
-    image: "https://picsum.photos/seed/jebena-coffee/600/400",
-    icon: "☕",
-    href: "/eat-drink/jebena-bun",
-  },
-];
-
-const diningSpots = [
-  {
-    name: "Garden Cafes & Modern Lounges",
-    description:
-      "Jigjiga is booming with modern dining. Spots like Heebaan Garden offer a lush outdoor escape for traditional meals. The city's growing cafe culture provides sleek urban vibes for the younger, tech-savvy generation.",
-    image: "https://picsum.photos/seed/garden-cafe-jigjiga/700/450",
-    tag: "Ambience",
-    href: "/eat-drink/garden-cafes",
-  },
-  {
-    name: "Local Street Food & Markets",
-    description:
-      "For the most authentic experience, head to the bustling markets. Try freshly fried Sambuus (savory triangles filled with meat or lentils) or sit down for Suugo iyo Baasto — Somali-style pasta, a legacy of the region's history.",
-    image: "https://picsum.photos/seed/jigjiga-street-food/700/450",
-    tag: "Authentic",
-    href: "/eat-drink/street-food",
-  },
-];
 
 export default function EatAndDrink() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -105,6 +28,13 @@ export default function EatAndDrink() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const content = usePageContent("eat-drink", PAGE_META.defaults);
+  const signatureDishes = content.groups?.find(g => g.id === "signature")?.items || PAGE_META.defaults.groups![0].items;
+  const nomadicStaples = content.groups?.find(g => g.id === "nomadic")?.items || PAGE_META.defaults.groups![1].items;
+  const beverages = content.groups?.find(g => g.id === "beverages")?.items || PAGE_META.defaults.groups![2].items;
+  const diningSpots = content.groups?.find(g => g.id === "dining")?.items || PAGE_META.defaults.groups![3].items;
+  const heroImageUrl = content.heroImageUrl || "https://picsum.photos/seed/jigjiga-food-hero/1600/800";
 
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
@@ -160,7 +90,7 @@ export default function EatAndDrink() {
       {/* ── HERO ── */}
       <section className="relative pt-24 min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/jigjiga-food-hero/1600/800" alt="The vibrant food scene of Jigjiga"
+          <img src={heroImageUrl} alt="The vibrant food scene of Jigjiga"
             className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/20" />
         </div>

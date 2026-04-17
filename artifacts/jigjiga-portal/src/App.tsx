@@ -38,6 +38,7 @@ import AdminPosts from "./pages/admin/AdminPosts";
 import AdminPostEditor from "./pages/admin/AdminPostEditor";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminSettings from "./pages/admin/AdminSettings";
+import AdminContent from "./pages/admin/AdminContent";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -97,6 +98,13 @@ function Router() {
           {() => (
             <AdminProtectedRoute>
               <AdminDashboard />
+            </AdminProtectedRoute>
+          )}
+        </Route>
+        <Route path="/admin/content">
+          {() => (
+            <AdminProtectedRoute>
+              <AdminContent />
             </AdminProtectedRoute>
           )}
         </Route>

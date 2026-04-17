@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "landmarks/jigjiga-university")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -27,7 +30,7 @@ const campusFeatures = [
   { emoji: "🏥", title: "The Referral Hospital", description: "The Jigjiga University Sheikh Hassan Yebere Referral Hospital — a critical health center for the entire surrounding region." },
 ];
 
-const sections = [
+const DEFAULT_SECTIONS = [
   {
     title: "Research & Innovation",
     body: "Jigjiga University is particularly renowned for its focus on the unique needs of the region. The Pastoralist Research Centre is a leading hub for studying dryland agriculture and nomadic lifestyles — finding modern solutions for water management and livestock health. The IT and Engineering departments are producing the developers and entrepreneurs who are digitizing the Somali Region, making JJU the primary talent pipeline for the city's rising tech sector.",
@@ -64,6 +67,12 @@ export default function JigjigaUniversity() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+  const sections = content.sections?.length ? content.sections.map(s => ({ ...s, image: s.imageUrl })) : DEFAULT_SECTIONS;
+
 
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
@@ -106,7 +115,7 @@ export default function JigjigaUniversity() {
       {/* HERO */}
       <section className="relative pt-24 min-h-[78vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/jigjiga-university-gate/1600/900" alt="The main entrance gate of Jigjiga University" className="w-full h-full object-cover" />
+          <img src={heroImageUrl} alt="The main entrance gate of Jigjiga University" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/10" />
           <div className="absolute inset-0 bg-primary/15" />
         </div>
@@ -223,7 +232,7 @@ export default function JigjigaUniversity() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-blue-400 mx-auto mb-6" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-4">
-            "Here, the elder's wisdom and the engineer's code meet in the same hallway — that is Jigjiga University."
+            {pullQuote}
           </blockquote>
           <p className="text-blue-400 font-bold text-lg">— Student, JJU Class of 2023</p>
         </div>

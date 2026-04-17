@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "history-culture/xeer-system")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -21,7 +24,7 @@ const quickFacts = [
   { icon: <Users className="w-4 h-4" />, label: "The Judges", value: "The Odayaal — Council of Elders" },
 ];
 
-const sections = [
+const DEFAULT_SECTIONS = [
   {
     title: "The Foundation of Somali Justice",
     body: "The Xeer (pronounced HAY-er) is one of the oldest polycentric legal systems in the world. Long before modern courts and written constitutions, the Somali people developed this sophisticated system of customary law. It is not written in books; instead, it is passed down through generations in the minds of the elders. It is the \"social contract\" that keeps families, clans, and the entire city of Jigjiga in a state of peace and mutual respect.",
@@ -63,6 +66,12 @@ export default function XeerSystem() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+  const sections = content.sections?.length ? content.sections.map(s => ({ ...s, image: s.imageUrl })) : DEFAULT_SECTIONS;
+
 
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
@@ -118,7 +127,7 @@ export default function XeerSystem() {
       {/* ── HERO ── */}
       <section className="relative pt-24 min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/xeer-hero-tree/1600/800" alt="Acacia tree under which Xeer is practised"
+          <img src={heroImageUrl} alt="Acacia tree under which Xeer is practised"
             className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/20" />
         </div>
@@ -201,7 +210,7 @@ export default function XeerSystem() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-[#f97316] mx-auto mb-6" />
           <blockquote className="text-xl sm:text-2xl font-black text-white leading-relaxed mb-4 italic">
-            "Xeer waa la xidhaa, xariggana waa la furayaa."
+            {pullQuote}
           </blockquote>
           <p className="text-white/60 text-base mb-4">
             "Law is tied, and the rope is untied." — Law provides the structure for freedom.

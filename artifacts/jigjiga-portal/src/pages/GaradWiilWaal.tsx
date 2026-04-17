@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "history-culture/garad-wiil-waal")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -21,7 +24,7 @@ const quickFacts = [
   { icon: <Plane className="w-4 h-4" />, label: "Modern Tribute", value: "Garad Wiil-Waal International Airport" },
 ];
 
-const sections = [
+const DEFAULT_SECTIONS = [
   {
     title: "The Ruler of the Adal Spirit",
     body: "Garad Wiil-Waal was a legendary 16th-century Sultan who ruled over the Jigjiga region and parts of the ancient Adal Sultanate. Unlike many leaders who were known only for their physical strength, Wiil-Waal became a legend because of his philosophy. He believed that a true leader must be a protector, a judge, and the most observant person in his kingdom.",
@@ -63,6 +66,12 @@ export default function GaradWiilWaal() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+  const sections = content.sections?.length ? content.sections.map(s => ({ ...s, image: s.imageUrl })) : DEFAULT_SECTIONS;
+
 
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
@@ -118,7 +127,7 @@ export default function GaradWiilWaal() {
       {/* ── HERO ── */}
       <section className="relative pt-24 min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/wiilwaal-hero/1600/800" alt="Jigjiga plains"
+          <img src={heroImageUrl} alt="Jigjiga plains"
             className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-slate-900/30" />
         </div>
@@ -201,7 +210,7 @@ export default function GaradWiilWaal() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-[#f97316] mx-auto mb-6" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-6">
-            "The tongue is both the sharpest sword and the greatest healer."
+            {pullQuote}
           </blockquote>
           <p className="text-[#f97316] font-bold text-lg">— Garad Wiil-Waal</p>
         </div>

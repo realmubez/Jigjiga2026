@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "eat-drink/street-food")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -88,6 +91,11 @@ export default function StreetFood() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+
+
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
     { label: "News", href: "/#news" },
@@ -129,7 +137,7 @@ export default function StreetFood() {
       {/* HERO */}
       <section className="relative pt-24 min-h-[75vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/jigjiga-street-market-hero/1600/900" alt="The bustling Taywan Market in Jigjiga" className="w-full h-full object-cover" />
+          <img src={heroImageUrl} alt="The bustling Taywan Market in Jigjiga" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/15" />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
@@ -282,7 +290,7 @@ export default function StreetFood() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-white mx-auto mb-6 opacity-60" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-4">
-            "Follow your nose. The smoke and spice will always lead you to the best food in the city."
+            {pullQuote}
           </blockquote>
           <p className="text-red-200 font-bold text-lg">— The Street Wisdom of Jigjiga</p>
         </div>

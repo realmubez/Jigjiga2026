@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "history-culture/dhaanto")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -27,7 +30,7 @@ const elements = [
   { emoji: "🎤", title: "The Chant", description: "A lead singer starts a verse and the entire group responds in a melodic chorus." },
 ];
 
-const sections = [
+const DEFAULT_SECTIONS = [
   {
     title: "The Soul of Somali Folklore",
     body: "Dhaanto is more than just a dance; it is the ultimate expression of Somali identity, joy, and storytelling. Originating in the Somali Region of Ethiopia, it has evolved from a nomadic celebration into a world-famous art form. In the streets and squares of Jigjiga, the sound of the Dhaanto beat is the signal that a celebration has truly begun.",
@@ -69,6 +72,12 @@ export default function Dhaanto() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+  const sections = content.sections?.length ? content.sections.map(s => ({ ...s, image: s.imageUrl })) : DEFAULT_SECTIONS;
+
 
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
@@ -124,7 +133,7 @@ export default function Dhaanto() {
       {/* ── HERO ── */}
       <section className="relative pt-24 min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/dhaanto-hero-dance/1600/800" alt="Dhaanto performers in Jigjiga"
+          <img src={heroImageUrl} alt="Dhaanto performers in Jigjiga"
             className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/20" />
         </div>
@@ -232,7 +241,7 @@ export default function Dhaanto() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-[#f97316] mx-auto mb-6" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-4">
-            "When the Dhaanto begins, there are no strangers — only dancers."
+            {pullQuote}
           </blockquote>
           <p className="text-[#f97316] font-bold text-lg">— Jigjiga Saying</p>
         </div>

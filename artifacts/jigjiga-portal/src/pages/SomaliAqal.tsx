@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "history-culture/somali-aqal")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -27,7 +30,7 @@ const interiorItems = [
   { emoji: "🪔", title: "The Aroma", description: "The inside is often perfumed with Uunsi (traditional incense), creating a welcoming and peaceful atmosphere." },
 ];
 
-const sections = [
+const DEFAULT_SECTIONS = [
   {
     title: "The Home of the Nomad",
     body: "The Aqal Soomaali is more than just a tent; it is a sophisticated, portable home that has sheltered Somali families for thousands of years. Designed to be built, taken apart, and transported on the back of a camel within hours, the Aqal is the ultimate symbol of the nomadic spirit. It represents a perfect harmony between human ingenuity and the harsh, beautiful environment of the Somali Region.",
@@ -69,6 +72,12 @@ export default function SomaliAqal() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+  const sections = content.sections?.length ? content.sections.map(s => ({ ...s, image: s.imageUrl })) : DEFAULT_SECTIONS;
+
 
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
@@ -124,7 +133,7 @@ export default function SomaliAqal() {
       {/* ── HERO ── */}
       <section className="relative pt-24 min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/aqal-hero-wide/1600/800" alt="A traditional Somali Aqal at sunrise"
+          <img src={heroImageUrl} alt="A traditional Somali Aqal at sunrise"
             className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/20" />
         </div>
@@ -232,7 +241,7 @@ export default function SomaliAqal() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-[#f97316] mx-auto mb-6" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-4">
-            "A home light enough to carry, but strong enough to survive the desert winds."
+            {pullQuote}
           </blockquote>
           <p className="text-[#f97316] font-bold text-lg">— The Aqal Soomaali</p>
         </div>

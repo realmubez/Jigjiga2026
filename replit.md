@@ -91,6 +91,25 @@ Generated Zod schemas from the OpenAPI spec (e.g. `HealthCheckResponse`). Used b
 
 Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHealthCheck`, `healthCheck`).
 
+### `artifacts/jigjiga-portal` (`@workspace/jigjiga-portal`)
+
+Premium React + Vite SPA — official city portal for Jigjiga, Ethiopia (jigjiga.net).
+
+- **Routing**: Wouter (`/`, `/history-culture`, `/eat-drink`, `/landmarks`, and 18 deep-dive article routes, `/admin/*`)
+- **Styling**: Tailwind CSS, Inter + Dancing Script fonts, blue primary `#2563eb`, orange `#f97316`
+- **Animation**: Framer Motion
+- **Icons**: Lucide React
+- **Content system** (localStorage-based, no backend required):
+  - `src/lib/contentStore.ts` — CRUD helpers for page content keyed by page ID
+  - `src/lib/pageDefaults.ts` — `PAGE_REGISTRY` with defaults for all 21 pages (hero image URL, pull quote, sections, card groups)
+  - `src/hooks/usePageContent.ts` — merges localStorage overrides with defaults; used by every public page
+  - `src/pages/admin/AdminContent.tsx` — rich admin UI (sections reorder/add/delete, card groups, hero image URL preview, pull quote editor)
+- **Admin**: `/admin/login` (credentials: admin / Jigjiga@2024), protected via `AdminProtectedRoute`; orange dot shows pages with saved content
+- **Hub pages**: HistoryAndCulture, EatAndDrink, Landmarks — all use `usePageContent` + content groups from PAGE_REGISTRY
+- **Article pages** (18 total): SayidHassan, GaradWiilWaal, XeerSystem, TraditionalLeadership, Dhaanto, SomaliAqal, BaarisMindi, AnjeroInjera, CamelMeatMilk, Muqmad, ShaahRinjiga, JebenaBun, GardenCafes, StreetFood, CentralMosque, CamelMarket, KararaMountains, JigjigaUniversity — all use `usePageContent` for hero image, pull quote, and sections
+- **Data model**: `ContentCard` uses `image` field; `ContentSection` uses `imageUrl` field
+- `pnpm --filter @workspace/jigjiga-portal run dev` — Vite dev server
+
 ### `scripts` (`@workspace/scripts`)
 
 Utility scripts package. Each script is a `.ts` file in `src/` with a corresponding npm script in `package.json`. Run scripts via `pnpm --filter @workspace/scripts run <script>`. Scripts can import any workspace package (e.g., `@workspace/db`) by adding it as a dependency in `scripts/package.json`.

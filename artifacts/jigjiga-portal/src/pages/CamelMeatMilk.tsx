@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "eat-drink/camel-meat-milk")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -26,7 +29,7 @@ const milkBenefits = [
   { emoji: "🥛", title: "Lactose-Friendly", description: "Does not curdle easily and is naturally easier for many people to digest than cow's milk." },
 ];
 
-const sections = [
+const DEFAULT_SECTIONS = [
   {
     title: "The Lifeblood of the Nomad",
     body: "In the semi-arid landscape of the Somali Region, the camel is the most respected creature. It provides transport, clothing, and most importantly, the most nutrient-dense food source available. In Jigjiga, eating camel meat and drinking its milk is a cultural rite of passage and a sign of vitality.",
@@ -62,6 +65,12 @@ export default function CamelMeatMilk() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+  const sections = content.sections?.length ? content.sections.map(s => ({ ...s, image: s.imageUrl })) : DEFAULT_SECTIONS;
+
 
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
@@ -104,7 +113,7 @@ export default function CamelMeatMilk() {
       {/* HERO */}
       <section className="relative pt-24 min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/camel-milk-hero/1600/800" alt="Fresh camel milk served in a traditional Haan vessel" className="w-full h-full object-cover" />
+          <img src={heroImageUrl} alt="Fresh camel milk served in a traditional Haan vessel" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/20" />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
@@ -218,7 +227,7 @@ export default function CamelMeatMilk() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-[#f97316] mx-auto mb-6" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-4">
-            "The camel is a gift — it carries your load, feeds your children, and connects you to your ancestors."
+            {pullQuote}
           </blockquote>
           <p className="text-[#f97316] font-bold text-lg">— Somali Nomadic Wisdom</p>
         </div>

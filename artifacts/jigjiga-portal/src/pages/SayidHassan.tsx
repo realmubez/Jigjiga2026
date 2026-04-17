@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowLeft, Menu, X, MapPin, Calendar, BookOpen, Sword, Quote } from "lucide-react";
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "history-culture/sayid-hassan")!;
 
 const LogoImg = () => (
   <img src="/logo.png" alt="Jigjiga.net logo" className="w-12 h-12 sm:w-14 sm:h-14 object-contain" />
@@ -21,7 +24,7 @@ const quickFacts = [
   { icon: <BookOpen className="w-4 h-4" />, label: "Legacy", value: "Father of Somali Nationalism and Master Poet" },
 ];
 
-const sections = [
+const DEFAULT_SECTIONS = [
   {
     title: "The Early Years: A Scholar in the Making",
     body: "Born in 1856 in the valley of Sa'adeed, Sayid Mohamed was a brilliant student of Islam long before he was a warrior. By the age of 19, he had earned the title of \"Sheikh\" for his mastery of the Quran and Islamic law. His travels to Mecca and the coastal ports like Berbera opened his eyes to the growing influence of foreign colonial powers in the Horn of Africa, sparking his mission to protect his people's faith and land.",
@@ -69,6 +72,11 @@ export default function SayidHassan() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+  const sections = content.sections?.length ? content.sections.map(s => ({ ...s, image: s.imageUrl })) : DEFAULT_SECTIONS;
 
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
@@ -124,7 +132,7 @@ export default function SayidHassan() {
       {/* ── HERO ── */}
       <section className="relative pt-24 min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/sayid-hero-banner/1600/800" alt="Jigjiga landscape"
+          <img src={heroImageUrl} alt="Jigjiga landscape"
             className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-slate-900/30" />
         </div>
@@ -207,7 +215,7 @@ export default function SayidHassan() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-[#f97316] mx-auto mb-6" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-6">
-            "I shall not die of disease or old age. I shall die fighting."
+            "{pullQuote}"
           </blockquote>
           <p className="text-[#f97316] font-bold text-lg">— Sayid Mohamed Abdullah Hassan</p>
         </div>

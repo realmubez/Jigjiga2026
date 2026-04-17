@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "eat-drink/shaah-rinjiga")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -38,7 +41,7 @@ const pairings = [
   { emoji: "🥞", name: "Malawah", description: "A sweet, greasy Somali pancake — rich and satisfying with a hot glass of tea." },
 ];
 
-const sections = [
+const DEFAULT_SECTIONS = [
   {
     title: "More Than Just Tea",
     body: "If Bariis Mindi is the king of the table, then Shaah Rinjiga is the king of the street. In every corner of Jigjiga — from humble roadside stalls to high-end garden cafes — you will hear the clinking of spoons against glass. \"Rinjiga\" means \"color\" or \"dye,\" referring to the deep, beautiful crimson hue of this highly spiced Somali tea.",
@@ -62,6 +65,12 @@ export default function ShaahRinjiga() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+  const sections = content.sections?.length ? content.sections.map(s => ({ ...s, image: s.imageUrl })) : DEFAULT_SECTIONS;
+
 
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
@@ -104,7 +113,7 @@ export default function ShaahRinjiga() {
       {/* HERO */}
       <section className="relative pt-24 min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/shaah-rinjiga-hero/1600/800" alt="A glass of deep crimson Shaah Rinjiga" className="w-full h-full object-cover" />
+          <img src={heroImageUrl} alt="A glass of deep crimson Shaah Rinjiga" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/20" />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
@@ -228,7 +237,7 @@ export default function ShaahRinjiga() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Coffee className="w-10 h-10 text-white mx-auto mb-6" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-4">
-            "Every big idea in Jigjiga was born over a glass of Shaah."
+            {pullQuote}
           </blockquote>
           <p className="text-white/80 font-bold text-lg">— The Street Wisdom of Jigjiga</p>
         </div>

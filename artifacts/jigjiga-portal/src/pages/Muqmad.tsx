@@ -1,3 +1,6 @@
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "eat-drink/muqmad")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -34,7 +37,7 @@ const servingWays = [
   { emoji: "🎁", title: "The Gift", description: "Because it lasts so long, Muqmad is the most common gift sent to Somali students or family members living abroad — home in a jar." },
 ];
 
-const sections = [
+const DEFAULT_SECTIONS = [
   {
     title: "The Original Nomadic Innovation",
     body: "Before modern refrigeration and canned goods, Somali nomads needed a way to carry protein across vast, hot deserts without it spoiling. The solution was Muqmad. By dehydrating high-quality meat and sealing it in pure clarified butter, they created a food that remains fresh for months — even in the scorching heat of the Jigjiga plains.",
@@ -64,6 +67,12 @@ export default function Muqmad() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
+  const heroImageUrl = content.heroImageUrl ?? "";
+  const pullQuote = content.pullQuote ?? "";
+  const sections = content.sections?.length ? content.sections.map(s => ({ ...s, image: s.imageUrl })) : DEFAULT_SECTIONS;
+
 
   const navLinks = [
     { label: "Explore City", href: "/#explore-city" },
@@ -106,7 +115,7 @@ export default function Muqmad() {
       {/* HERO */}
       <section className="relative pt-24 min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/muqmad-hero-jar/1600/800" alt="Muqmad preserved in a traditional Haandey container" className="w-full h-full object-cover" />
+          <img src={heroImageUrl} alt="Muqmad preserved in a traditional Haandey container" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/20" />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
@@ -211,7 +220,7 @@ export default function Muqmad() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <Quote className="w-10 h-10 text-[#f97316] mx-auto mb-6" />
           <blockquote className="text-2xl sm:text-3xl font-black text-white leading-relaxed mb-4">
-            "Muqmad is not just food — it is home, history, and love packed into a jar."
+            {pullQuote}
           </blockquote>
           <p className="text-[#f97316] font-bold text-lg">— Jigjiga Saying</p>
         </div>

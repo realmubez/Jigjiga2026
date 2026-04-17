@@ -29,6 +29,13 @@ export const PAGE_REGISTRY: PageMeta[] = [
           ],
         },
         {
+          id: "empires",
+          label: "Kingdoms & Empires",
+          items: [
+            { id: "e1", name: "The Adal Sultanate", subtitle: "The Golden Age of the Horn", description: "One of the most powerful Islamic empires in African history. Stretching from the shores of Zeila to the highlands of Ethiopia, Adal shaped the faith, language, and culture of Jigjiga for centuries.", image: "https://picsum.photos/seed/adal-empire/800/500", tag: "13th–16th Century", href: "/history-culture/adal-sultanate" },
+          ],
+        },
+        {
           id: "governance",
           label: "Governance & Law",
           items: [
@@ -79,6 +86,17 @@ export const PAGE_REGISTRY: PageMeta[] = [
         { id: "s3", title: "Justice for the Common People", body: "His greatest legacy was his fierce commitment to justice for ordinary people. He is said to have intervened personally when nomadic herdsmen were unfairly treated, settling disputes impartially regardless of clan status. This commitment made him beloved across the region and his judgments were sought from communities far beyond his immediate territory.", imageUrl: "/garad-wiil-waal-portrait.jpg" },
         { id: "s4", title: "Living Legacy in Jigjiga", body: "Today, the stories of Garad Wiil-Waal are taught to children across the Somali Region as parables of leadership, justice, and intellectual courage. His name lives on most visibly in the Jigjiga Gerad Wilwal Airport — welcoming every traveler who arrives in the city he once protected. The \"Garad\" title itself remains one of the most respected traditional leadership titles in the region.", imageUrl: "/jigjiga-gerad-wilwal-airport.jpg" },
       ],
+    },
+  },
+  {
+    id: "history-culture/adal-sultanate",
+    label: "The Adal Sultanate",
+    group: "History & Culture",
+    type: "article",
+    defaults: {
+      heroImageUrl: "",
+      pullQuote: "The armies of Adal did not conquer only with the sword — they conquered with knowledge, faith, and the power of a shared identity.",
+      sections: [],
     },
   },
   {

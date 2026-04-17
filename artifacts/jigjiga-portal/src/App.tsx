@@ -29,6 +29,7 @@ import CamelMarket from "./pages/CamelMarket";
 import KararaMountains from "./pages/KararaMountains";
 import JigjigaUniversity from "./pages/JigjigaUniversity";
 import TechHub from "./pages/TechHub";
+import AdalSultanate from "./pages/AdalSultanate";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
@@ -92,6 +93,7 @@ function Router() {
         <Route path="/landmarks/jigjiga-university" component={JigjigaUniversity} />
 
         <Route path="/tech-hub" component={TechHub} />
+        <Route path="/history-culture/adal-sultanate" component={AdalSultanate} />
 
         {/* Admin — login (public) */}
         <Route path="/admin/login" component={AdminLogin} />

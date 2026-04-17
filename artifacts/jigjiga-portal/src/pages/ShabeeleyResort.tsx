@@ -4,6 +4,8 @@ const PAGE_META = PAGE_REGISTRY.find(p => p.id === "landmarks/shabeeley-resort")
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
+import YouTube from "react-youtube";
+import type { YouTubeEvent } from "react-youtube";
 import {
   ArrowLeft, ArrowRight, Menu, X, Leaf, Sun, Camera,
   Quote, ArrowUpRight, Star, MapPin, Clock, Play, ChevronLeft, ChevronRight
@@ -185,42 +187,96 @@ function PhotoGallery() {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   YOUTUBE EMBED
+   YOUTUBE EMBED — no branding (3-technique approach)
 ═══════════════════════════════════════════════════════════════════ */
 function YouTubeEmbed({ videoId }: { videoId: string }) {
-  const [playing, setPlaying] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+  const [playerReady, setPlayerReady] = useState(false);
+  const playerRef = useRef<any>(null);
+
+  const playVideo = () => {
+    playerRef.current?.playVideo();
+  };
+
+  const onReady = (e: YouTubeEvent) => {
+    playerRef.current = e.target; // e.target is the YT player instance
+    setPlayerReady(true);
+  };
+
+  const onStateChange = (e: YouTubeEvent<number>) => {
+    if (e.data === 1) setHasStarted(true); // 1 = playing
+  };
+
+  const opts = {
+    width: "100%",
+    height: "100%",
+    playerVars: {
+      controls: 0,           // hide native control bar
+      modestbranding: 1,     // remove YouTube logo
+      rel: 0,                // no related videos at end
+      iv_load_policy: 3,     // hide annotations
+      disablekb: 1,          // disable keyboard shortcuts
+      fs: 0,                 // remove native fullscreen button
+      playsinline: 1,        // prevent iOS auto-fullscreen
+      color: "white" as const,
+      autoplay: 0,
+    },
+  };
+
   return (
-    <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-black" style={{ aspectRatio: "16/9" }}>
-      {!playing ? (
-        <>
+    /* TECHNIQUE 1 — clip top & bottom bars via overflow:hidden */
+    <div className="rounded-2xl shadow-2xl overflow-hidden" style={{ position: "relative", aspectRatio: "16/9" }}>
+      {/* YouTube iframe — sits taller than container, shifted up to clip branding bars */}
+      <YouTube
+        videoId={videoId}
+        opts={opts}
+        onReady={onReady}
+        onStateChange={onStateChange}
+        style={{
+          position: "absolute",
+          top: "-80px",
+          left: 0,
+          width: "100%",
+          height: "calc(100% + 160px)",
+          zIndex: 1,
+        }}
+        iframeClassName="w-full h-full"
+      />
+
+      {/* TECHNIQUE 3a — loading cover (before player is ready) */}
+      {!playerReady && (
+        <div style={{ position: "absolute", inset: 0, zIndex: 6 }}
+          className="bg-emerald-950 flex items-center justify-center">
+          <div className="w-10 h-10 border-4 border-amber-400 border-t-transparent rounded-full animate-spin" />
+        </div>
+      )}
+
+      {/* TECHNIQUE 3b — branded cover before first play */}
+      {playerReady && !hasStarted && (
+        <div
+          onClick={playVideo}
+          style={{ position: "absolute", inset: 0, zIndex: 10, cursor: "pointer" }}
+          className="bg-emerald-950 flex flex-col items-center justify-center group"
+        >
+          {/* Background photo of the resort */}
           <img
-            src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-            alt="Shabeeley Resort official video — click to play"
-            className="w-full h-full object-cover"
+            src="/shabeeley-domes-twilight.jpg"
+            alt="Shabeeley Resort"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40" />
-          <button
-            onClick={() => setPlaying(true)}
-            aria-label="Play Shabeeley Resort video"
-            className="absolute inset-0 flex items-center justify-center group"
-          >
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-red-600 hover:bg-red-500 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+          <div className="absolute inset-0 bg-emerald-950/60" />
+
+          {/* Branded content on top */}
+          <div className="relative z-10 flex flex-col items-center gap-4 px-6 text-center">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#f97316] hover:bg-[#f97316]/90 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
               <Play className="w-7 h-7 sm:w-9 sm:h-9 text-white fill-white ml-1" />
             </div>
-          </button>
-          <div className="absolute bottom-4 left-4 right-4 text-center">
-            <p className="text-white font-bold text-sm sm:text-base drop-shadow">Official Shabeeley Resort — الفيديو الرسمي</p>
-            <p className="text-white/60 text-xs mt-1">Click to play · Jigjiga, Ethiopia</p>
+            <div>
+              <p className="text-white font-black text-base sm:text-xl drop-shadow">Shabeeley Resort — Official Video</p>
+              <p className="text-white/70 text-xs sm:text-sm mt-1">Jigjiga, Somali Region · Ethiopia</p>
+            </div>
           </div>
-        </>
-      ) : (
-        <iframe
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
-          title="Shabeeley Resort Jigjiga official video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="absolute inset-0 w-full h-full"
-        />
+        </div>
       )}
     </div>
   );

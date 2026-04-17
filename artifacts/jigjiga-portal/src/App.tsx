@@ -30,6 +30,7 @@ import KararaMountains from "./pages/KararaMountains";
 import JigjigaUniversity from "./pages/JigjigaUniversity";
 import TechHub from "./pages/TechHub";
 import AdalSultanate from "./pages/AdalSultanate";
+import SomaliPoetry from "./pages/SomaliPoetry";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
@@ -94,6 +95,7 @@ function Router() {
 
         <Route path="/tech-hub" component={TechHub} />
         <Route path="/history-culture/adal-sultanate" component={AdalSultanate} />
+        <Route path="/history-culture/somali-poetry" component={SomaliPoetry} />
 
         {/* Admin — login (public) */}
         <Route path="/admin/login" component={AdminLogin} />

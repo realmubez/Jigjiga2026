@@ -49,6 +49,7 @@ export const PAGE_REGISTRY: PageMeta[] = [
           items: [
             { id: "a1", name: "Dhaanto", subtitle: "The Pulse of the People", description: "Dhaanto is the iconic folk dance of the Somali Region. With its rhythmic clapping and synchronized footwork, it tells the story of nomadic life and celebration.", image: "https://picsum.photos/seed/dhaanto-dance/600/400", icon: "🎶", href: "/history-culture/dhaanto" },
             { id: "a2", name: "Somali Aqal", subtitle: "The Portable Palace", description: "The Aqal is the traditional Somali portable home — a dome-shaped shelter woven by women from saplings and mats. A masterpiece of design that can be assembled in hours and carried by camel.", image: "https://picsum.photos/seed/somali-aqal/600/400", icon: "🏠", href: "/history-culture/somali-aqal" },
+            { id: "a3", name: "Somali Poetry (Maanso)", subtitle: "The Nation of Poets", description: "In Jigjiga, poetry is not just art — it is history, law, and news. From the supreme Gabay to the lively Heello, Somali poetry has shaped every era of the city's story.", image: "https://picsum.photos/seed/somali-poetry-maanso/600/400", icon: "📜", href: "/history-culture/somali-poetry" },
           ],
         },
       ],
@@ -96,6 +97,17 @@ export const PAGE_REGISTRY: PageMeta[] = [
     defaults: {
       heroImageUrl: "",
       pullQuote: "The armies of Adal did not conquer only with the sword — they conquered with knowledge, faith, and the power of a shared identity.",
+      sections: [],
+    },
+  },
+  {
+    id: "history-culture/somali-poetry",
+    label: "Somali Poetry (Maanso)",
+    group: "History & Culture",
+    type: "article",
+    defaults: {
+      heroImageUrl: "",
+      pullQuote: "Haddaad dhimasho ka cabsato, ha ku dhimin gabaygaaga. — If you fear death, do not let your poetry die.",
       sections: [],
     },
   },

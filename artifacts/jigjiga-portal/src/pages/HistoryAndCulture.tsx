@@ -33,9 +33,10 @@ export default function HistoryAndCulture() {
   const navLinks = ["Explore City", "News", "Culture", "Tech Hub"];
 
   const content = usePageContent("history-culture", PAGE_META.defaults);
-  const legendaryFigures = content.groups?.find(g => g.id === "legendary")?.items || PAGE_META.defaults.groups![0].items;
-  const governance = content.groups?.find(g => g.id === "governance")?.items || PAGE_META.defaults.groups![1].items;
-  const arts = content.groups?.find(g => g.id === "arts")?.items || PAGE_META.defaults.groups![2].items;
+  const legendaryFigures = content.groups?.find(g => g.id === "legendary")?.items || PAGE_META.defaults.groups!.find(g => g.id === "legendary")!.items;
+  const empires = content.groups?.find(g => g.id === "empires")?.items || PAGE_META.defaults.groups!.find(g => g.id === "empires")!.items;
+  const governance = content.groups?.find(g => g.id === "governance")?.items || PAGE_META.defaults.groups!.find(g => g.id === "governance")!.items;
+  const arts = content.groups?.find(g => g.id === "arts")?.items || PAGE_META.defaults.groups!.find(g => g.id === "arts")!.items;
 
   const landmarks = [
     { name: "The Karamara Pass", description: "More than just a mountain range, Karamara is a natural fortress. It has stood witness to the city's most important historical battles and remains a breathtaking landmark that defines the horizon of Jigjiga.", image: "https://picsum.photos/seed/karamara-pass/900/500" },
@@ -224,6 +225,35 @@ export default function HistoryAndCulture() {
                       className="w-full h-72 sm:h-80 object-cover hover:scale-105 transition-transform duration-500" />
                   )}
                 </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION: KINGDOMS & EMPIRES ── */}
+      <section className="py-20 sm:py-28 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger} className="mb-14">
+            <motion.p variants={fadeUp} className="font-script text-2xl text-[#f97316] mb-2">Boqortooyadii & Saldanadii</motion.p>
+            <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl font-black text-foreground">Kingdoms &amp; Empires</motion.h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {empires.map((item) => (
+              <motion.div key={item.name} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.15 }} variants={fadeUp}
+                className="relative bg-gradient-to-br from-slate-900 to-blue-950 rounded-2xl overflow-hidden shadow-xl group">
+                <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
+                <div className="relative z-10 p-8 sm:p-10">
+                  <span className="inline-block px-3 py-1 bg-[#f97316] text-white text-xs font-black rounded-full mb-5 uppercase tracking-widest">{item.tag}</span>
+                  <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">{item.name}</h3>
+                  <p className="text-[#f97316] font-semibold mb-4">{item.subtitle}</p>
+                  <p className="text-white/70 leading-relaxed text-base mb-6">{item.description}</p>
+                  {item.href && (
+                    <Link href={item.href} className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-slate-900 text-sm font-bold rounded-full hover:bg-orange-50 transition-colors">
+                      Read Full Story <ArrowUpRight className="w-4 h-4" />
+                    </Link>
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>

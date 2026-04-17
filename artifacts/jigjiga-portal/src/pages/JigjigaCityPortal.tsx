@@ -236,7 +236,7 @@ export default function JigjigaCityPortal() {
                 </div>
                 <div>
                   <p className="text-[10px] sm:text-xs text-gray-500 font-semibold">Total Reviews</p>
-                  <p className="text-lg sm:text-xl font-black text-gray-900">30k+</p>
+                  <p className="text-lg sm:text-xl font-black text-gray-900">15k+</p>
                 </div>
               </div>
 
@@ -248,7 +248,7 @@ export default function JigjigaCityPortal() {
                 </div>
                 <div>
                   <p className="text-[10px] sm:text-xs text-gray-500 font-semibold">Happy Visitors</p>
-                  <p className="text-lg sm:text-xl font-black text-gray-900">540k+</p>
+                  <p className="text-lg sm:text-xl font-black text-gray-900">5k+</p>
                 </div>
               </div>
             </motion.div>
@@ -261,9 +261,9 @@ export default function JigjigaCityPortal() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {[
-              { num: "30k+", label: "Happy Visitors" },
-              { num: "540k+", label: "Total Reviews" },
-              { num: "6,562+", label: "Listed Businesses" },
+              { num: "5k+", label: "Happy Visitors" },
+              { num: "15k+", label: "Total Reviews" },
+              { num: "100+", label: "Listed Businesses" },
               { num: "25+", label: "Years of Heritage" }
             ].map((stat, i) => (
               <div key={i} className="text-center px-2 py-4 rounded-2xl hover:bg-gray-50 transition-colors">

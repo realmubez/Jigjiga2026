@@ -51,6 +51,7 @@ export const PAGE_REGISTRY: PageMeta[] = [
             { id: "a2", name: "Somali Aqal", subtitle: "The Portable Palace", description: "The Aqal is the traditional Somali portable home — a dome-shaped shelter woven by women from saplings and mats. A masterpiece of design that can be assembled in hours and carried by camel.", image: "https://picsum.photos/seed/somali-aqal/600/400", icon: "🏠", href: "/history-culture/somali-aqal" },
             { id: "a3", name: "Somali Poetry (Maanso)", subtitle: "The Nation of Poets", description: "In Jigjiga, poetry is not just art — it is history, law, and news. From the supreme Gabay to the lively Heello, Somali poetry has shaped every era of the city's story.", image: "https://picsum.photos/seed/somali-poetry-maanso/600/400", icon: "📜", href: "/history-culture/somali-poetry" },
             { id: "a4", name: "Uunsi — The Scent of Somali Hospitality", subtitle: "Fooh, Myrrh & the Dabqaad", description: "In Jigjiga, a home isn't ready until the scent of Uunsi fills the air. This handcrafted incense blend of frankincense, myrrh, attars, and musk is the signature of Somali welcome.", image: "https://picsum.photos/seed/uunsi-incense-dabqaad/600/400", icon: "🌿", href: "/history-culture/uunsi" },
+            { id: "a5", name: "The Ultimate Guide to Festivals in Jigjiga", subtitle: "Eid · Flag Day · Qaaci Nights · Wedding Season", description: "From the massive Eid prayers at Jijiga Stadium to the intimate Qaaci Nights at the Sky Hotel — the insider's guide to every major celebration in Jigjiga.", image: "https://picsum.photos/seed/jigjiga-festivals-eid/600/400", icon: "🎉", href: "/history-culture/festivals" },
           ],
         },
       ],
@@ -98,6 +99,17 @@ export const PAGE_REGISTRY: PageMeta[] = [
     defaults: {
       heroImageUrl: "",
       pullQuote: "The armies of Adal did not conquer only with the sword — they conquered with knowledge, faith, and the power of a shared identity.",
+      sections: [],
+    },
+  },
+  {
+    id: "history-culture/festivals",
+    label: "The Ultimate Guide to Festivals in Jigjiga",
+    group: "History & Culture",
+    type: "article",
+    defaults: {
+      heroImageUrl: "",
+      pullQuote: "In Jigjiga, every festival is not just a celebration — it is a conversation between who we are and who we are becoming.",
       sections: [],
     },
   },

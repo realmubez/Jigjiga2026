@@ -100,13 +100,8 @@ export default function CentralMosque() {
       </header>
 
       {/* HERO — dusk with green glow */}
-      <section className="relative pt-24 min-h-[80vh] flex items-start overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={heroImageUrl} alt="Jijiga Central Mosque at dusk with illuminated green minarets" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/10" />
-          {/* green glow overlay */}
-          <div className="absolute inset-0 bg-emerald-900/20" />
-        </div>
+      <section className="relative pt-24 pb-20 overflow-hidden bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "radial-gradient(ellipse at 15% 50%, rgba(20,184,166,0.18) 0%, transparent 55%), radial-gradient(ellipse at 80% 10%, rgba(37,99,235,0.2) 0%, transparent 55%)" }} />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-12 w-full">
           <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="flex items-center gap-3 mb-6">
             <Link href="/landmarks" className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm font-medium transition-colors">

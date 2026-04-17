@@ -50,6 +50,7 @@ export const PAGE_REGISTRY: PageMeta[] = [
             { id: "a1", name: "Dhaanto", subtitle: "The Pulse of the People", description: "Dhaanto is the iconic folk dance of the Somali Region. With its rhythmic clapping and synchronized footwork, it tells the story of nomadic life and celebration.", image: "https://picsum.photos/seed/dhaanto-dance/600/400", icon: "🎶", href: "/history-culture/dhaanto" },
             { id: "a2", name: "Somali Aqal", subtitle: "The Portable Palace", description: "The Aqal is the traditional Somali portable home — a dome-shaped shelter woven by women from saplings and mats. A masterpiece of design that can be assembled in hours and carried by camel.", image: "https://picsum.photos/seed/somali-aqal/600/400", icon: "🏠", href: "/history-culture/somali-aqal" },
             { id: "a3", name: "Somali Poetry (Maanso)", subtitle: "The Nation of Poets", description: "In Jigjiga, poetry is not just art — it is history, law, and news. From the supreme Gabay to the lively Heello, Somali poetry has shaped every era of the city's story.", image: "https://picsum.photos/seed/somali-poetry-maanso/600/400", icon: "📜", href: "/history-culture/somali-poetry" },
+            { id: "a4", name: "Uunsi — The Scent of Somali Hospitality", subtitle: "Fooh, Myrrh & the Dabqaad", description: "In Jigjiga, a home isn't ready until the scent of Uunsi fills the air. This handcrafted incense blend of frankincense, myrrh, attars, and musk is the signature of Somali welcome.", image: "https://picsum.photos/seed/uunsi-incense-dabqaad/600/400", icon: "🌿", href: "/history-culture/uunsi" },
           ],
         },
       ],
@@ -97,6 +98,17 @@ export const PAGE_REGISTRY: PageMeta[] = [
     defaults: {
       heroImageUrl: "",
       pullQuote: "The armies of Adal did not conquer only with the sword — they conquered with knowledge, faith, and the power of a shared identity.",
+      sections: [],
+    },
+  },
+  {
+    id: "history-culture/uunsi",
+    label: "Uunsi — The Scent of Somali Hospitality",
+    group: "History & Culture",
+    type: "article",
+    defaults: {
+      heroImageUrl: "",
+      pullQuote: "Guri aan Uunsi lahayn, guri aan martida u diyaarsanayn. — A home without Uunsi is a home not prepared for its guest.",
       sections: [],
     },
   },

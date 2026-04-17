@@ -31,6 +31,7 @@ import JigjigaUniversity from "./pages/JigjigaUniversity";
 import TechHub from "./pages/TechHub";
 import AdalSultanate from "./pages/AdalSultanate";
 import SomaliPoetry from "./pages/SomaliPoetry";
+import Uunsi from "./pages/Uunsi";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
@@ -96,6 +97,7 @@ function Router() {
         <Route path="/tech-hub" component={TechHub} />
         <Route path="/history-culture/adal-sultanate" component={AdalSultanate} />
         <Route path="/history-culture/somali-poetry" component={SomaliPoetry} />
+        <Route path="/history-culture/uunsi" component={Uunsi} />
 
         {/* Admin — login (public) */}
         <Route path="/admin/login" component={AdminLogin} />

@@ -52,6 +52,7 @@ export const PAGE_REGISTRY: PageMeta[] = [
             { id: "a3", name: "Somali Poetry (Maanso)", subtitle: "The Nation of Poets", description: "In Jigjiga, poetry is not just art — it is history, law, and news. From the supreme Gabay to the lively Heello, Somali poetry has shaped every era of the city's story.", image: "https://picsum.photos/seed/somali-poetry-maanso/600/400", icon: "📜", href: "/history-culture/somali-poetry" },
             { id: "a4", name: "Uunsi — The Scent of Somali Hospitality", subtitle: "Fooh, Myrrh & the Dabqaad", description: "In Jigjiga, a home isn't ready until the scent of Uunsi fills the air. This handcrafted incense blend of frankincense, myrrh, attars, and musk is the signature of Somali welcome.", image: "https://picsum.photos/seed/uunsi-incense-dabqaad/600/400", icon: "🌿", href: "/history-culture/uunsi" },
             { id: "a5", name: "The Ultimate Guide to Festivals in Jigjiga", subtitle: "Eid · Flag Day · Qaaci Nights · Wedding Season", description: "From the massive Eid prayers at Jijiga Stadium to the intimate Qaaci Nights at the Sky Hotel — the insider's guide to every major celebration in Jigjiga.", image: "https://picsum.photos/seed/jigjiga-festivals-eid/600/400", icon: "🎉", href: "/history-culture/festivals" },
+            { id: "a6", name: "The Soul of Jigjiga Nights", subtitle: "Qaaci · Singer Shows · The Aroos", description: "From intimate Kaban evenings at the Sky Hotel to stadium concerts with Suldaan Seeraar — the definitive guide to Jigjiga's music scene and wedding season.", image: "https://picsum.photos/seed/jigjiga-qaaci-nightlife/600/400", icon: "🎵", href: "/history-culture/qaaci-nightlife" },
           ],
         },
       ],
@@ -99,6 +100,17 @@ export const PAGE_REGISTRY: PageMeta[] = [
     defaults: {
       heroImageUrl: "",
       pullQuote: "The armies of Adal did not conquer only with the sword — they conquered with knowledge, faith, and the power of a shared identity.",
+      sections: [],
+    },
+  },
+  {
+    id: "history-culture/qaaci-nightlife",
+    label: "The Soul of Jigjiga Nights",
+    group: "History & Culture",
+    type: "article",
+    defaults: {
+      heroImageUrl: "",
+      pullQuote: "In Jigjiga, the night has its own language — and it speaks in the voice of the Kaban.",
       sections: [],
     },
   },

@@ -664,7 +664,7 @@ export default function JigjigaCityPortal() {
             <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
               <h4 className="font-bold text-gray-900 mb-4 text-sm sm:text-base">Services</h4>
               <ul className="flex flex-col gap-3 text-gray-500 font-medium text-sm">
-                {[["Business Portal", "https://business.jigjiga.net"], ["Tech Hub", "#tech-hub"], ["Add Listing", "#"], ["Advertise", "#"]].map(([l, h]) => (
+                {[["Business Portal", "https://business.jigjiga.net"], ["Tech Hub", "/tech-hub"], ["Add Listing", "#"], ["Advertise", "#"]].map(([l, h]) => (
                   <li key={l}><a href={h} className="hover:text-primary transition-colors">{l}</a></li>
                 ))}
               </ul>

@@ -28,6 +28,7 @@ import CentralMosque from "./pages/CentralMosque";
 import CamelMarket from "./pages/CamelMarket";
 import KararaMountains from "./pages/KararaMountains";
 import JigjigaUniversity from "./pages/JigjigaUniversity";
+import TechHub from "./pages/TechHub";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
@@ -89,6 +90,8 @@ function Router() {
         <Route path="/landmarks/camel-market" component={CamelMarket} />
         <Route path="/landmarks/karamara-mountains" component={KararaMountains} />
         <Route path="/landmarks/jigjiga-university" component={JigjigaUniversity} />
+
+        <Route path="/tech-hub" component={TechHub} />
 
         {/* Admin — login (public) */}
         <Route path="/admin/login" component={AdminLogin} />

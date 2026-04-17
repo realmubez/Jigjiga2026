@@ -628,9 +628,9 @@ export default function JigjigaCityPortal() {
       {/* ── FOOTER ── */}
       <footer className="bg-background pt-12 sm:pt-20 pb-8 sm:pb-10 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12 mb-10 sm:mb-16">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12 mb-10 sm:mb-16">
             {/* Brand */}
-            <div className="col-span-1 sm:col-span-2 lg:col-span-2 flex flex-col items-center sm:items-start text-center sm:text-left">
+            <div className="col-span-2 lg:col-span-2 flex flex-col items-center sm:items-start text-center sm:text-left">
               <Link href="/" className="flex items-center gap-0 mb-5 outline-none">
                 <img src="/logo.png" alt="Jigjiga.net logo" className="w-14 h-14 object-contain" />
                 <span className="text-xl font-black tracking-tight text-foreground -ml-4">
@@ -671,7 +671,7 @@ export default function JigjigaCityPortal() {
             </div>
 
             {/* Contact + Language */}
-            <div className="col-span-1 sm:col-span-1 flex flex-col items-center sm:items-start text-center sm:text-left">
+            <div className="col-span-2 sm:col-span-1 flex flex-col items-center sm:items-start text-center sm:text-left">
               <h4 className="font-bold text-gray-900 mb-4 text-sm sm:text-base">Contact</h4>
               <ul className="flex flex-col gap-3 text-gray-500 font-medium text-sm mb-6">
                 <li className="flex items-start justify-center sm:justify-start gap-2"><MapPin className="w-4 h-4 mt-0.5 shrink-0" /> Jigjiga, Somali Region, Ethiopia</li>

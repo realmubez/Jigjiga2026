@@ -125,12 +125,12 @@ export default function GaradWiilWaal() {
       </header>
 
       {/* ── HERO ── */}
-      <section className="relative pt-24 pb-20 overflow-hidden bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
+      <section className="relative pt-24 pb-8 overflow-hidden bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
         <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "radial-gradient(ellipse at 15% 50%, rgba(249,115,22,0.15) 0%, transparent 55%), radial-gradient(ellipse at 80% 10%, rgba(37,99,235,0.22) 0%, transparent 55%)" }} />
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-12 w-full">
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-2 w-full text-center">
           <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
-            className="flex items-center gap-3 mb-6">
+            className="flex items-center justify-center gap-3 mb-6">
             <Link href="/history-culture"
               className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm font-medium transition-colors">
               <ArrowLeft className="w-4 h-4" /> History &amp; Culture

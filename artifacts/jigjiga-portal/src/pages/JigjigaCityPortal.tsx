@@ -223,9 +223,9 @@ export default function JigjigaCityPortal() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-primary/10 rounded-full blur-3xl -z-10" />
 
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-indigo-900/10 border-4 sm:border-8 border-white">
-                <img src="https://picsum.photos/seed/jigjigahero/800/1000" alt="Jigjiga City"
-                  className="w-full object-cover aspect-[4/5]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <img src="/jigjiga-city-night.png" alt="Jigjiga City at Night"
+                  className="w-full object-cover aspect-[4/5]" style={{ objectPosition: "center 30%" }} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
               </div>
 
               {/* Stat: Reviews — bottom left, always inside bounds */}

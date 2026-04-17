@@ -137,7 +137,7 @@ export default function JebenaBun() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={fadeUp}>
-              <div className="w-10 h-1 bg-[#f97316] rounded-full mb-5" />
+              <div className="w-10 h-1 bg-[#f97316] rounded-full mb-5 mx-auto lg:mx-0" />
               <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-4 leading-tight">The Soul of the Household</h2>
               <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
                 While tea is the drink of the bustling streets, Jebena Bun is the heart of the home. In Jigjiga, the coffee ceremony is a daily ritual — usually performed in the late afternoon — that brings family, neighbors, and friends together. It is a time to slow down, talk about the day, and honor the guest. It is usually performed by the woman of the house, who takes great pride in the quality of her brew.

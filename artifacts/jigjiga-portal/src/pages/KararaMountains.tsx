@@ -140,8 +140,8 @@ export default function KararaMountains() {
       <section className="py-16 sm:py-24 bg-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeUp}>
-              <div className="w-10 h-1 bg-stone-500 rounded-full mb-5" />
+            <motion.div variants={fadeUp} className="text-center lg:text-left">
+              <div className="w-10 h-1 bg-stone-500 rounded-full mb-5 mx-auto lg:mx-0" />
               <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-4 leading-tight">The Guardian of Jigjiga</h2>
               <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
                 Rising majestically to the west of the city, the Silsiladda Karamara (Karamara Range) is the first thing you see as you approach Jigjiga. These mountains act as a natural gateway between the high Ethiopian plateau and the vast, low-lying Somali plains. For the people of Jigjiga, Karamara is not just a geographical feature — it is a symbol of strength and protection that has watched over the city for centuries. Many local poems and songs mention it as "the mountain of clouds" that brings the rain to the thirsty plains below.
@@ -161,8 +161,8 @@ export default function KararaMountains() {
             <motion.div variants={fadeUp} className="overflow-hidden rounded-2xl shadow-lg">
               <img src="https://picsum.photos/seed/karamara-acacia-green/800/500" alt="The acacia-covered slopes of Karamara in the rainy season" className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
             </motion.div>
-            <motion.div variants={fadeUp}>
-              <div className="w-10 h-1 bg-stone-500 rounded-full mb-5" />
+            <motion.div variants={fadeUp} className="text-center lg:text-left">
+              <div className="w-10 h-1 bg-stone-500 rounded-full mb-5 mx-auto lg:mx-0" />
               <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-4 leading-tight">A Landscape of Natural Beauty</h2>
               <p className="text-gray-600 leading-relaxed text-base sm:text-lg mb-6">
                 Karamara offers a stark and beautiful contrast to the flat savannahs that surround it. The air here is noticeably cooler and thinner than in the city. The slopes are covered in hardy acacia trees and, during the rainy season (Gu), the entire range transforms into a vibrant emerald green. From the highest points of the pass, you can see the entire layout of Jigjiga spreading out like a map — on a clear day, the view stretches for dozens of kilometers across the border toward the horizon of the Horn of Africa.

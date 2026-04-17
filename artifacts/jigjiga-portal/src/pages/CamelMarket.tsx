@@ -140,8 +140,8 @@ export default function CamelMarket() {
       <section className="py-16 sm:py-24 bg-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeUp}>
-              <div className="w-10 h-1 bg-amber-500 rounded-full mb-5" />
+            <motion.div variants={fadeUp} className="text-center lg:text-left">
+              <div className="w-10 h-1 bg-amber-500 rounded-full mb-5 mx-auto lg:mx-0" />
               <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-4 leading-tight">The Largest Livestock Hub in the Horn</h2>
               <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
                 Jigjiga's camel market is legendary. As one of the largest livestock trading centers in East Africa, it serves as a massive crossroads for traders coming from across the Somali Region, Somaliland, and deeper into the Ethiopian highlands. On any given day, thousands of camels are brought here, creating a sea of humps and a symphony of sounds you won't find anywhere else on Earth. It is not just a marketplace — it is a living museum of nomadic civilization.
@@ -220,8 +220,8 @@ export default function CamelMarket() {
       <section className="py-16 sm:py-20 bg-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeUp}>
-              <div className="w-10 h-1 bg-amber-500 rounded-full mb-5" />
+            <motion.div variants={fadeUp} className="text-center lg:text-left">
+              <div className="w-10 h-1 bg-amber-500 rounded-full mb-5 mx-auto lg:mx-0" />
               <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-4 leading-tight">The Market Beyond Camels</h2>
               <p className="text-gray-600 leading-relaxed text-base sm:text-lg mb-8">While camels are the stars, the market also hosts thousands of goats, sheep, and cattle. Surrounding the livestock area is a secondary market where you can buy the tools and fashion of the nomadic trade.</p>
               <div className="space-y-4">

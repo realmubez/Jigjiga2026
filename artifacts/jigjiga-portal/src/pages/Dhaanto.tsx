@@ -214,8 +214,8 @@ export default function Dhaanto() {
                 variants={stagger}
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ${i % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
               >
-                <motion.div variants={fadeUp} className={i % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <div className="w-10 h-1 bg-[#f97316] rounded-full mb-5" />
+                <motion.div variants={fadeUp} className={"text-center lg:text-left " + (i % 2 === 1 ? "lg:col-start-2" : "")}>
+                  <div className="w-10 h-1 bg-[#f97316] rounded-full mb-5 mx-auto lg:mx-0" />
                   <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-4 leading-tight">{sec.title}</h2>
                   <p className="text-gray-600 leading-relaxed text-base sm:text-lg">{sec.body}</p>
                 </motion.div>

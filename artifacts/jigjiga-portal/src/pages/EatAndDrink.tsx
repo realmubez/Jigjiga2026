@@ -217,9 +217,9 @@ export default function EatAndDrink() {
               <motion.div key={bev.name}
                 initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.12 }} variants={stagger}
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ${i % 2 === 1 ? "lg:grid-flow-dense" : ""}`}>
-                <motion.div variants={fadeUp} className={i % 2 === 1 ? "lg:col-start-2" : ""}>
+                <motion.div variants={fadeUp} className={"text-center lg:text-left " + (i % 2 === 1 ? "lg:col-start-2" : "")}>
                   <span className="text-5xl block mb-4">{bev.icon}</span>
-                  <div className="w-10 h-1 bg-[#f97316] rounded-full mb-5" />
+                  <div className="w-10 h-1 bg-[#f97316] rounded-full mb-5 mx-auto lg:mx-0" />
                   <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-2">{bev.name}</h2>
                   <p className="text-[#f97316] font-semibold text-sm mb-4">{bev.subtitle}</p>
                   <p className="text-gray-600 leading-relaxed text-base sm:text-lg mb-6">{bev.description}</p>

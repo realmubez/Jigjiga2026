@@ -183,7 +183,7 @@ export default function GardenCafes() {
             {cafes.map((cafe, i) => (
               <motion.div key={cafe.name} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.1 }} variants={stagger}
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ${i % 2 === 1 ? "lg:grid-flow-dense" : ""}`}>
-                <motion.div variants={fadeUp} className={i % 2 === 1 ? "lg:col-start-2" : ""}>
+                <motion.div variants={fadeUp} className={"text-center lg:text-left " + (i % 2 === 1 ? "lg:col-start-2" : "")}>
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-3xl">{cafe.emoji}</span>
                     <span className={`px-3 py-1 ${cafe.badgeColor} text-white text-xs font-black rounded-full uppercase tracking-widest`}>{cafe.badge}</span>

@@ -54,8 +54,8 @@ const DEFAULT_SECTIONS = [
   {
     title: "Community Impact",
     body: "The university's reach extends far beyond its walls. Through its legal aid clinics, agricultural outreach programs, and the Sheikh Hassan Yebere Referral Hospital, JJU provides essential services to the people of Jigjiga and the surrounding Somali Region. It is the intellectual engine of the city — where the most pressing social and economic challenges of the region are studied, debated, and solved.",
-    image: "/jju-gate-night-wide.jpg",
-    imageAlt: "Jigjiga University illuminated entrance at night — a symbol of progress and opportunity",
+    image: "/hospital-aerial-wide.jpg",
+    imageAlt: "Aerial view of Sheikh Hassan Yebere Referral Hospital — the JJU teaching hospital that serves the entire Somali Region",
   },
 ];
 
@@ -381,6 +381,33 @@ export default function JigjigaUniversity() {
               </div>
               <div className="overflow-hidden rounded-2xl shadow-lg flex-1">
                 <img src="/jju-gate-night-dance.jpg" alt="Jigjiga University gate with backlit traditional dancer mural at night" className="w-full h-full min-h-[148px] object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── REFERRAL HOSPITAL SHOWCASE ── */}
+      <section className="bg-slate-950 py-12">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <span className="inline-block px-3 py-1 bg-blue-500/20 text-blue-300 text-xs font-black rounded-full mb-3 uppercase tracking-widest">Healthcare</span>
+            <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">Sheikh Hassan Yebere Referral Hospital</h2>
+            <p className="text-white/50 text-sm max-w-xl mx-auto">JJU's affiliated teaching hospital — the largest and most advanced public hospital in the Somali Region, serving millions of patients from across eastern Ethiopia</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="overflow-hidden rounded-2xl shadow-lg">
+              <img src="/hospital-aerial-wide.jpg" alt="Wide aerial view of Sheikh Hassan Yebere Referral Hospital — red-roofed building, circular fountain forecourt, and green grounds with Jigjiga city in the background"
+                className="w-full h-64 sm:h-72 object-cover hover:scale-105 transition-transform duration-500" />
+              <div className="bg-slate-900 px-4 py-3">
+                <p className="text-xs font-semibold text-blue-300">Wide aerial — the hospital campus with its circular fountain, the city spreading in all directions behind it</p>
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-2xl shadow-lg">
+              <img src="/hospital-aerial-close.jpg" alt="Close aerial view of Sheikh Hassan Yebere Referral Hospital — distinctive red-tiled roof, main entrance canopy, and lush landscaped grounds"
+                className="w-full h-64 sm:h-72 object-cover hover:scale-105 transition-transform duration-500" />
+              <div className="bg-slate-900 px-4 py-3">
+                <p className="text-xs font-semibold text-blue-300">Close aerial — the distinctive red-tiled roof and main entrance canopy; JJU medical students complete their clinical training here</p>
               </div>
             </div>
           </div>

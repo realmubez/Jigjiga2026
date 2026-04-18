@@ -95,10 +95,10 @@ export default function JigjigaCityPortal() {
   ];
 
   const newsItems = [
-    { id: 1, title: "New Tech Center Opens in Jigjiga", date: "Oct 24, 2024", category: "Technology", image: "https://picsum.photos/seed/techcenter/800/600", featured: true },
-    { id: 2, title: "Somali Cultural Festival Next Week", date: "Oct 28, 2024", category: "Culture", image: "https://picsum.photos/seed/culturefest/400/300" },
-    { id: 3, title: "Infrastructure Upgrades Announced", date: "Nov 02, 2024", category: "City", image: "https://picsum.photos/seed/infrastructure/400/300" },
-    { id: 4, title: "Local Entrepreneurs Win Regional Award", date: "Nov 05, 2024", category: "Business", image: "https://picsum.photos/seed/awardwin/400/300" }
+    { id: 1, title: "Grand Street Iftar 2026 — Thousands Unite on Jigjiga's Main Boulevard", date: "Apr 18, 2026", category: "Ramadan 2026", image: "/iftar-drone-night.jpg", href: "/news/grand-street-iftar-2026" },
+    { id: 2, title: "Jigjiga Festivals — Celebrating the Soul of the Somali Region", date: "Mar 15, 2026", category: "Culture", image: "/karamara-summit-tower.jpg", href: "/history-culture/festivals" },
+    { id: 3, title: "JJU Graduation 2025 — The Hambalyo Season Returns", date: "Jul 22, 2025", category: "Education", image: "/jju-gate-night-wide.jpg", href: "/history-culture/jju-graduation" },
+    { id: 4, title: "Sheikh Hassan Yasin Hospital — Modern Healthcare Arrives", date: "Jan 10, 2026", category: "Health", image: "/hospital-aerial-wide.jpg", href: "/landmarks/sheikh-hassan-hospital" },
   ];
 
   const categories = [
@@ -479,7 +479,7 @@ export default function JigjigaCityPortal() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {/* Featured */}
-            <div className="relative rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden group cursor-pointer shadow-lg">
+            <Link href={newsItems[0].href} className="relative rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden group cursor-pointer shadow-lg block">
               <img src={newsItems[0].image} alt={newsItems[0].title}
                 className="w-full object-cover min-h-[280px] sm:min-h-[380px] lg:min-h-[480px] group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -490,12 +490,12 @@ export default function JigjigaCityPortal() {
                   <Calendar className="w-4 h-4" /> {newsItems[0].date}
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Stacked small cards */}
             <div className="flex flex-col gap-4 sm:gap-5">
               {newsItems.slice(1).map((news) => (
-                <div key={news.id}
+                <Link key={news.id} href={news.href}
                   className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 flex gap-3 sm:gap-5 border border-gray-100 shadow-sm hover:shadow-lg transition-all group cursor-pointer items-center">
                   <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-xl sm:rounded-2xl overflow-hidden shrink-0">
                     <img src={news.image} alt={news.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
@@ -507,7 +507,7 @@ export default function JigjigaCityPortal() {
                       <Calendar className="w-3.5 h-3.5" /> {news.date}
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

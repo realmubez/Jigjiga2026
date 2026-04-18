@@ -39,6 +39,7 @@ import QaaciNightlife from "./pages/QaaciNightlife";
 import FlagDay from "./pages/FlagDay";
 import JJUGraduation from "./pages/JJUGraduation";
 import MotherLanguageDay from "./pages/MotherLanguageDay";
+import GrandStreetIftar from "./pages/GrandStreetIftar";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
@@ -112,6 +113,7 @@ function Router() {
         <Route path="/history-culture/flag-day" component={FlagDay} />
         <Route path="/history-culture/jju-graduation" component={JJUGraduation} />
         <Route path="/history-culture/mother-language-day" component={MotherLanguageDay} />
+        <Route path="/news/grand-street-iftar-2026" component={GrandStreetIftar} />
 
         {/* Admin — login (public) */}
         <Route path="/admin/login" component={AdminLogin} />

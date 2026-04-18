@@ -6,6 +6,7 @@ import {
   Building2, Truck, ShoppingBag, Leaf, Wifi, Users,
   MapPin, ChevronRight, ArrowUpRight, Zap, BarChart3,
 } from "lucide-react";
+import SiteHeader from "@/components/SiteHeader";
 
 const LogoImg = () => (
   <img src="/logo.png" alt="Jigjiga.net logo" className="w-12 h-12 sm:w-14 sm:h-14 object-contain" />
@@ -111,15 +112,7 @@ const INVEST_REASONS = [
 ];
 
 export default function TechHub() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("innovation");
-
-  useEffect(() => {
-    const handler = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
 
   const navLinks = [
     { label: "Home", href: "/" },
@@ -133,39 +126,7 @@ export default function TechHub() {
   return (
     <div className="min-h-screen bg-[#060d1f] font-sans">
       {/* ── HEADER ── */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-[#060d1f]/95 backdrop-blur-lg border-b border-white/10 py-3 shadow-lg" : "bg-transparent py-4"}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4">
-            <Link href="/" className="flex items-center gap-0 group outline-none shrink-0">
-              <LogoImg />
-              <span className="text-base sm:text-lg font-black tracking-tight text-white -ml-4">IGJIGA</span>
-            </Link>
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-              {navLinks.map((item) => (
-                <Link key={item.label} href={item.href} className="text-sm font-semibold text-white/70 hover:text-white transition-colors whitespace-nowrap">{item.label}</Link>
-              ))}
-            </nav>
-            <div className="flex items-center gap-3">
-              <a href="mailto:invest@jigjiga.net" className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 bg-cyan-500 text-white text-sm font-bold rounded-full hover:bg-cyan-400 transition-colors">
-                Invest in Jigjiga <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden p-2 rounded-lg text-white/80 hover:bg-white/10 transition-colors">
-                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
-          </div>
-          {mobileMenuOpen && (
-            <div className="lg:hidden py-4 border-t border-white/10 mt-3 flex flex-col gap-3">
-              {navLinks.map((item) => (
-                <Link key={item.label} href={item.href} onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold py-1.5 text-white/70">{item.label}</Link>
-              ))}
-              <a href="mailto:invest@jigjiga.net" className="mt-2 inline-flex items-center gap-1.5 px-4 py-2.5 bg-cyan-500 text-white text-sm font-bold rounded-full w-max">
-                Invest in Jigjiga <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          )}
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* ── HERO ── */}
       <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-20">

@@ -1,6 +1,3 @@
-import { usePageContent } from "@/hooks/usePageContent";
-import { PAGE_REGISTRY } from "@/lib/pageDefaults";
-const PAGE_META = PAGE_REGISTRY.find(p => p.id === "landmarks/shabeeley-resort")!;
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,6 +7,11 @@ import {
   ArrowLeft, ArrowRight, Menu, X, Leaf, Sun, Camera,
   Quote, ArrowUpRight, Star, MapPin, Clock, Play, ChevronLeft, ChevronRight
 } from "lucide-react";
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+import SiteHeader from "@/components/SiteHeader";
+
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "landmarks/shabeeley-resort")!;
 
 /* ── helpers ── */
 const LogoImg = () => (
@@ -59,12 +61,6 @@ const experienceItems = [
   { emoji: "🌙", title: "Night Sky & Silence", description: "Away from city light pollution, Shabeeley's nights reveal a full canopy of stars. The amber glow of dome lights below and the Milky Way above create a scene that guests remember for years." },
 ];
 
-const navLinks = [
-  { label: "Explore City", href: "/#explore-city" },
-  { label: "News", href: "/#news" },
-  { label: "Culture", href: "/history-culture" },
-  { label: "Tech Hub", href: "/#tech-hub" },
-];
 
 /* ═══════════════════════════════════════════════════════════════════
    GALLERY COMPONENT
@@ -286,14 +282,6 @@ function YouTubeEmbed({ videoId }: { videoId: string }) {
    PAGE
 ═══════════════════════════════════════════════════════════════════ */
 export default function ShabeeleyResort() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handler = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
 
   const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
   const pullQuote = content.pullQuote ?? "";
@@ -302,34 +290,7 @@ export default function ShabeeleyResort() {
     <div className="min-h-screen bg-background font-sans">
 
       {/* ── NAV ── */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-lg border-b border-gray-100 py-3 shadow-sm" : "bg-white/80 backdrop-blur-md py-4"}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4">
-            <Link href="/" className="flex items-center gap-0 group outline-none shrink-0">
-              <LogoImg />
-              <span className="text-base sm:text-lg font-black tracking-tight text-foreground -ml-4">IGJIGA</span>
-            </Link>
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-              {navLinks.map((item) => (
-                <Link key={item.label} href={item.href} className="text-sm font-semibold text-gray-600 hover:text-primary transition-colors whitespace-nowrap">{item.label}</Link>
-              ))}
-            </nav>
-            <div className="flex items-center gap-3">
-              <a href="https://business.jigjiga.net" target="_blank" rel="noopener noreferrer" className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-white text-sm font-bold rounded-full hover:bg-primary/90 transition-colors">Business Services</a>
-              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors">
-                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
-          </div>
-          {mobileMenuOpen && (
-            <div className="lg:hidden py-4 border-t border-gray-100 mt-3 flex flex-col gap-3">
-              {navLinks.map((item) => (
-                <Link key={item.label} href={item.href} onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold py-1.5 text-gray-600">{item.label}</Link>
-              ))}
-            </div>
-          )}
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* ── HERO ── */}
       <section className="relative pt-24 pb-0 overflow-hidden bg-gradient-to-br from-emerald-950 via-green-900 to-amber-950">

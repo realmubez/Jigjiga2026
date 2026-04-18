@@ -1,10 +1,11 @@
-import { usePageContent } from "@/hooks/usePageContent";
-import { PAGE_REGISTRY } from "@/lib/pageDefaults";
-const PAGE_META = PAGE_REGISTRY.find(p => p.id === "history-culture/qaaci-nightlife")!;
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowLeft, Menu, X, Music2, Star, Mic, Heart, Quote, Users, Sparkles } from "lucide-react";
+import SiteHeader from "@/components/SiteHeader";
+import { usePageContent } from "@/hooks/usePageContent";
+import { PAGE_REGISTRY } from "@/lib/pageDefaults";
+const PAGE_META = PAGE_REGISTRY.find(p => p.id === "history-culture/qaaci-nightlife")!;
 
 const LogoImg = () => (
   <img src="/logo.png" alt="Jigjiga.net logo" className="w-12 h-12 sm:w-14 sm:h-14 object-contain" />
@@ -100,14 +101,6 @@ const VENUES = [
 ];
 
 export default function QaaciNightlife() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handler = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
 
   const content = usePageContent(PAGE_META.id, PAGE_META.defaults);
   const pullQuote = content.pullQuote ?? PAGE_META.defaults.pullQuote ?? "";
@@ -122,52 +115,7 @@ export default function QaaciNightlife() {
   return (
     <div className="min-h-screen bg-background font-sans">
       {/* ── HEADER ── */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-lg border-b border-gray-100 py-3 shadow-sm" : "bg-transparent py-4"
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4">
-            <Link href="/" className="flex items-center gap-0 group outline-none shrink-0">
-              <LogoImg />
-              <span className={`text-base sm:text-lg font-black tracking-tight -ml-4 transition-colors ${isScrolled ? "text-foreground" : "text-white"}`}>
-                IGJIGA
-              </span>
-            </Link>
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-              {navLinks.map((item) => (
-                <Link key={item.label} href={item.href}
-                  className={`text-sm font-semibold transition-colors whitespace-nowrap ${
-                    item.label === "Culture"
-                      ? isScrolled ? "text-primary" : "text-amber-300"
-                      : isScrolled ? "text-gray-600 hover:text-primary" : "text-white/70 hover:text-white"
-                  }`}>
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            <div className="flex items-center gap-3">
-              <a href="https://business.jigjiga.net" target="_blank" rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 bg-amber-500 text-white text-sm font-bold rounded-full hover:bg-amber-400 transition-colors">
-                Business Services
-              </a>
-              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`lg:hidden p-2 rounded-lg transition-colors ${isScrolled ? "text-gray-600 hover:bg-gray-100" : "text-white/80 hover:bg-white/10"}`}>
-                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
-          </div>
-          {mobileMenuOpen && (
-            <div className={`lg:hidden py-4 border-t mt-3 flex flex-col gap-3 ${isScrolled ? "border-gray-100" : "border-white/20"}`}>
-              {navLinks.map((item) => (
-                <Link key={item.label} href={item.href} onClick={() => setMobileMenuOpen(false)}
-                  className={`text-sm font-semibold py-1.5 transition-colors ${isScrolled ? "text-gray-600" : "text-white/80"}`}>
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* ── HERO ── */}
       <section className="relative min-h-[55vh] flex items-end overflow-hidden" style={{ background: "linear-gradient(145deg, #050a18 0%, #0d1535 40%, #1a0a2e 70%, #0a1020 100%)" }}>

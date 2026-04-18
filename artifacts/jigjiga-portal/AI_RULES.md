@@ -1,9 +1,13 @@
 # AI Rules for Jigjiga Portal
 
+## Repo location
+- The actual frontend app lives in `artifacts/jigjiga-portal`.
+- When referring to app files from the workspace root, use paths like `artifacts/jigjiga-portal/src/App.tsx`.
+
 ## Tech stack
 - React + TypeScript, bundled with Vite.
-- Client-side routing is handled with **Wouter** in `src/App.tsx`.
-- Styling is done with **Tailwind CSS** via `src/index.css`.
+- Client-side routing is handled with **Wouter** in `artifacts/jigjiga-portal/src/App.tsx`.
+- Styling is done with **Tailwind CSS** via `artifacts/jigjiga-portal/src/index.css`.
 - Reusable UI primitives come from **shadcn/ui**, built on top of **Radix UI**.
 - Icons should primarily come from **lucide-react**.
 - App-wide async server state is set up with **@tanstack/react-query**.
@@ -16,7 +20,7 @@
 
 ### Routing
 - Use **Wouter** for all routes, redirects, and navigation.
-- Keep route definitions centralized in `src/App.tsx`.
+- Keep route definitions centralized in `artifacts/jigjiga-portal/src/App.tsx`.
 - Do **not** introduce React Router for this app.
 
 ### UI components

@@ -31,13 +31,13 @@ export default function AdminDashboard() {
             <div className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl ${light}`}>
               <Icon className="h-5 w-5" />
             </div>
-            <p className="text-2xl font-black text-gray-900">{value}</p>
+            <p className="break-words text-2xl font-black text-gray-900">{value}</p>
             <p className="mt-0.5 text-xs font-semibold text-gray-500">{label}</p>
           </div>
         ))}
       </div>
 
-      <div className="mb-6 grid grid-cols-1 gap-4 lg:mb-8 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:mb-8 xl:grid-cols-3">
         <Link
           href="/admin/posts/new"
           className="group flex items-center gap-3 rounded-2xl bg-primary p-5 text-white shadow-lg shadow-primary/25 transition-colors hover:bg-blue-700"
@@ -70,7 +70,7 @@ export default function AdminDashboard() {
           href="/"
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-3 rounded-2xl border border-gray-100 bg-white p-5 transition-all hover:shadow-md sm:col-span-2 xl:col-span-1"
+          className="group flex items-center gap-3 rounded-2xl border border-gray-100 bg-white p-5 transition-all hover:shadow-md md:col-span-2 xl:col-span-1"
         >
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50">
             <Globe className="h-5 w-5 text-emerald-600" />
@@ -105,7 +105,7 @@ export default function AdminDashboard() {
                 <div className="flex items-start gap-3 sm:gap-4">
                   <img src={post.imageUrl} alt={post.title} className="h-12 w-12 shrink-0 rounded-xl bg-gray-100 object-cover" />
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-bold text-gray-900">{post.title}</p>
+                    <p className="break-words text-sm font-bold text-gray-900">{post.title}</p>
                     <p className="mt-0.5 text-xs text-gray-400">{post.category} · {new Date(post.createdAt).toLocaleDateString()}</p>
                     <span
                       className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-xs font-black ${

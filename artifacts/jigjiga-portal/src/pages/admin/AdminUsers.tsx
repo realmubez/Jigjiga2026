@@ -141,7 +141,7 @@ export default function AdminUsers() {
           </div>
         ) : (
           <>
-            <div className="hidden grid-cols-[2fr_1fr_1fr_1fr_auto] gap-4 border-b border-gray-100 px-6 py-3 text-xs font-black uppercase tracking-wider text-gray-400 sm:grid">
+            <div className="hidden grid-cols-[2fr_1fr_1fr_1fr_auto] gap-4 border-b border-gray-100 px-6 py-3 text-xs font-black uppercase tracking-wider text-gray-400 lg:grid">
               <span>User</span>
               <span>Role</span>
               <span>Added</span>
@@ -154,15 +154,15 @@ export default function AdminUsers() {
                 const Icon = meta.icon;
                 return (
                   <div key={user.id}>
-                    <div className="block p-4 sm:hidden">
+                    <div className="block p-4 lg:hidden">
                       <div className="rounded-2xl border border-gray-100 bg-gray-50/40 p-4">
                         <div className="flex items-start gap-3">
                           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-100">
                             <Icon className="h-4 w-4 text-gray-500" />
                           </div>
                           <div className="min-w-0 flex-1">
-                            <p className="truncate text-sm font-bold text-gray-900">{user.name}</p>
-                            <p className="truncate text-xs text-gray-400">{user.email}</p>
+                            <p className="break-words text-sm font-bold text-gray-900">{user.name}</p>
+                            <p className="break-all text-xs text-gray-400">{user.email}</p>
                             <div className="mt-3 flex flex-wrap gap-2">
                               <span className={`rounded-full px-2.5 py-1 text-xs font-black ${meta.color}`}>{meta.label}</span>
                               <button
@@ -179,7 +179,7 @@ export default function AdminUsers() {
                             <p className="mt-2 text-xs text-gray-400">Added {new Date(user.createdAt).toLocaleDateString()}</p>
                           </div>
                         </div>
-                        <div className="mt-4 flex gap-2">
+                        <div className="mt-4 flex flex-col gap-2 min-[420px]:flex-row">
                           <button
                             onClick={() => toggleStatus(user)}
                             className="flex-1 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-bold text-gray-700 transition-colors hover:bg-gray-100"
@@ -196,7 +196,7 @@ export default function AdminUsers() {
                       </div>
                     </div>
 
-                    <div className="hidden items-center gap-4 px-6 py-4 sm:grid sm:grid-cols-[2fr_1fr_1fr_1fr_auto]">
+                    <div className="hidden items-center gap-4 px-6 py-4 lg:grid lg:grid-cols-[2fr_1fr_1fr_1fr_auto]">
                       <div className="flex min-w-0 flex-1 items-center gap-3">
                         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gray-100">
                           <Icon className="h-4 w-4 text-gray-500" />
@@ -238,9 +238,9 @@ export default function AdminUsers() {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6">
+        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto px-4 py-4 sm:items-center sm:py-6">
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setShowModal(false)} />
-          <div className="relative max-h-[90vh] w-full max-w-md overflow-y-auto rounded-3xl bg-white p-5 shadow-2xl sm:p-8">
+          <div className="relative my-auto max-h-[90vh] w-full max-w-md overflow-y-auto rounded-3xl bg-white p-5 shadow-2xl sm:p-8">
             <div className="mb-6 flex items-center justify-between gap-3">
               <h2 className="text-xl font-black text-gray-900">Add Team Member</h2>
               <button onClick={() => setShowModal(false)} className="rounded-xl p-2 text-gray-400 transition-colors hover:bg-gray-100">

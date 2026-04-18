@@ -58,12 +58,12 @@ export default function AdminPosts() {
             className="w-full rounded-xl border border-gray-200 bg-white py-2.5 pl-10 pr-4 text-sm font-medium transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
           />
         </div>
-        <div className="flex flex-wrap gap-2 rounded-xl bg-gray-100 p-1.5">
+        <div className="grid grid-cols-3 gap-2 rounded-xl bg-gray-100 p-1.5">
           {(["all", "published", "draft"] as Filter[]).map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`rounded-lg px-4 py-2 text-xs font-black capitalize transition-colors ${
+              className={`rounded-lg px-3 py-2 text-center text-xs font-black capitalize transition-colors ${
                 filter === f ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"
               }`}
             >
@@ -84,7 +84,7 @@ export default function AdminPosts() {
           </div>
         ) : (
           <>
-            <div className="hidden grid-cols-[2fr_1fr_1fr_1fr_auto] gap-4 border-b border-gray-100 px-6 py-3 text-xs font-black uppercase tracking-wider text-gray-400 sm:grid">
+            <div className="hidden grid-cols-[2fr_1fr_1fr_1fr_auto] gap-4 border-b border-gray-100 px-6 py-3 text-xs font-black uppercase tracking-wider text-gray-400 lg:grid">
               <span>Post</span>
               <span>Category</span>
               <span>Date</span>
@@ -95,12 +95,12 @@ export default function AdminPosts() {
             <div className="divide-y divide-gray-50">
               {filtered.map((post) => (
                 <div key={post.id} className={`transition-opacity ${deleting === post.id ? "opacity-40" : ""}`}>
-                  <div className="block p-4 sm:hidden">
+                  <div className="block p-4 lg:hidden">
                     <div className="rounded-2xl border border-gray-100 bg-gray-50/40 p-4">
                       <div className="flex items-start gap-3">
                         <img src={post.imageUrl} alt="" className="h-12 w-12 shrink-0 rounded-xl bg-gray-100 object-cover" />
                         <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm font-bold text-gray-900">{post.title}</p>
+                          <p className="break-words text-sm font-bold text-gray-900">{post.title}</p>
                           <p className="mt-1 text-xs text-gray-500">{post.category}</p>
                           <p className="mt-1 text-xs text-gray-400">{new Date(post.createdAt).toLocaleDateString()}</p>
                           <span
@@ -112,7 +112,7 @@ export default function AdminPosts() {
                           </span>
                         </div>
                       </div>
-                      <div className="mt-4 flex gap-2">
+                      <div className="mt-4 flex flex-col gap-2 min-[420px]:flex-row">
                         <Link
                           href={`/admin/posts/edit/${post.id}`}
                           className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-bold text-gray-700 transition-colors hover:bg-gray-100"
@@ -129,7 +129,7 @@ export default function AdminPosts() {
                     </div>
                   </div>
 
-                  <div className="hidden items-center gap-4 px-6 py-4 sm:grid sm:grid-cols-[2fr_1fr_1fr_1fr_auto]">
+                  <div className="hidden items-center gap-4 px-6 py-4 lg:grid lg:grid-cols-[2fr_1fr_1fr_1fr_auto]">
                     <div className="flex min-w-0 flex-1 items-center gap-3">
                       <img src={post.imageUrl} alt="" className="h-10 w-10 shrink-0 rounded-lg bg-gray-100 object-cover" />
                       <div className="min-w-0">

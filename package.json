@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "preinstall": "node -e \"const fs=require('fs'); ['package-lock.json','yarn.lock'].forEach((f)=>{try{fs.rmSync(f,{force:true});}catch{}});\"",
-    "build": "pnpm run typecheck && pnpm -r --if-present run build",
-    "build-portal": "pnpm --filter @workspace/jigjiga-portal run build",
+    "postinstall": "npm --prefix artifacts/jigjiga-portal install",
+    "dev": "npm --prefix artifacts/jigjiga-portal run dev",
     "start": "node server.js",
+    "build": "npm --prefix artifacts/jigjiga-portal run build",
+    "build-portal": "npm --prefix artifacts/jigjiga-portal run build",
     "typecheck:libs": "tsc --build",
-    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
+    "typecheck": "tsc --build"
   },
-
   "private": true,
   "devDependencies": {
     "typescript": "~5.9.2",

@@ -6,7 +6,7 @@
   "scripts": {
     "preinstall": "node -e \"const fs=require('fs'); ['package-lock.json','yarn.lock'].forEach((f)=>{try{fs.rmSync(f,{force:true});}catch{}});\"",
     "postinstall": "npm --prefix artifacts/jigjiga-portal install",
-    "dev": "npm --prefix artifacts/jigjiga-portal run dev",
+    "dev": "node dev-server.mjs",
     "start": "node server.js",
     "build": "npm --prefix artifacts/jigjiga-portal run build",
     "build-portal": "npm --prefix artifacts/jigjiga-portal run build",

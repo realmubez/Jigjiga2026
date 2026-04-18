@@ -81,9 +81,9 @@ export default function JigjigaCityPortal() {
   ];
 
   const popularDestinations = [
-    { id: 1, title: "Karamara Monument", rating: 4.8, reviews: 124, image: "https://picsum.photos/seed/karamara/600/400", href: "/landmarks/karamara-mountains" },
-    { id: 2, title: "Central Market", rating: 4.5, reviews: 342, image: "https://picsum.photos/seed/centralmarket/600/400", href: "/eat-drink/street-food" },
-    { id: 3, title: "Jigjiga University", rating: 4.9, reviews: 89, image: "https://picsum.photos/seed/university/600/400", href: "/landmarks/jigjiga-university" }
+    { id: 1, title: "Karamara Mountains", rating: 4.8, reviews: 124, image: "/karamara-sunset-trail.jpg", href: "/landmarks/karamara-mountains" },
+    { id: 2, title: "Central Market", rating: 4.5, reviews: 342, image: "/karamara-green-slopes.jpg", href: "/eat-drink/street-food" },
+    { id: 3, title: "Jigjiga University", rating: 4.9, reviews: 89, image: "/jju-gate-night-wide.jpg", href: "/landmarks/jigjiga-university" }
   ];
 
   const testimonials = [

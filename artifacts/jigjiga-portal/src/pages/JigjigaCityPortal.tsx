@@ -58,10 +58,40 @@ export default function JigjigaCityPortal() {
   };
 
   const navLinks = [
-    { label: "Explore City", href: "#explore-city" },
-    { label: "News", href: "#news" },
-    { label: "Culture", href: "/history-culture" },
-    { label: "Tech Hub", href: "#tech-hub" },
+    { label: "History & Culture", href: "/history-culture" },
+    { label: "Eat & Drink", href: "/eat-drink" },
+    { label: "Landmarks", href: "/landmarks" },
+    { label: "Tech Hub", href: "/tech-hub" },
+  ];
+
+  const mobileNavSections = [
+    {
+      heading: "Explore",
+      links: [
+        { label: "History & Culture", href: "/history-culture", emoji: "🏛️" },
+        { label: "Eat & Drink", href: "/eat-drink", emoji: "🍖" },
+        { label: "Must-See Landmarks", href: "/landmarks", emoji: "📍" },
+        { label: "Tech Hub & Business", href: "/tech-hub", emoji: "🚀" },
+      ],
+    },
+    {
+      heading: "Arts & Events",
+      links: [
+        { label: "Festivals", href: "/history-culture/festivals", emoji: "🎉" },
+        { label: "Nightlife & Qaaci", href: "/history-culture/qaaci-nightlife", emoji: "🎵" },
+      ],
+    },
+    {
+      heading: "Deep Dives",
+      links: [
+        { label: "Sayid Mohamed Hassan", href: "/history-culture/sayid-hassan", emoji: "⚔️" },
+        { label: "Dhaanto Music", href: "/history-culture/dhaanto", emoji: "🥁" },
+        { label: "Somali Poetry", href: "/history-culture/somali-poetry", emoji: "📜" },
+        { label: "Karamara Mountains", href: "/landmarks/karamara-mountains", emoji: "⛰️" },
+        { label: "Shabeeley Resort", href: "/landmarks/shabeeley-resort", emoji: "🏕️" },
+        { label: "Jigjiga University", href: "/landmarks/jigjiga-university", emoji: "🎓" },
+      ],
+    },
   ];
 
   const newsItems = [
@@ -146,19 +176,30 @@ export default function JigjigaCityPortal() {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-              className="absolute top-full left-0 right-0 bg-white shadow-xl border-b border-gray-100 py-4 px-4 flex flex-col gap-1 lg:hidden">
-              {navLinks.map((item) => (
-                <Link key={item.label} href={item.href}
-                  className={`font-semibold text-base px-4 py-3 hover:bg-gray-50 rounded-xl transition-colors ${item.label === "Culture" ? "text-primary" : "text-gray-800"}`}
-                  onClick={() => setMobileMenuOpen(false)}>
-                  {item.label}
-                </Link>
-              ))}
-              <div className="pt-3 mt-1 border-t border-gray-100">
-                <a href="https://business.jigjiga.net" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold w-full">
-                  Business Services <ArrowUpRight className="w-4 h-4" />
-                </a>
+              className="absolute top-full left-0 right-0 bg-white shadow-2xl border-b border-gray-100 lg:hidden overflow-y-auto max-h-[80vh]">
+              <div className="px-4 py-4 space-y-4">
+                {mobileNavSections.map((section) => (
+                  <div key={section.heading}>
+                    <p className="text-xs font-black uppercase tracking-widest text-gray-400 px-2 mb-1">{section.heading}</p>
+                    <div className="space-y-0.5">
+                      {section.links.map((item) => (
+                        <Link key={item.label} href={item.href}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors group"
+                          onClick={() => setMobileMenuOpen(false)}>
+                          <span className="text-lg leading-none">{item.emoji}</span>
+                          <span className="font-semibold text-sm text-gray-800 group-hover:text-primary">{item.label}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+                <div className="pt-2 border-t border-gray-100">
+                  <a href="https://business.jigjiga.net" target="_blank" rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold w-full text-sm"
+                    onClick={() => setMobileMenuOpen(false)}>
+                    Business Services <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </motion.div>
           )}

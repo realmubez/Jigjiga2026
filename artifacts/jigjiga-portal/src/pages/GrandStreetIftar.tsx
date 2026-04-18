@@ -88,13 +88,22 @@ function YouTubeEmbed({ videoId }: { videoId: string }) {
 
   const opts = {
     width: "100%", height: "100%",
-    playerVars: { controls: 1, modestbranding: 1, rel: 0, iv_load_policy: 3, playsinline: 1, color: "white" as const, autoplay: 0 },
+    playerVars: {
+      controls: 0,
+      modestbranding: 1,
+      rel: 0,
+      iv_load_policy: 3,
+      disablekb: 1,
+      fs: 0,
+      playsinline: 1,
+      color: "white" as const,
+    },
   };
 
   return (
-    <div className="rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden" style={{ position: "relative", aspectRatio: "16/9" }}>
+    <div className="rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden" style={{ position: "relative", overflow: "hidden", aspectRatio: "16/9" }}>
       <YouTube videoId={videoId} opts={opts} onReady={onReady} onStateChange={onStateChange}
-        style={{ position: "absolute", top: "-60px", left: 0, width: "100%", height: "calc(100% + 120px)", zIndex: 1 }}
+        style={{ position: "absolute", top: "-80px", left: 0, width: "100%", height: "calc(100% + 160px)", zIndex: 1 }}
         iframeClassName="w-full h-full" />
 
       {!playerReady && (

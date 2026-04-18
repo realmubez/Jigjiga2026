@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAdminAuth } from "@/contexts/AdminAuthContext";
 import { useLocation } from "wouter";
-import { Globe, Info, Mail, Shield, LogOut, ExternalLink } from "lucide-react";
+import { Globe, Mail, Shield, LogOut, ExternalLink } from "lucide-react";
 
 export default function AdminSettings() {
   const { logout } = useAdminAuth();
@@ -14,89 +14,96 @@ export default function AdminSettings() {
 
   return (
     <div>
-      <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900">Site Settings</h1>
-        <p className="text-gray-500 text-sm mt-1">Manage your admin account and site information</p>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl font-black text-gray-900 sm:text-3xl">Site Settings</h1>
+        <p className="mt-1 text-sm text-gray-500">Manage your admin account and site information</p>
       </div>
 
-      <div className="max-w-2xl space-y-6">
-        {/* Site info */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center">
-              <Globe className="w-4 h-4 text-blue-600" />
+      <div className="max-w-3xl space-y-6">
+        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6">
+          <div className="mb-5 flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50">
+              <Globe className="h-4 w-4 text-blue-600" />
             </div>
             <h2 className="font-black text-gray-900">Website Info</h2>
           </div>
           <div className="space-y-3 text-sm">
-            <div className="flex justify-between py-2 border-b border-gray-50">
-              <span className="text-gray-500 font-semibold">Domain</span>
-              <span className="font-bold text-gray-900">jigjiga.net</span>
-            </div>
-            <div className="flex justify-between py-2 border-b border-gray-50">
-              <span className="text-gray-500 font-semibold">Type</span>
-              <span className="font-bold text-gray-900">Official City Portal</span>
-            </div>
-            <div className="flex justify-between py-2 border-b border-gray-50">
-              <span className="text-gray-500 font-semibold">Region</span>
-              <span className="font-bold text-gray-900">Somali Region, Ethiopia</span>
-            </div>
-            <div className="flex justify-between py-2">
-              <span className="text-gray-500 font-semibold">Languages</span>
-              <span className="font-bold text-gray-900">English · Soomaali</span>
-            </div>
+            {[
+              ["Domain", "jigjiga.net"],
+              ["Type", "Official City Portal"],
+              ["Region", "Somali Region, Ethiopia"],
+              ["Languages", "English · Soomaali"],
+            ].map(([label, value], index) => (
+              <div
+                key={label}
+                className={`flex flex-col gap-1 py-2 sm:flex-row sm:items-center sm:justify-between ${
+                  index < 3 ? "border-b border-gray-50" : ""
+                }`}
+              >
+                <span className="font-semibold text-gray-500">{label}</span>
+                <span className="font-bold text-gray-900 sm:text-right">{value}</span>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Admin info */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-9 h-9 bg-emerald-50 rounded-xl flex items-center justify-center">
-              <Shield className="w-4 h-4 text-emerald-600" />
+        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6">
+          <div className="mb-5 flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50">
+              <Shield className="h-4 w-4 text-emerald-600" />
             </div>
             <h2 className="font-black text-gray-900">Admin Account</h2>
           </div>
           <div className="space-y-3 text-sm">
-            <div className="flex justify-between py-2 border-b border-gray-50">
-              <span className="text-gray-500 font-semibold">Username</span>
-              <span className="font-bold text-gray-900">admin</span>
-            </div>
-            <div className="flex justify-between py-2 border-b border-gray-50">
-              <span className="text-gray-500 font-semibold">Role</span>
-              <span className="font-bold text-emerald-600">Owner / Super Admin</span>
-            </div>
-            <div className="flex justify-between py-2">
-              <span className="text-gray-500 font-semibold">Password</span>
-              <span className="font-bold text-gray-400">••••••••••</span>
-            </div>
+            {[
+              ["Username", "admin"],
+              ["Role", "Owner / Super Admin"],
+              ["Password", "••••••••••"],
+            ].map(([label, value], index) => (
+              <div
+                key={label}
+                className={`flex flex-col gap-1 py-2 sm:flex-row sm:items-center sm:justify-between ${
+                  index < 2 ? "border-b border-gray-50" : ""
+                }`}
+              >
+                <span className="font-semibold text-gray-500">{label}</span>
+                <span className={`font-bold sm:text-right ${label === "Role" ? "text-emerald-600" : "text-gray-900"}`}>
+                  {value}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Contact info */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-9 h-9 bg-orange-50 rounded-xl flex items-center justify-center">
-              <Mail className="w-4 h-4 text-orange-500" />
+        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6">
+          <div className="mb-5 flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-orange-50">
+              <Mail className="h-4 w-4 text-orange-500" />
             </div>
             <h2 className="font-black text-gray-900">Contact Details</h2>
           </div>
           <div className="space-y-3 text-sm">
-            <div className="flex justify-between py-2 border-b border-gray-50">
-              <span className="text-gray-500 font-semibold">Email</span>
-              <span className="font-bold text-gray-900">info@jigjiga.net</span>
-            </div>
-            <div className="flex justify-between py-2">
-              <span className="text-gray-500 font-semibold">Location</span>
-              <span className="font-bold text-gray-900">Jigjiga, Ethiopia</span>
-            </div>
+            {[
+              ["Email", "info@jigjiga.net"],
+              ["Location", "Jigjiga, Ethiopia"],
+            ].map(([label, value], index) => (
+              <div
+                key={label}
+                className={`flex flex-col gap-1 py-2 sm:flex-row sm:items-center sm:justify-between ${
+                  index === 0 ? "border-b border-gray-50" : ""
+                }`}
+              >
+                <span className="font-semibold text-gray-500">{label}</span>
+                <span className="font-bold text-gray-900 sm:text-right">{value}</span>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Quick links */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-9 h-9 bg-purple-50 rounded-xl flex items-center justify-center">
-              <ExternalLink className="w-4 h-4 text-purple-600" />
+        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6">
+          <div className="mb-5 flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-purple-50">
+              <ExternalLink className="h-4 w-4 text-purple-600" />
             </div>
             <h2 className="font-black text-gray-900">Quick Links</h2>
           </div>
@@ -107,24 +114,30 @@ export default function AdminSettings() {
               { label: "Terms of Service", href: "/terms", ext: false },
               { label: "Business Portal", href: "https://business.jigjiga.net", ext: true },
             ].map(({ label, href, ext }) => (
-              <a key={label} href={href} target={ext ? "_blank" : "_self"} rel="noopener noreferrer"
-                className="flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-gray-50 transition-colors">
+              <a
+                key={label}
+                href={href}
+                target={ext ? "_blank" : "_self"}
+                rel="noopener noreferrer"
+                className="flex items-center justify-between gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-gray-50"
+              >
                 <span className="text-sm font-semibold text-gray-700">{label}</span>
-                <ExternalLink className="w-3.5 h-3.5 text-gray-300" />
+                <ExternalLink className="h-3.5 w-3.5 shrink-0 text-gray-300" />
               </a>
             ))}
           </div>
         </div>
 
-        {/* Sign out */}
-        <div className="bg-red-50 border border-red-100 rounded-2xl p-5 flex items-center justify-between">
+        <div className="flex flex-col gap-4 rounded-2xl border border-red-100 bg-red-50 p-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-bold text-red-700 text-sm">Sign Out</p>
-            <p className="text-red-400 text-xs mt-0.5">End your current admin session</p>
+            <p className="text-sm font-bold text-red-700">Sign Out</p>
+            <p className="mt-0.5 text-xs text-red-400">End your current admin session</p>
           </div>
-          <button onClick={handleLogout}
-            className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white text-sm font-black rounded-xl hover:bg-red-600 transition-colors shadow-lg shadow-red-500/20">
-            <LogOut className="w-4 h-4" /> Sign Out
+          <button
+            onClick={handleLogout}
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-red-500 px-4 py-2.5 text-sm font-black text-white shadow-lg shadow-red-500/20 transition-colors hover:bg-red-600"
+          >
+            <LogOut className="h-4 w-4" /> Sign Out
           </button>
         </div>
       </div>

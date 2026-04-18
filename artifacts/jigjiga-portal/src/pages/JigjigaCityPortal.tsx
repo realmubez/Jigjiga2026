@@ -76,8 +76,8 @@ export default function JigjigaCityPortal() {
     { name: "Eat & Drink", icon: <Coffee className="w-5 h-5" />, image: "https://picsum.photos/seed/eatdrink/300/300", href: "/eat-drink" },
     { name: "Must-See Landmarks", icon: <Camera className="w-5 h-5" />, image: "https://picsum.photos/seed/landmarks/300/300", href: "/landmarks" },
     { name: "Business Directory", icon: <Store className="w-5 h-5" />, image: "https://picsum.photos/seed/business/300/300", href: "#" },
-    { name: "Festivals", icon: <Music className="w-5 h-5" />, image: "https://picsum.photos/seed/festivals/300/300", href: "#" },
-    { name: "Nightlife", icon: <Moon className="w-5 h-5" />, image: "https://picsum.photos/seed/nightlife/300/300", href: "#" }
+    { name: "Festivals", icon: <Music className="w-5 h-5" />, image: "/karamara-summit-tower.jpg", href: "/history-culture/festivals" },
+    { name: "Nightlife", icon: <Moon className="w-5 h-5" />, image: "/karamara-moto-view.jpg", href: "/history-culture/qaaci-nightlife" }
   ];
 
   const popularDestinations = [

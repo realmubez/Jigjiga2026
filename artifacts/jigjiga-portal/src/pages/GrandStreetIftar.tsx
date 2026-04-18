@@ -175,10 +175,18 @@ export default function GrandStreetIftar() {
           <p className="text-lg sm:text-xl font-semibold text-[#f97316] italic mb-4">
             Afur Wadareed — A Symphony of Unity in Jigjiga
           </p>
-          <div className="flex items-center gap-3 text-white/70 text-sm font-medium">
-            <Calendar className="w-4 h-4" /> April 2026 &nbsp;·&nbsp;
-            <MapPin className="w-4 h-4" /> Main Boulevard, Jigjiga &nbsp;·&nbsp;
-            <Users className="w-4 h-4" /> Thousands in Attendance
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-white/70 text-sm font-medium">
+            <span className="flex items-center gap-1.5 whitespace-nowrap">
+              <Calendar className="w-4 h-4 shrink-0" /> April 2026
+            </span>
+            <span className="text-white/30 hidden sm:inline">·</span>
+            <span className="flex items-center gap-1.5 whitespace-nowrap">
+              <MapPin className="w-4 h-4 shrink-0" /> Main Boulevard, Jigjiga
+            </span>
+            <span className="text-white/30 hidden sm:inline">·</span>
+            <span className="flex items-center gap-1.5 whitespace-nowrap">
+              <Users className="w-4 h-4 shrink-0" /> Thousands in Attendance
+            </span>
           </div>
         </motion.div>
       </div>

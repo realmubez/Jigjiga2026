@@ -1,10 +1,12 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft, Users, Heart, Globe, Star, Quote, ChevronLeft,
-  ChevronRight, X, MapPin, Calendar, ArrowUpRight,
+  ChevronRight, X, MapPin, Calendar, ArrowUpRight, Play,
 } from "lucide-react";
+import YouTube from "react-youtube";
+import type { YouTubeEvent } from "react-youtube";
 import SiteHeader from "@/components/SiteHeader";
 
 const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } } };
@@ -75,6 +77,54 @@ const SECTIONS = [
   },
 ];
 
+function YouTubeEmbed({ videoId }: { videoId: string }) {
+  const [hasStarted, setHasStarted] = useState(false);
+  const [playerReady, setPlayerReady] = useState(false);
+  const playerRef = useRef<any>(null);
+
+  const playVideo = () => playerRef.current?.playVideo();
+  const onReady = (e: YouTubeEvent) => { playerRef.current = e.target; setPlayerReady(true); };
+  const onStateChange = (e: YouTubeEvent<number>) => { if (e.data === 1) setHasStarted(true); };
+
+  const opts = {
+    width: "100%", height: "100%",
+    playerVars: { controls: 1, modestbranding: 1, rel: 0, iv_load_policy: 3, playsinline: 1, color: "white" as const, autoplay: 0 },
+  };
+
+  return (
+    <div className="rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden" style={{ position: "relative", aspectRatio: "16/9" }}>
+      <YouTube videoId={videoId} opts={opts} onReady={onReady} onStateChange={onStateChange}
+        style={{ position: "absolute", top: "-60px", left: 0, width: "100%", height: "calc(100% + 120px)", zIndex: 1 }}
+        iframeClassName="w-full h-full" />
+
+      {!playerReady && (
+        <div style={{ position: "absolute", inset: 0, zIndex: 6 }}
+          className="bg-[#1e1b4b] flex items-center justify-center">
+          <div className="w-10 h-10 border-4 border-[#f97316] border-t-transparent rounded-full animate-spin" />
+        </div>
+      )}
+
+      {playerReady && !hasStarted && (
+        <div onClick={playVideo} style={{ position: "absolute", inset: 0, zIndex: 10, cursor: "pointer" }}
+          className="flex flex-col items-center justify-center group">
+          <img src="/iftar-drone-night.jpg" alt="Grand Street Iftar 2026"
+            className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="relative z-10 flex flex-col items-center gap-4 px-6 text-center">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#f97316] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+              <Play className="w-7 h-7 sm:w-9 sm:h-9 text-white fill-white ml-1" />
+            </div>
+            <div>
+              <p className="text-white font-black text-base sm:text-xl drop-shadow">Afur Wadareed 2026 — Grand Street Iftar</p>
+              <p className="text-white/70 text-xs sm:text-sm mt-1">Jigjiga, Somali Region · Ramadan 2026</p>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function GrandStreetIftar() {
   const [lightbox, setLightbox] = useState<number | null>(null);
 
@@ -136,6 +186,18 @@ export default function GrandStreetIftar() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* ── VIDEO ── */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-8 pt-10 sm:pt-14">
+        <div className="mb-3 flex items-center gap-3">
+          <span className="text-xs font-black uppercase tracking-widest text-[#f97316]">Watch the Event</span>
+          <div className="flex-1 h-px bg-gray-100" />
+        </div>
+        <YouTubeEmbed videoId="5jQufhnhkbc" />
+        <p className="text-xs text-gray-400 text-center mt-3 italic">
+          Aerial footage of the Afur Wadareed 2026 — Grand Street Iftar, Jigjiga · Credit: Yool Media
+        </p>
       </div>
 
       {/* ── CONTENT ── */}
